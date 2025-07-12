@@ -1,0 +1,48 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  background-color: #000;
+  overflow: hidden;
+}
+
+canvas#starfield {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+.content {
+  text-align: center;
+  padding-top: 10vh;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.sections a {
+  display: inline-block;
+  margin: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.sections a:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+footer {
+  margin-top: 3rem;
+  color: #aaa;
+  font-size: 0.9rem;
+}
