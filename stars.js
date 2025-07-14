@@ -1,4 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("🚀 stars.js loaded and DOM ready!");
+  const canvas = document.getElementById('starfield');
+  if (!canvas) {
+    console.error("❌ Canvas #starfield not found!");
+    return;
+  }
+
+document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById('starfield');
   const ctx = canvas.getContext('2d');
 
@@ -33,4 +41,4 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(drawStars);
   }
   drawStars();
-});
+});});
