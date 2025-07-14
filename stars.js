@@ -10,12 +10,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById('starfield');
   const ctx = canvas.getContext('2d');
 
-  function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-  window.addEventListener('resize', resize);
-  resize();
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  console.log("📐 Resized canvas to:", canvas.width, canvas.height);
+}
+
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
 
   const stars = Array.from({ length: 150 }).map(() => ({
     x: Math.random() * canvas.width,
