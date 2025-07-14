@@ -28,6 +28,10 @@ resizeCanvas();
   }));
 
   function drawStars() {
+    ctx.fillStyle = "lime";
+    ctx.beginPath();
+    ctx.arc(200, 200, 20, 0, Math.PI * 2);
+    ctx.fill();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = 'white';
     stars.forEach(star => {
