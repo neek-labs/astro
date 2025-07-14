@@ -25,26 +25,45 @@ document.addEventListener("DOMContentLoaded", () => {
     dy: (Math.random() - 0.5) * 0.3
   }));
 
-  function drawStars() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.shadowColor = 'white';
-    ctx.shadowBlur = 2;
-    ctx.fillStyle = 'white';
-    stars.forEach(star => {
+let hyperspace = true; // Enable streaks at start
+
+setTimeout(() => {
+  hyperspace = false; // Disable streaks after 2.2s
+}, 2200);
+
+function drawStars() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = 'white';
+  ctx.strokeStyle = 'white';
+  ctx.lineWidth = 1;
+
+  stars.forEach(star => {
+    if (hyperspace) {
+      // Draw a streak line based on velocity
+      ctx.beginPath();
+      ctx.moveTo(star.x, star.y);
+      ctx.lineTo(star.x - star.dx * 40, star.y - star.dy * 40); // hyperspace trail
+      ctx.stroke();
+    } else {
+      // Normal glowing circular stars
+      ctx.shadowColor = 'white';
+      ctx.shadowBlur = 2;
       ctx.beginPath();
       ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
       ctx.fill();
-      star.x += star.dx;
-      star.y += star.dy;
+    }
 
-      if (star.x < 0 || star.x > canvas.width) star.dx *= -1;
-      if (star.y < 0 || star.y > canvas.height) star.dy *= -1;
-    });
-    requestAnimationFrame(drawStars);
-  }
+    star.x += star.dx;
+    star.y += star.dy;
 
-  drawStars();
-});
+    if (star.x < 0 || star.x > canvas.width) star.dx *= -1;
+    if (star.y < 0 || star.y > canvas.height) star.dy *= -1;
+  });
+
+  requestAnimationFrame(drawStars);
+}
+
+drawStars();
 
 document.addEventListener("DOMContentLoaded", () => {
   const overlay = document.getElementById("hyperspace-overlay");
@@ -53,4 +72,4 @@ document.addEventListener("DOMContentLoaded", () => {
       overlay.style.display = "none";
     }, 2200); // Hide it after animation completes
   }
-});
+})});
