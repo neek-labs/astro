@@ -27,6 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function drawStars() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.shadowColor = 'white';
+    ctx.shadowBlur = 2;
     ctx.fillStyle = 'white';
     stars.forEach(star => {
       ctx.beginPath();
