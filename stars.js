@@ -45,3 +45,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   drawStars();
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const overlay = document.getElementById("hyperspace-overlay");
+  if (overlay) {
+    setTimeout(() => {
+      overlay.style.display = "none";
+    }, 2200); // Hide it after animation completes
+  }
+});

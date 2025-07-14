@@ -10,6 +10,45 @@ body, html {
   z-index: 0; 
 }
 
+#hyperspace-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  z-index: 10000;
+  animation: hyperspaceJump 2.2s ease-out forwards;
+}
+
+@keyframes hyperspaceJump {
+  0% {
+    background: black;
+    opacity: 1;
+    transform: scale(1);
+  }
+  40% {
+    background: white;
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+  60% {
+    background: black;
+    opacity: 0.8;
+    transform: scaleY(2) scaleX(0.3);
+  }
+  80% {
+    background: black;
+    opacity: 0.4;
+    transform: scaleY(3) scaleX(0.1);
+  }
+  100% {
+    opacity: 0;
+    display: none;
+    transform: scale(1);
+  }
+}
+
 #starfield {
   position: fixed;
   top: 0;
