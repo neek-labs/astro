@@ -175,3 +175,32 @@ footer {
 .equipment-card ul {
   padding-left: 1.2rem;
 }
+
+.collapsible {
+  background-color: #111;
+  color: #9cd2ff;
+  cursor: pointer;
+  padding: 1rem;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #333;
+  font-family: 'Orbitron', sans-serif;
+  transition: background-color 0.2s ease;
+}
+
+.collapsible:hover {
+  background-color: #1c1c2e;
+}
+
+.collapsible-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.collapsible-content.open {
+  max-height: 2000px; /* Enough for all content */
+}
