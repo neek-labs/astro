@@ -138,3 +138,41 @@ footer {
   color: #aaa;
   font-size: 0.9rem;
 }
+
+.equipment-intro {
+  text-align: center;
+  padding: 2rem 1rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+.equipment-category {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.equipment-category h2 {
+  color: #9cd2ff;
+  border-bottom: 1px solid #444;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.equipment-card {
+  background-color: #151528;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  margin-bottom: 1.5rem;
+  color: #ddd;
+  box-shadow: 0 0 15px #0005;
+}
+
+.equipment-card h3 {
+  margin-top: 0;
+}
+
+.equipment-card ul {
+  padding-left: 1.2rem;
+}
