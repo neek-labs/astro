@@ -10,32 +10,41 @@ body, html {
   z-index: 0; 
 }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 0.8rem 1.5rem;
+.astro-nav {
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 1rem 2rem;
   border-bottom: 1px solid #444;
+  text-align: center;
   font-family: 'Orbitron', sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.nav-logo a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1.2rem;
+.nav-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
 }
 
-.nav-links a {
-  margin-left: 1rem;
+.nav-link {
   color: #ccc;
   text-decoration: none;
+  font-size: 0.95rem;
   transition: color 0.3s ease;
 }
 
-.nav-links a:hover {
+.nav-link:hover {
   color: #fff;
+  text-shadow: 0 0 5px #0ff;
 }
+
+.main-site-link {
+  font-weight: bold;
+  color: #0af;
+}
+
 
 #hyperspace-overlay {
   position: fixed;
