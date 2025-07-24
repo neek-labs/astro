@@ -63,7 +63,7 @@ body {
   }
 }
 
-/* ✅ Updated Nav Style (Option A: Button-like Tiles) 
+/* ✅ Updated Nav Style (Option A: Button-like Tiles) */
 .astro-nav {
   display: flex;
   flex-wrap: wrap;
@@ -92,30 +92,6 @@ body {
 
 .astro-nav a:hover {
   background: rgba(255, 255, 255, 0.3);
-} */ 
-/* Updated Nav Style (Option B) */
-.astro-nav {
-  background: linear-gradient(to right, #111, #222);
-  border-bottom: 2px solid #0ff;
-  box-shadow: 0 2px 10px #0ff5;
-}
-
-.astro-nav a {
-  color: #0ff;
-  background: rgba(0, 255, 255, 0.1);
-  padding: 0.6rem 1.2rem;
-  border-radius: 6px;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 0.9rem;
-  text-decoration: none;
-  margin: 0.3rem;
-  transition: all 0.2s ease;
-}
-
-.astro-nav a:hover {
-  background: rgba(0, 255, 255, 0.3);
-  color: #fff;
-  box-shadow: 0 0 10px #0ff8;
 }
 
 /* 🔭 Page content */
