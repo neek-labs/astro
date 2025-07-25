@@ -250,3 +250,26 @@ footer {
   font-size: 1rem;
   font-family: Orbitron, sans-serif;
 }
+
+#log-container {
+  overflow-x: auto;
+  margin-top: 2rem;
+}
+
+#log-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: monospace;
+}
+
+#log-table th,
+#log-table td {
+  padding: 10px;
+  border-bottom: 1px solid #444;
+  text-align: left;
+}
+
+#log-table th {
+  background-color: #1a1a1a;
+  color: #f8f8f8;
+}

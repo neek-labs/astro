@@ -1,0 +1,31 @@
+[
+	{
+		"Date": "2024-09-15",
+		"Object_id": "NGC6888",
+		"Name": "Crescent Nebula",
+		"Magnitude": "7.4",
+		"Object_type": "Nebula",
+		"Location": "A Stones Throw Campground",
+		"Camera": "ASI533MC Pro",
+		"Telescope": "Celestron EdgeHD 8",
+		"Integration_time": "2 hours",
+		"Filter": "Dual Narrowband",
+		"Notes": "Alberta Star Party 2024"
+	},
+	{
+		"Date": "2024-09-12",
+		"Object_id": "M15",
+		"Name": "Pegasus Cluster",
+		"Magnitude": "6.3",
+		"Object_type": "Globular Cluster",
+		"Location": "A Stones Throw Campground",
+		"Camera": "ASI533MC Pro",
+		"Telescope": "Celestron EdgeHD 8",
+		"Integration_time": "15 minutes",
+		"Filter": "LRGB",
+		"Notes": "Alberta Star Party 2024"
+	},
+	{
+		"Date": ""
+	}
+]

@@ -26,12 +26,65 @@
 
   <div class="content">
     <h1>Observation Log</h1>
-    <p>Coming soon</p>
+    <div id="log-container">
+  <table id="log-table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Object ID</th>
+        <th>Name</th>
+        <th>Magnitude</th>
+        <th>Object Type</th>
+        <th>Location</th>
+        <th>Camera</th>
+        <th>Telescope</th>
+        <th>Integration Time</th>
+        <th>Filter</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody id="log-body">
+      <!-- Logs will be inserted here -->
+    </tbody>
+  </table>
+</div>
 
     <footer>
       <p>© 2025 Nick Hall — Stargazer. Astrophotographer.</p>
     </footer>
   </div>
+<script>
+  fetch('astro_logs.json')
+    .then(response => response.json())
+    .then(data => {
+      const tableBody = document.getElementById('log-body');
 
+      data.forEach(entry => {
+        if (!entry.Date || !entry.Object_id) return; // Skip empty or incomplete rows
+
+        const row = document.createElement('tr');
+
+        row.innerHTML = `
+          <td>${entry.Date}</td>
+          <td>${entry.Object_id}</td>
+          <td>${entry.Name}</td>
+          <td>${entry.Magnitude}</td>
+          <td>${entry.Object_type}</td>
+          <td>${entry.Location}</td>
+          <td>${entry.Camera}</td>
+          <td>${entry.Telescope}</td>
+          <td>${entry.Integration_time}</td>
+          <td>${entry.Filter}</td>
+          <td>${entry.Notes}</td>
+        `;
+
+        tableBody.appendChild(row);
+      });
+    })
+    .catch(error => {
+      document.getElementById('log-container').innerHTML = `<p style="color:red;">Error loading log: ${error}</p>`;
+      console.error('Error loading JSON:', error);
+    });
+</script>
 </body>
 </html>
