@@ -204,3 +204,11 @@ footer {
 .collapsible-content.open {
   max-height: 2000px; /* Enough for all content */
 }
+
+.gear-photo {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 0 10px #0006;
+}
