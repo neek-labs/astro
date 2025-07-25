@@ -202,7 +202,7 @@ footer {
 }
 
 .collapsible-content.open {
-  max-height: 2000px; /* Enough for all content */
+  max-height: none; /* Enough for all content */
 }
 
 .gear-photo {
