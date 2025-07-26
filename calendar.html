@@ -27,10 +27,16 @@
   <div class="content">
     <h1>Sky Calendar</h1>
 
-    <section id="moon-phase">
-      <h2>🌙 Current Moon Phase</h2>
+<section id="moon-phase">
+  <h2>🌙 Current Moon Phase</h2>
+  <div id="moon-phase-wrapper" style="display: flex; align-items: center; gap: 20px;">
+    <img id="moon-image" src="" alt="Moon Phase" style="height: 100px; width: auto;" />
+    <div>
       <p id="moon-info">Loading moon data...</p>
-    </section>
+      <p id="next-new-moon">Next New Moon: <strong>2025-08-10</strong></p>
+    </div>
+  </div>
+</section>
 
     <section id="astro-events">
       <h2>🌠 Upcoming Sky Events</h2>
