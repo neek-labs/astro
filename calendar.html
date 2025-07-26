@@ -26,12 +26,49 @@
 
   <div class="content">
     <h1>Sky Calendar</h1>
-    <p>Coming soon</p>
+
+    <section id="moon-phase">
+      <h2>🌙 Current Moon Phase</h2>
+      <p id="moon-info">Loading moon data...</p>
+    </section>
+
+    <section id="astro-events">
+      <h2>🌠 Upcoming Sky Events</h2>
+      <ul id="event-list">
+        <li>Coming soon — meteor showers, conjunctions, and eclipses will appear here.</li>
+      </ul>
+    </section>
+
+    <section id="astro-weather">
+      <h2>🌤️ Dark Site Forecast</h2>
+      <iframe src="https://www.astrospheric.com/?Latitude=51.65645558732243&Longitude=-112.89813493154202&is2024Eclipse=false&is2023Eclipse=false&OverlayTitle=blank&Loc=Map" 
+              style="width:100%; height:600px; border:none;"
+              title="Astrospheric Forecast">
+      </iframe>
+    </section>
 
     <footer>
       <p>© 2025 Nick Hall — Stargazer. Astrophotographer.</p>
     </footer>
   </div>
+
+  <script>
+    // Fetch moon phase from WeatherAPI (no key needed for simple astronomy info if used locally or cached)
+    fetch('https://api.weatherapi.com/v1/astronomy.json?key=demo&q=51.6564,-112.8981')
+      .then(res => res.json())
+      .then(data => {
+        const moon = data.astronomy.astro;
+        const info = `
+          Phase: <strong>${moon.moon_phase}</strong><br>
+          Illumination: ${moon.moon_illumination}%
+        `;
+        document.getElementById('moon-info').innerHTML = info;
+      })
+      .catch(err => {
+        console.error('Moon data error:', err);
+        document.getElementById('moon-info').textContent = 'Could not load moon data.';
+      });
+  </script>
 
 </body>
 </html>
