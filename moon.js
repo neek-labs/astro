@@ -10,10 +10,10 @@ const moonImages = {
 };
 
 const apiKey = '611276174672441494e12054252607';
-const location = '51.0500,-114.0600'; // Calgary, Canada
+const coords = '51.0500,-114.0600'; // Calgary, Canada
 
 
-fetch(`https://api.weatherapi.com/v1/astronomy.json?key=${apiKey}&q=${location}`)
+fetch(`https://api.weatherapi.com/v1/astronomy.json?key=${apiKey}&q=${coords}`)
   .then(res => res.json())
   .then(data => {
     const moon = data.astronomy.astro;
