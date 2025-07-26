@@ -41,11 +41,17 @@
 
     <section id="astro-weather">
       <h2>🌤️ Dark Site Forecast</h2>
-      <iframe src="https://www.astrospheric.com/?Latitude=51.65645558732243&Longitude=-112.89813493154202&is2024Eclipse=false&is2023Eclipse=false&OverlayTitle=blank&Loc=Map" 
-              style="width:100%; height:600px; border:none;"
-              title="Astrospheric Forecast">
-      </iframe>
-    </section>
+      <section id="astro-weather">
+        <h2>🌤️ Dark Site Forecast</h2>
+        <a href="https://clearoutside.com/forecast/51.05/-114.06" target="_blank">
+          <img 
+            src="https://clearoutside.com/forecast_image_large/51.05/-114.06/forecast.png" 
+            alt="Clear Outside Forecast"
+            style="width: 100%; max-width: 960px; border-radius: 12px; box-shadow: 0 0 20px rgba(255,255,255,0.1);"
+          />
+        </a>
+        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Forecast by <a href="https://clearoutside.com" target="_blank">ClearOutside.com</a></p>
+      </section>
 
     <footer>
       <p>© 2025 Nick Hall — Stargazer. Astrophotographer.</p>
@@ -53,8 +59,8 @@
   </div>
 
   <script>
-    // Fetch moon phase from WeatherAPI (no key needed for simple astronomy info if used locally or cached)
-    fetch('https://api.weatherapi.com/v1/astronomy.json?key=demo&q=51.6564,-112.8981')
+    // Fetch moon phase from WeatherAPI
+    fetch('https://api.weatherapi.com/v1/astronomy.json?key=611276174672441494e12054252607&q=51.0500,-114.0600')
       .then(res => res.json())
       .then(data => {
         const moon = data.astronomy.astro;
