@@ -316,7 +316,8 @@ footer {
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0,255,255,0.3);
   overflow: hidden;
-  max-width: 320px;
+  width: 100%;
+  max-width: 600px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -335,5 +336,17 @@ footer {
   color: #ffffff;
   padding: 10px;
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.9rem;
+  font-size: 1rem;
+}
+
+/* 📱 Mobile Optimization */
+@media screen and (max-width: 768px) {
+  .featured-gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    max-width: 90vw;
+  }
 }
