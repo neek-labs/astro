@@ -281,3 +281,59 @@ footer {
   gap: 20px;
   margin-top: 1rem;
 }
+
+.hero {
+  text-align: center;
+  margin-top: 80px;
+  padding: 20px;
+}
+
+.site-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem;
+  color: #ffffff;
+  text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.site-subtitle {
+  font-size: 1.2rem;
+  color: #cccccc;
+  font-style: italic;
+}
+
+.featured-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px 20px;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,255,255,0.3);
+  overflow: hidden;
+  max-width: 320px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(0,255,255,0.6);
+}
+
+.card img {
+  width: 100%;
+  display: block;
+}
+
+.card p {
+  text-align: center;
+  color: #ffffff;
+  padding: 10px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.9rem;
+}
