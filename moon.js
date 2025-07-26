@@ -32,5 +32,3 @@ fetch(`https://api.weatherapi.com/v1/astronomy.json?key=${apiKey}&q=${coords}`)
     console.error('Moon data error:', err);
     document.getElementById('moon-info').textContent = 'Could not load moon data.';
   });
-
-  
