@@ -57,24 +57,7 @@
       <p>© 2025 Nick Hall — Stargazer. Astrophotographer.</p>
     </footer>
   </div>
-
-  <script>
-    // Fetch moon phase from WeatherAPI
-    fetch('https://api.weatherapi.com/v1/astronomy.json?key=611276174672441494e12054252607&q=51.0500,-114.0600')
-      .then(res => res.json())
-      .then(data => {
-        const moon = data.astronomy.astro;
-        const info = `
-          Phase: <strong>${moon.moon_phase}</strong><br>
-          Illumination: ${moon.moon_illumination}%
-        `;
-        document.getElementById('moon-info').innerHTML = info;
-      })
-      .catch(err => {
-        console.error('Moon data error:', err);
-        document.getElementById('moon-info').textContent = 'Could not load moon data.';
-      });
-  </script>
+<script src="moon.js"></script>
 
 </body>
 </html>
