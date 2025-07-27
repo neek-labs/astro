@@ -354,6 +354,18 @@ footer {
   font-size: 1rem;
 }
 
+@keyframes pulseGlow {
+  0% {
+    text-shadow: 0 0 10px #ff66cc, 0 0 20px #cc66ff;
+  }
+  50% {
+    text-shadow: 0 0 20px #ff99ff, 0 0 40px #e066ff;
+  }
+  100% {
+    text-shadow: 0 0 10px #ff66cc, 0 0 20px #cc66ff;
+  }
+}
+
 /* 📱 Mobile Optimization */
 @media screen and (max-width: 768px) {
   .featured-gallery {
@@ -364,16 +376,19 @@ footer {
   .card {
     max-width: 90vw;
   }
-}
 
-@keyframes pulseGlow {
-  0% {
-    text-shadow: 0 0 10px #ff66cc, 0 0 20px #cc66ff;
+  /* Astro Navbar Scroll Fix */
+  .astro-nav {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 0.5rem;
+    gap: 0.5rem;
   }
-  50% {
-    text-shadow: 0 0 20px #ff99ff, 0 0 40px #e066ff;
-  }
-  100% {
-    text-shadow: 0 0 10px #ff66cc, 0 0 20px #cc66ff;
+
+  .astro-nav a {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
   }
 }
