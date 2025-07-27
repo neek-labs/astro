@@ -293,6 +293,7 @@ footer {
   font-size: 3rem;
   color: #ffffff;
   text-shadow: 0 0 10px #ff66cc, 0 0 20px #cc66ff;
+  animation: pulseGlow 4s ease-in-out infinite;
   letter-spacing: 2px;
   margin-bottom: 10px;
 }
@@ -348,5 +349,17 @@ footer {
 
   .card {
     max-width: 90vw;
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    text-shadow: 0 0 10px #ff66cc, 0 0 20px #cc66ff;
+  }
+  50% {
+    text-shadow: 0 0 20px #ff99ff, 0 0 40px #e066ff;
+  }
+  100% {
+    text-shadow: 0 0 10px #ff66cc, 0 0 20px #cc66ff;
   }
 }
