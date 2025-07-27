@@ -27,49 +27,64 @@
   <div class="content">
     <h1>🔧 Astro Tools & Resources</h1>
 
-    <!-- 🌌 Section 1: Sky Planning Tools -->
-    <section>
-      <h2>🗺️ Sky Planning Tools</h2>
+    <!-- 🌌 Section: Planning Tools -->
+    <section class="equipment-category">
+      <button class="collapsible">🗺️ Sky Planning Tools</button>
+      <div class="collapsible-content">
+        <div class="equipment-card">
+          <h3>🌌 Stellarium Web</h3>
+          <p>Explore the sky in real time with this interactive star map powered by <a href="https://stellarium-web.org/" target="_blank">Stellarium Web</a>.</p>
+          <iframe src="https://stellarium-web.org/" width="95%" height="800" frameborder="0" loading="lazy"></iframe>
 
-      <h3>🌌 Stellarium Web</h3>
-      <p>Explore the sky in real time with this interactive star map powered by <a href="https://stellarium-web.org/" target="_blank">Stellarium Web</a>.</p>
-      <iframe src="https://stellarium-web.org/" width="100%" height="600" frameborder="0" loading="lazy"></iframe>
+          <h3>🛰️ Heavens Above</h3>
+          <p>Track satellites, the ISS, and more at <a href="https://heavens-above.com" target="_blank">Heavens-Above</a>. Just set your location and get accurate pass predictions.</p>
 
-      <h3>🛰️ Heavens Above</h3>
-      <p>Track satellites, the ISS, and more at <a href="https://heavens-above.com" target="_blank">Heavens-Above</a>. Just set your location and get accurate pass predictions.</p>
-
-      <h3>🌃 Light Pollution Map</h3>
-      <p>Check your observing conditions with the interactive <a href="https://www.lightpollutionmap.info/#zoom=10&lat=51.0486&lon=-114.0708&layers=B0TFFFFFFFT" target="_blank">Light Pollution Map</a>. (Calgary region shown here — feel free to adjust.)</p>
+          <h3>🌃 Light Pollution Map</h3>
+          <p>Check your observing conditions with the interactive <a href="https://www.lightpollutionmap.info/#zoom=10&lat=51.0486&lon=-114.0708&layers=B0TFFFFFFFT" target="_blank">Light Pollution Map</a>. (Calgary region shown here — feel free to adjust.)</p>
+        </div>
+      </div>
     </section>
 
-    <!-- 🔭 Section 2: Framing Tools -->
-    <section>
-      <h2>🔭 Frame Your Target</h2>
-      <h3>FOV Calculator</h3>
-      <p>Visualize how your camera and scope will frame deep sky objects with the <a href="https://astronomy.tools/calculators/field_of_view/" target="_blank">Astronomy Tools FOV Calculator</a>.</p>
+    <!-- 🔭 Section: FOV Tools -->
+    <section class="equipment-category">
+      <button class="collapsible">🔭 Framing Tools (FOV)</button>
+      <div class="collapsible-content">
+        <div class="equipment-card">
+          <h3>Field of View Calculator</h3>
+          <p>Visualize how your camera and scope will frame deep sky objects with the <a href="https://astronomy.tools/calculators/field_of_view/" target="_blank">Astronomy Tools FOV Calculator</a>.</p>
+        </div>
+      </div>
     </section>
 
-    <!-- 🖥️ Section 3: PixInsight Workflow -->
-    <section>
-      <h2>🖥️ My PixInsight Workflow</h2>
-      <p>Here's a rough outline of my typical deep-sky image processing pipeline using PixInsight:</p>
-      <ol>
-        <li>🔍 <strong>Subframe Selection</strong> – Evaluate subs for star quality and signal.</li>
-        <li>🧹 <strong>Calibration & Cosmetic Correction</strong> – BatchPreprocessing with darks, flats, and bias frames.</li>
-        <li>🧬 <strong>Star Alignment & Integration</strong> – Register and stack the cleanest subs.</li>
-        <li>🌌 <strong>Dynamic Background Extraction</strong> – Clean up gradients and vignetting.</li>
-        <li>🌈 <strong>Photometric Color Calibration</strong> – Match star colors to real-world data.</li>
-        <li>⚡ <strong>Noise Reduction & Stretching</strong> – TGVDenoise and HistogramTransformation magic.</li>
-        <li>🌟 <strong>Star Masking & Enhancement</strong> – StarNet++, star reduction, local contrast.</li>
-        <li>🖌️ <strong>Final Touches</strong> – Color boost, sharpening, cropping, export to TIFF/JPG.</li>
-      </ol>
-      <p>Eventually I’ll link to a downloadable checklist or walkthrough. ✨</p>
+    <!-- 🖥️ Section: PixInsight Workflow -->
+    <section class="equipment-category">
+      <button class="collapsible">🖥️ PixInsight Workflow</button>
+      <div class="collapsible-content">
+        <div class="equipment-card">
+          <h3>My Processing Steps</h3>
+          <p>Here's a rough outline of my typical deep-sky image processing pipeline using PixInsight:</p>
+          <ol>
+            <li>🔍 <strong>Subframe Selection</strong> – Evaluate subs for star quality and signal.</li>
+            <li>🧹 <strong>Calibration & Cosmetic Correction</strong> – BatchPreprocessing with darks, flats, and bias frames.</li>
+            <li>🧬 <strong>Star Alignment & Integration</strong> – Register and stack the cleanest subs.</li>
+            <li>🌌 <strong>Dynamic Background Extraction</strong> – Clean up gradients and vignetting.</li>
+            <li>🌈 <strong>Photometric Color Calibration</strong> – Match star colors to real-world data.</li>
+            <li>⚡ <strong>Noise Reduction & Stretching</strong> – TGVDenoise and HistogramTransformation magic.</li>
+            <li>🌟 <strong>Star Masking & Enhancement</strong> – StarNet++, star reduction, local contrast.</li>
+            <li>🖌️ <strong>Final Touches</strong> – Color boost, sharpening, cropping, export to TIFF/JPG.</li>
+          </ol>
+        </div>
+      </div>
     </section>
 
-    <!-- 💬 Contact / CTA -->
-    <section>
-      <h2>💡 Suggestions?</h2>
-      <p>Got an awesome tool you think belongs here? Let me know via <a href="mailto:info@nickhall.tech">email</a></p>
+    <!-- 💬 Suggestions Section -->
+    <section class="equipment-category">
+      <button class="collapsible">💡 Suggestions & Feedback</button>
+      <div class="collapsible-content">
+        <div class="equipment-card">
+          <p>Got an awesome tool you think belongs here? Let me know via <a href="mailto:nick@nickhall.tech">email</a>.</p>
+        </div>
+      </div>
     </section>
 
     <!-- 🪐 Footer -->
@@ -77,5 +92,21 @@
       <p>© 2025 Nick Hall — Stargazer. Astrophotographer.</p>
     </footer>
   </div>
+
+  <script>
+    // 🔁 Accordion Toggle Script
+    const collapsibles = document.querySelectorAll(".collapsible");
+    collapsibles.forEach(button => {
+      button.addEventListener("click", () => {
+        const content = button.nextElementSibling;
+        content.classList.toggle("open");
+        if (content.classList.contains("open")) {
+          content.style.maxHeight = content.scrollHeight + "px";
+        } else {
+          content.style.maxHeight = null;
+        }
+      });
+    });
+  </script>
 </body>
 </html>
