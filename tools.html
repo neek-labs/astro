@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <title>Astro | Nick Hall</title>
+  <title>Astro Tools | Nick Hall</title>
 </head>
 <body>
   <script src="stars.js"></script>
@@ -25,13 +25,57 @@
   </nav>
 
   <div class="content">
-    <h1>Integration with other tools</h1>
-    <p>Coming soon</p>
+    <h1>🔧 Astro Tools & Resources</h1>
 
+    <!-- 🌌 Section 1: Sky Planning Tools -->
+    <section>
+      <h2>🗺️ Sky Planning Tools</h2>
+
+      <h3>🌌 Stellarium Web</h3>
+      <p>Explore the sky in real time with this interactive star map powered by <a href="https://stellarium-web.org/" target="_blank">Stellarium Web</a>.</p>
+      <iframe src="https://stellarium-web.org/" width="100%" height="600" frameborder="0" loading="lazy"></iframe>
+
+      <h3>🛰️ Heavens Above</h3>
+      <p>Track satellites, the ISS, and more at <a href="https://heavens-above.com" target="_blank">Heavens-Above</a>. Just set your location and get accurate pass predictions.</p>
+
+      <h3>🌃 Light Pollution Map</h3>
+      <p>Check your observing conditions with the interactive <a href="https://www.lightpollutionmap.info/#zoom=10&lat=51.0486&lon=-114.0708&layers=B0TFFFFFFFT" target="_blank">Light Pollution Map</a>. (Calgary region shown here — feel free to adjust.)</p>
+    </section>
+
+    <!-- 🔭 Section 2: Framing Tools -->
+    <section>
+      <h2>🔭 Frame Your Target</h2>
+      <h3>FOV Calculator</h3>
+      <p>Visualize how your camera and scope will frame deep sky objects with the <a href="https://astronomy.tools/calculators/field_of_view/" target="_blank">Astronomy Tools FOV Calculator</a>.</p>
+    </section>
+
+    <!-- 🖥️ Section 3: PixInsight Workflow -->
+    <section>
+      <h2>🖥️ My PixInsight Workflow</h2>
+      <p>Here's a rough outline of my typical deep-sky image processing pipeline using PixInsight:</p>
+      <ol>
+        <li>🔍 <strong>Subframe Selection</strong> – Evaluate subs for star quality and signal.</li>
+        <li>🧹 <strong>Calibration & Cosmetic Correction</strong> – BatchPreprocessing with darks, flats, and bias frames.</li>
+        <li>🧬 <strong>Star Alignment & Integration</strong> – Register and stack the cleanest subs.</li>
+        <li>🌌 <strong>Dynamic Background Extraction</strong> – Clean up gradients and vignetting.</li>
+        <li>🌈 <strong>Photometric Color Calibration</strong> – Match star colors to real-world data.</li>
+        <li>⚡ <strong>Noise Reduction & Stretching</strong> – TGVDenoise and HistogramTransformation magic.</li>
+        <li>🌟 <strong>Star Masking & Enhancement</strong> – StarNet++, star reduction, local contrast.</li>
+        <li>🖌️ <strong>Final Touches</strong> – Color boost, sharpening, cropping, export to TIFF/JPG.</li>
+      </ol>
+      <p>Eventually I’ll link to a downloadable checklist or walkthrough. ✨</p>
+    </section>
+
+    <!-- 💬 Contact / CTA -->
+    <section>
+      <h2>💡 Suggestions?</h2>
+      <p>Got an awesome tool you think belongs here? Let me know via <a href="mailto:info@nickhall.tech">email</a></p>
+    </section>
+
+    <!-- 🪐 Footer -->
     <footer>
       <p>© 2025 Nick Hall — Stargazer. Astrophotographer.</p>
     </footer>
   </div>
-
 </body>
 </html>
