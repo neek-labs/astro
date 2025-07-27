@@ -141,12 +141,12 @@ footer {
 .equipment-intro {
   text-align: center;
   padding: 2rem 1rem;
-  max-width: 800px;
+  max-width: 1200px;
   margin: auto;
 }
 
 .equipment-category {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
@@ -291,11 +291,25 @@ footer {
 .site-title {
   font-family: 'Orbitron', sans-serif;
   font-size: 3rem;
-  color: #ffffff;
-  text-shadow: 0 0 10px #ff66cc, 0 0 20px #cc66ff;
-  animation: pulseGlow 4s ease-in-out infinite;
   letter-spacing: 2px;
   margin-bottom: 10px;
+
+  /* Tron-style gradient and animation */
+  background: linear-gradient(90deg, #00f0ff, #9c88ff, #00f0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glow 4s ease-in-out infinite;
+}
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px #00f0ff, 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+  }
+  50% {
+    text-shadow: 0 0 10px #9c88ff, 0 0 20px #9c88ff, 0 0 30px #00f0ff;
+  }
+  100% {
+    text-shadow: 0 0 5px #00f0ff, 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+  }
 }
 
 .site-subtitle {
