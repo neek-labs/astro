@@ -377,10 +377,8 @@ footer {
     max-width: 90vw;
   }
 
-  /* Astro Navbar Scroll Fix */
+  /* Astro Navbar mobile tweaks */
   .astro-nav {
-    overflow-x: auto;
-    white-space: nowrap;
     padding: 0.5rem;
     gap: 0.5rem;
   }
@@ -391,4 +389,38 @@ footer {
     font-size: 0.85rem;
     padding: 0.5rem 1rem;
   }
+}
+
+/* 🌌 Scrollable Nav with Fade Effect */
+.astro-nav-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.astro-nav {
+  overflow-x: auto;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+}
+
+/* Fading edges */
+.astro-nav::after,
+.astro-nav::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 40px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.astro-nav::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.8), transparent);
+}
+
+.astro-nav::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent);
 }
