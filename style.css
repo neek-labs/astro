@@ -65,8 +65,8 @@ body {
 /* ✅ Updated Nav Style (Option A: Button-like Tiles) */
 .astro-nav {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
   gap: 1rem;
   background-color: rgba(20, 20, 30, 0.95);
   padding: 1rem 0.5rem;
