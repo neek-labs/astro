@@ -379,7 +379,7 @@ footer {
 
   /* Astro Navbar mobile tweaks */
   .astro-nav {
-    justify-content: center;
+    justify-content: flex-start;
     padding: 0.5rem;
     gap: 0.5rem;
   }
