@@ -66,7 +66,7 @@ body {
 .astro-nav {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 1rem;
   background-color: rgba(20, 20, 30, 0.95);
   padding: 1rem 0.5rem;
@@ -474,7 +474,7 @@ footer {
 /* Command Console Panel */
 .nebulounge-console-panel {
   position: absolute;
-  bottom: 2%;
+  top: 200px; /* Experiment with this value */
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
