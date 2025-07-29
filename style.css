@@ -425,3 +425,120 @@ footer {
   left: 0;
   background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent);
 }
+
+/* 🌌=== Nebulounge Styles ===🌌 */
+
+.nebulounge-hero-overlay {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 30, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  text-align: center;
+}
+
+.nebulounge-hero-text h1 {
+  font-size: 3rem;
+  margin: 0;
+  color: #89f0ff;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.nebulounge-hero-text p {
+  font-size: 1.2rem;
+  color: #ccc;
+  font-style: italic;
+}
+
+/* Command Console Panel */
+.nebulounge-console-panel {
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 1rem;
+}
+
+.nebulounge-console-panel button {
+  background: rgba(20, 20, 40, 0.7);
+  border: 1px solid #00ffff;
+  color: #00ffff;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.nebulounge-console-panel button:hover {
+  background: rgba(0, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* Orion Panel */
+.nebulounge-orion-panel {
+  position: absolute;
+  right: 20px;
+  bottom: 80px;
+  width: 280px;
+  background: rgba(10, 10, 30, 0.85);
+  border: 1px solid #89f0ff;
+  border-radius: 8px;
+  padding: 12px;
+  display: none;
+  z-index: 3;
+  box-shadow: 0 0 15px #00f2ff55;
+}
+
+.nebulounge-orion-panel h2 {
+  margin-top: 0;
+  color: #89f0ff;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.nebulounge-orion-panel p {
+  font-size: 0.95rem;
+  color: #ccc;
+  line-height: 1.4;
+  margin: 0.5rem 0 1rem;
+}
+
+.nebulounge-orion-panel button {
+  background: transparent;
+  color: #00ffff;
+  border: 1px solid #00ffff;
+  padding: 5px 12px;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.nebulounge-orion-panel button:hover {
+  background-color: rgba(0, 255, 255, 0.1);
+}
+
+/* Footer override for Nebulounge layout */
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 0.8rem;
+  z-index: 1;
+  color: #888;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.5rem;
+}
