@@ -6,16 +6,37 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <title>Astro | Nick Hall</title>
+  <title>Nebulounge | Astro</title>
 </head>
 <body>
-  <script src="stars.js"></script>
-  <canvas id="starfield"></canvas>
 
-  <!-- 🔭 Navigation Bar -->
+  <!-- 🌌 Hero Viewport -->
+  <canvas id="starfield"></canvas>
+  <div class="nebulounge-hero-overlay">
+    <div class="nebulounge-hero-text">
+      <h1>Welcome to the Nebulounge</h1>
+      <p>Escape. Reflect. Stargaze.</p>
+    </div>
+  </div>
+
+  <!-- 📟 Command Console Panel -->
+  <div class="nebulounge-console-panel">
+    <button onclick="location.href='gallery.html'"><i class="fas fa-images"></i> Observatory</button>
+    <button onclick="toggleOrion()"><i class="fas fa-robot"></i> Talk to Orion</button>
+    <button onclick="alert('Launch panel coming soon')"><i class="fas fa-rocket"></i> What’s Up Tonight</button>
+    <button onclick="window.open('https://nickhall.tech')"><i class="fas fa-home"></i> Main Site</button>
+  </div>
+
+  <!-- 💬 Orion AI Panel -->
+  <div class="nebulounge-orion-panel" id="orionPanel">
+    <h2>Orion, Space Explorer</h2>
+    <p>"The stars tonight whisper old secrets. What do you seek, stargazer?"</p>
+    <button onclick="toggleOrion()">Close</button>
+  </div>
+
+  <!-- 🔭 Astro Navigation -->
   <div class="astro-nav-wrapper">
     <nav class="astro-nav">
-      <a href="https://nickhall.tech" target="_blank" class="main-site-link"><i class="fas fa-home"></i> Return to nickhall.tech</a>
       <a href="index.html"><i class="fas fa-rocket"></i> Astro Home</a>
       <a href="equipment.html"><i class="fas fa-satellite-dish"></i> Equipment</a>
       <a href="gallery.html"><i class="fas fa-camera"></i> Photo Gallery</a>
@@ -26,14 +47,19 @@
     </nav>
   </div>
 
-  <div class="content">
-    <h1>VR/3D Nebulounge</h1>
-    <p>Coming soon</p>
+  <!-- 👨‍🚀 Footer -->
+  <footer>
+    <p>© 2025 Nick Hall — Stargazer. Astrophotographer.</p>
+  </footer>
 
-    <footer>
-      <p>© 2025 Nick Hall — Stargazer. Astrophotographer.</p>
-    </footer>
-  </div>
+  <!-- 🌠 Scripts -->
+  <script src="stars.js"></script>
+  <script>
+    function toggleOrion() {
+      const panel = document.getElementById('orionPanel');
+      panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
 
 </body>
 </html>
