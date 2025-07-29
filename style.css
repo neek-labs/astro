@@ -62,7 +62,7 @@ body {
   }
 }
 
-/* ✅ Updated Nav Style (Option A: Button-like Tiles) */
+/* Button-like Tiles for Navigation */
 .astro-nav {
   display: flex;
   flex-wrap: nowrap;
@@ -71,9 +71,9 @@ body {
   background-color: rgba(20, 20, 30, 0.95);
   padding: 1rem 0.5rem;
   border-bottom: 1px solid #444;
-  position: sticky;
+  position: relative;
   top: 0;
-  z-index: 999;
+  z-index: 10;
 }
 
 .astro-nav a {
@@ -392,38 +392,54 @@ footer {
   }
 }
 
+/* 🌌 Desktop: wrap buttons, no scroll */
+@media screen and (min-width: 769px) {
+  .astro-nav {
+    flex-wrap: wrap;
+    overflow-x: visible;
+    white-space: normal;
+  }
+
+  .astro-nav::before,
+  .astro-nav::after {
+    display: none; /* No fading effect on desktop */
+  }
+}
+
 /* 🌌 Scrollable Nav with Fade Effect */
-.astro-nav-wrapper {
-  position: relative;
-  overflow: hidden;
-}
+@media screen and (max-width: 768px) {
+  .astro-nav-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
 
-.astro-nav {
-  overflow-x: auto;
-  white-space: nowrap;
-  scroll-behavior: smooth;
-}
+  .astro-nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+  }
 
-/* Fading edges */
-.astro-nav::after,
-.astro-nav::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 40px;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
+  .astro-nav::after,
+  .astro-nav::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 40px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+  }
 
-.astro-nav::after {
-  right: 0;
-  background: linear-gradient(to left, rgba(0, 0, 0, 0.8), transparent);
-}
+  .astro-nav::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.8), transparent);
+  }
 
-.astro-nav::before {
-  left: 0;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent);
+  .astro-nav::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent);
+  }
 }
 
 /* 🌌=== Nebulounge Styles ===🌌 */
