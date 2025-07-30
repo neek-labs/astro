@@ -558,3 +558,30 @@ footer {
   background: rgba(0, 0, 0, 0.3);
   padding: 0.5rem;
 }
+
+.nebulounge-viewport-window {
+  width: 80%;
+  max-width: 1000px;
+  height: 300px;
+  margin: auto;
+  padding: 2rem;
+  border-radius: 32px;
+  background: rgba(10, 10, 25, 0.6);
+  box-shadow:
+    inset 0 0 40px rgba(0, 255, 255, 0.1),
+    0 0 25px rgba(0, 255, 255, 0.05);
+  border: 2px solid rgba(0, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.nebulounge-viewport-window:hover {
+  box-shadow:
+    inset 0 0 60px rgba(0, 255, 255, 0.15),
+    0 0 40px rgba(0, 255, 255, 0.1);
+}
