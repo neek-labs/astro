@@ -474,10 +474,10 @@ footer {
 /* Command Console Panel */
 .nebulounge-console-panel {
   position: absolute;
-  top: 200px; /* Experiment with this value */
+  top: 300px; /* Experiment with this value */
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2;
+  z-index: 3;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -513,7 +513,7 @@ footer {
   border-radius: 8px;
   padding: 12px;
   display: none;
-  z-index: 3;
+  z-index: 4;
   box-shadow: 0 0 15px #00f2ff55;
 }
 
@@ -576,7 +576,7 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 1;
+  z-index: 2;
   transition: all 0.3s ease;
 }
 
