@@ -482,11 +482,9 @@ footer {
 
 /* Command Console Panel */
 .nebulounge-console-panel {
-  position: relative;
-  top: 200px; /* Experiment with this value */
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 2rem auto 3rem;
+  position: relative; /* Keep it in the document flow */
+  margin-top: 2rem;   /* Push it away from the viewport */
+  margin-bottom: 3rem;
   z-index: 3;
   display: flex;
   flex-wrap: wrap;
