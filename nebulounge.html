@@ -22,29 +22,29 @@
     </nav>
   </div>
 
+  <!-- 🌌 Hero Viewport -->
+<div class="nebulounge-hero-overlay">
   <div class="nebulounge-hero-text">
     <h1>Welcome to the Nebulounge</h1>
     <p><em>Escape. Reflect. Stargaze.</em></p>
   </div>
-
-  <!-- 🌌 Hero Viewport -->
-<div class="nebulounge-hero-overlay">
+  <div class="nebulounge-deco-panel left-panel"></div>
+  <div class="nebulounge-deco-panel right-panel"></div>
   <div class="nebulounge-viewport-window">
     <div class="viewport-scene">
-  <img src="images/earth-view.jpg" alt="Earth from orbit https://www.flickr.com/photos/nasa2explore/albums/72157706703977781/page9" />
-  <div class="viewport-glass-effect"></div>
-</div>
-
+    <img src="images/earth-view.jpg" alt="Earth from orbit https://www.flickr.com/photos/nasa2explore/albums/72157706703977781/page9" />
+    <div class="viewport-glass-effect"></div>
+    </div>
   </div>
 </div>
 
   <!-- 📟 Command Console Panel -->
-  <div class="nebulounge-console-panel">
-    <button onclick="location.href='gallery.html'"><i class="fas fa-images"></i> Observatory</button>
-    <button onclick="toggleOrion()"><i class="fas fa-robot"></i> Talk to Orion</button>
-    <button onclick="alert('Launch panel coming soon')"><i class="fas fa-rocket"></i> What’s Up Tonight</button>
-    <button onclick="window.open('https://nickhall.tech')"><i class="fas fa-home"></i> Main Site</button>
-  </div>
+<div class="nebulounge-console-panel">
+  <button onclick="location.href='gallery.html'"><i class="fas fa-images"></i> Observatory</button>
+  <button onclick="toggleOrion()"><i class="fas fa-robot"></i> Talk to Orion</button>
+  <button onclick="alert('Launch panel coming soon')"><i class="fas fa-rocket"></i> What’s Up Tonight</button>
+  <button onclick="nextDestination()"><i class="fas fa-globe"></i> Next Destination</button>
+</div>
 
   <!-- 💬 Orion AI Panel -->
   <div class="nebulounge-orion-panel" id="orionPanel">
@@ -65,6 +65,21 @@
       panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
     }
   </script>
+
+<script>
+  const destinations = [
+    "images/earth-view.jpg",
+    "images/ringed-planet.jpg",
+    "images/nebulastar.jpg"
+  ];
+  let current = 0;
+
+  function nextDestination() {
+    current = (current + 1) % destinations.length;
+    const img = document.querySelector('.viewport-scene img');
+    img.src = destinations[current];
+  }
+</script>
 
 </body>
 </html>
