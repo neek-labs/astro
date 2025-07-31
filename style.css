@@ -445,7 +445,7 @@ footer {
 /* 🌌=== Nebulounge Styles ===🌌 */
 
 .nebulounge-hero-overlay {
-  position: absolute;
+  position: relative;
   top: 0;
   padding-top: 100px;
   width: 100%;
