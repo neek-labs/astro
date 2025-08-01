@@ -9,6 +9,7 @@
   <title>Astro | Nick Hall</title>
 </head>
 <body>
+  <div class="page-wrapper">
   <script src="stars.js"></script>
   <canvas id="starfield"></canvas>
 
@@ -26,39 +27,39 @@
     </nav>
   </div>
 
-  <div class="content">
-    <h1>Sky Calendar</h1>
+<div class="content">
+  <h1>Sky Calendar</h1>
 
-<section id="moon-phase">
-  <h2>🌙 Current Moon Phase</h2>
-  <div id="moon-phase-wrapper">
-    <img id="moon-image" src="" alt="Moon Phase" style="height: 400px; width: auto;" />
-    <div>
-      <p id="moon-info">Loading moon data...</p>
-      <p id="next-new-moon">Next New Moon: <strong>2025-08-10</strong></p>
+  <section id="moon-phase">
+    <h2>🌙 Current Moon Phase</h2>
+    <div id="moon-phase-wrapper">
+      <img id="moon-image" src="" alt="Moon Phase" style="height: 400px; width: auto;" />
+      <div>
+        <p id="moon-info">Loading moon data...</p>
+        <p id="next-new-moon">Next New Moon: <strong>2025-08-10</strong></p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-    <section id="astro-events">
-      <h2>🌠 Upcoming Sky Events</h2>
-      <ul id="event-list">
-        <li>Coming soon — meteor showers, conjunctions, and eclipses will appear here.</li>
-      </ul>
-    </section>
+  <section id="astro-events">
+    <h2>🌠 Upcoming Sky Events</h2>
+    <ul id="event-list">
+      <li>Coming soon — meteor showers, conjunctions, and eclipses will appear here.</li>
+    </ul>
+  </section>
 
-    <section id="astro-weather">
-      <h2>🌤️ Dark Site Forecast for Calgary</h2>
-      <section id="astro-weather">
-        <a href=https://www.cleardarksky.com/c/Calgarykey.html>
-        <img src="https://www.cleardarksky.com/c/Calgarycsk.gif?c=118854"></a>
-        <li>Go to cleardarksky.com for specific weather in your area.</li>
-      </section>
+  <section id="astro-weather">
+    <h2>🌤️ Dark Site Forecast for Calgary</h2>
+    <a href="https://www.cleardarksky.com/c/Calgarykey.html">
+      <img src="https://www.cleardarksky.com/c/Calgarycsk.gif?c=118854">
+    </a>
+    <p>Go to cleardarksky.com for specific weather in your area.</p>
+  </section>
+</div>
 
-    <footer>
-      <p>© 2025 Nick Hall — Stargazer. Astrophotographer.</p>
-    </footer>
-  </div>
-<script src="moon.js?v=1"></script>
+  <footer>
+    <p>© 2025 Nick Hall — Stargazer. Astrophotographer.</p>
+  </footer>
+</div>
 </body>
 </html>
