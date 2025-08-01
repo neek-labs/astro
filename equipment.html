@@ -10,6 +10,9 @@
 </head>
 <body>
 <div class="page-wrapper">
+  <script src="stars.js"></script>
+  <canvas id="starfield"></canvas>
+
   <!-- 🔭 Navigation Bar -->
   <div class="astro-nav-wrapper">
     <nav class="astro-nav">
@@ -23,22 +26,19 @@
       <a href="nebulounge.html"><i class="fas fa-comments"></i> Nebulounge</a>    
     </nav>
   </div>
-  <div class="content">
-  <section class="equipment-intro">
-    <h1>My Astrophotography Gear</h1>
+
+<div class="hero">
+  <h1 class="site-title">My Astrophotography Gear</h1>
+</div>
     <p>
       Over the years, I’ve gathered a variety of tools to capture the night sky.
       Here’s a breakdown of my current kit — from trusty telescopes to the software guiding my sessions.
     </p>
-  </section>
-
+  
+    <!-- 🌌 Section: Equipment -->
   <section class="equipment-category">
-    <div class="collapsible-content">
-      <button class="collapsible">🔭 Telescopes</button>
-        <div class="equipment-card">
-        <h3>Celestron NexStar 6SE</h3>
-        <p>Schmidt-Cassegrain, 1500mm focal length. Great for planetary and lunar work.</p>
-        </div>
+    <button class="collapsible">🔭 Telescopes</button>
+    <div class="collapsible-content">  
         <div class="equipment-card">
           <h3>Celestron EdgeHD 8"</h3> 
           <img src="https://live.staticflickr.com/65535/54677405988_7365fef4f7_b.jpg" alt="Celestron EdgeHD 8" class="gear-photo">
@@ -47,57 +47,61 @@
         <div class="equipment-card">
           <h3>William Optics Zenithstar 61</h3>
           <img src="https://live.staticflickr.com/65535/54678676515_1c85208566_b.jpg" alt="William Optics Zenithstar 61" class="gear-photo">
-          <p>Compact APO doublet, perfect for wide-field imaging. Used with flattener for best results.</p>
+          <p>Compact APO doublet, which I use for my wide-field deep-sky imaging.</p>
         </div>
         <div class="equipment-card">
           <h3>Celestron 6N Newtonian</h3>
           <img src="https://live.staticflickr.com/65535/54678676490_0962f3e7cc_b.jpg" alt="Celestron 6N Newtonian" class="gear-photo">
-          <p>Fast reflector, ideal for DSO imaging with a large aperture and short focal ratio.</p>
+          <p>This was my first astrophotography scope that I used with a Celestron AVX mount at first. It is a really fast reflector, but the stock-focuser isn't very good and its hard to balance so I don't use it as much.</p>
+        </div>
+        <div class="equipment-card">
+        <h3>Celestron NexStar 6SE</h3>
+        <p>My first serious Telescope! This Schmidt-Cassegrain, 1500mm focal length is still my main visual astronomy scope. Its compact design makes it great for both planetary and deep-sky observations.</p>
         </div>
     </div>
   </section>
 
   <section class="equipment-category">
+    <button class="collapsible">🛰️ Mounts</button>
     <div class="collapsible-content">
-      <button class="collapsible">🛰️ Mounts</button>
-          <div class="equipment-card">
-          <h3>Star Adventurer Pro</h3>
-          <p>Portable tracking mount — perfect for travel astrophotography and wide-field shots.</p>
-          </div>
-          <div class="equipment-card">
-          <h3>Celestron CGEM II</h3>
-          <p>Heavy-duty German equatorial mount, used for guided deep-sky sessions.</p>
-          </div>
-          <div class="equipment-card">
-          <h3>Basic Tripod</h3>
-          <p>Used with Star Adventurer or binoculars for quick viewing sessions.</p>
-          </div>
+      <div class="equipment-card">
+        <h3>Star Adventurer Pro</h3>
+        <p>Portable tracking mount — perfect for travel astrophotography and wide-field shots.</p>
+      </div>
+      <div class="equipment-card">
+        <h3>Celestron CGEM II</h3>
+        <p>Heavy-duty German equatorial mount, used for guided deep-sky sessions.</p>
+      </div>
+      <div class="equipment-card">
+        <h3>Basic Tripod</h3>
+        <p>Used with Star Adventurer or binoculars for quick viewing sessions.</p>
+      </div>
     </div>
   </section>
 
   <section class="equipment-category">
+    <button class="collapsible">📷 Cameras & Filters</button>
     <div class="collapsible-content">
-      <button class="collapsible">📷 Cameras & Filters</button>
         <div class="equipment-card">
-        <h3>ZWO ASI533MM Pro</h3>
-        <p>Main cooled mono astro camera, used with narrowband filters for high-res DSO imaging.</p>
+          <h3>ZWO ASI533MM Pro</h3>
+          <p>Main cooled mono astro camera, used with narrowband filters for high-res DSO imaging.</p>
         </div>
         <div class="equipment-card">
-        <h3>ZWO ASI290MM Mini</h3>
-        <p>Used for autoguiding. Paired with a 50mm guide scope or Orion Mini AutoGuider.</p>
+          <h3>ZWO ASI290MM Mini</h3>
+          <p>Used for autoguiding. Paired with a 50mm guide scope or Orion Mini AutoGuider.</p>
         </div>
         <div class="equipment-card">
-        <h3>Canon T4i / T5i</h3>
-        <p>DSLRs used for wide-field and beginner deep-sky shots. Great versatility and compatibility with BackyardEOS.</p>
+          <h3>Canon T4i / T5i</h3>
+          <p>DSLRs used for wide-field and beginner deep-sky shots. Great versatility and compatibility with BackyardEOS.</p>
         </div>
         <div class="equipment-card">
-        <h3>Filter Wheel + Filters</h3>
-        <ul>
-            <li>ZWO EFW Mini (1.25")</li>
-            <li>LRGB Filters (ZWO)</li>
-            <li>H-alpha, OIII (ZWO)</li>
-            <li>SII 6.5nm Narrowband (Optolong)</li>
-        </ul>
+          <h3>Filter Wheel + Filters</h3>
+          <ul>
+              <li>ZWO EFW Mini (1.25")</li>
+              <li>LRGB Filters (ZWO)</li>
+              <li>H-alpha, OIII (ZWO)</li>
+              <li>SII 6.5nm Narrowband (Optolong)</li>
+          </ul>
         </div>
     </div>
   </section>
