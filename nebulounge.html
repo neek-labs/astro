@@ -9,6 +9,7 @@
   <title>Nebulounge | Astro</title>
 </head>
 <body>
+<div class="page-wrapper">
   <body class="nebulounge-body">
   <!-- 🔭 Astro Navigation -->
   <div class="astro-nav-wrapper">
@@ -22,33 +23,28 @@
       <a href="nebulounge.html"><i class="fas fa-comments"></i> Nebulounge</a>    
     </nav>
   </div>
-
   <!-- 🌌 Hero Viewport -->
-<div class="nebulounge-hero-overlay">
-  <div class="nebulounge-hero-text">
-    <h1>Welcome to the Nebulounge</h1>
-    <p><em>Escape. Reflect. Stargaze.</em></p>
-  </div>
-  <div class="nebulounge-deco-panel left-panel"></div>
-  <div class="nebulounge-deco-panel right-panel"></div>
-  <div class="nebulounge-viewport-window">
-    <div class="viewport-scene">
-    <img src="images/earth-view.jpg" alt="Earth from orbit https://www.flickr.com/photos/nasa2explore/albums/72157706703977781/page9" />
-    <div class="viewport-glass-effect"></div>
+  <div class="nebulounge-hero-overlay">
+    <div class="nebulounge-hero-text">
+      <h1>Welcome to the Nebulounge</h1>
+      <p><em>Escape. Reflect. Stargaze.</em></p>
+    </div>
+    <div class="nebulounge-deco-panel left-panel"></div>
+    <div class="nebulounge-deco-panel right-panel"></div>
+    <div class="nebulounge-viewport-window">
+      <div class="viewport-scene">
+      <img src="images/earth-view.jpg" alt="Earth from orbit https://www.flickr.com/photos/nasa2explore/albums/72157706703977781/page9" />
+      <div class="viewport-glass-effect"></div>
+      </div>
+    </div>
+    <!-- 📟 Command Console Panel -->
+    <div class="nebulounge-console-panel">
+      <button onclick="location.href='gallery.html'"><i class="fas fa-images"></i> Observatory</button>
+      <button onclick="toggleOrion()"><i class="fas fa-robot"></i> Talk to Orion</button>
+      <button onclick="alert('Launch panel coming soon')"><i class="fas fa-rocket"></i> What’s Up Tonight</button>
+      <button onclick="nextDestination()"><i class="fas fa-globe"></i> Next Destination</button>
     </div>
   </div>
-  <!-- 📟 Command Console Panel -->
-  <div class="nebulounge-console-panel">
-    <button onclick="location.href='gallery.html'"><i class="fas fa-images"></i> Observatory</button>
-    <button onclick="toggleOrion()"><i class="fas fa-robot"></i> Talk to Orion</button>
-    <button onclick="alert('Launch panel coming soon')"><i class="fas fa-rocket"></i> What’s Up Tonight</button>
-    <button onclick="nextDestination()"><i class="fas fa-globe"></i> Next Destination</button>
-  </div>
-  <!-- 👨‍🚀 Footer -->
-  <footer>
-    <p>© 2025 Nick Hall — Stargazer. Astrophotographer.</p>
-  </footer>
-</div>
 
   <!-- 💬 Orion AI Panel -->
   <div class="nebulounge-orion-panel" id="orionPanel">
@@ -80,6 +76,9 @@
     img.src = destinations[current];
   }
 </script>
-
+<footer>
+  <p>© 2025 Nick Hall — Stargazer. Astrophotographer.</p>
+</footer>
+</div>
 </body>
 </html>
