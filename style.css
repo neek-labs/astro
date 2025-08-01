@@ -154,7 +154,7 @@ footer {
 }
 
 .equipment-category {
-  max-width: 1200px;
+  width: 80%;
   margin: 2rem auto;
   padding: 0 1rem;
 }
