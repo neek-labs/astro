@@ -207,6 +207,7 @@ footer {
 .collapsible-content {
   max-height: 0;
   overflow: hidden;
+  width: 80%;
   transition: max-height 0.3s ease-out;
   padding: 0;
 }
@@ -562,20 +563,6 @@ footer {
 
 .nebulounge-orion-panel button:hover {
   background-color: rgba(0, 255, 255, 0.1);
-}
-
-/* Footer override for Nebulounge layout */
-.nebulounge-body footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  font-size: 0.8rem;
-  z-index: 1;
-  color: #888;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 0.5rem;
 }
 
 .nebulounge-viewport-window {
