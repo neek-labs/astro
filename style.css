@@ -206,12 +206,13 @@ footer {
 .collapsible-content {
   max-height: 0;
   overflow: hidden;
-  width: 80%;
   transition: max-height 0.3s ease-out;
+  padding: 0;
 }
 
 .collapsible-content.open {
   max-height: none; /* Enough for all content */
+  padding: 1rem 0;
 }
 
 .gear-photo {
