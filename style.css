@@ -171,7 +171,8 @@ footer {
   background-color: #151528;
   padding: 1rem;
   border-radius: 0.75rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem auto;
+  max-width: 1000px;
   color: #ddd;
   box-shadow: 0 0 15px #0005;
 }
