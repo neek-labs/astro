@@ -143,13 +143,14 @@ footer {
   margin-top: 3rem;
   color: #aaa;
   font-size: 0.9rem;
+  text-align: center;
 }
 
 .equipment-intro {
   text-align: center;
   padding: 2rem 1rem;
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
 }
 
 .equipment-category {
@@ -206,6 +207,7 @@ footer {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease-out;
+  padding: 1rem;
 }
 
 .collapsible-content.open {
@@ -657,8 +659,4 @@ footer {
   display: flex;
   flex-direction: column;
   flex: 1;
-}
-
-footer {
-  margin-top: auto;
 }
