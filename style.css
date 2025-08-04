@@ -203,7 +203,9 @@ footer {
   color: #9cd2ff;
   cursor: pointer;
   padding: 1rem;
+  max-width: 1000px;
   width: 100%;
+  margin: 0 auto 0.5rem auto;
   text-align: left;
   border: none;
   outline: none;
