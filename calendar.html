@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" src="https://astrosphericcloudstorage.blob.core.windows.net/embed/astrosphericembed.js" />
   <title>Astro | Nick Hall</title>
 </head>
 <body>
@@ -41,12 +42,39 @@
       </div>
     </section>
 
-    <section id="astro-events">
-      <h2>🌠 Upcoming Sky Events</h2>
-      <ul id="event-list">
-        <li>Coming soon — meteor showers, conjunctions, and eclipses will appear here.</li>
-      </ul>
-    </section>
+<section id="astro-weather-astropheric">
+  <h2>🌠 Astropheric Weather</h2>
+
+  <div style="margin-bottom: 10px;">
+    <button onclick="setAstroWeather('calgary')">📍 Calgary</button>
+    <button onclick="setAstroWeather('darksky')">🌌 Starland Recreation Area</button>
+    <button onclick="setAstroWeather('stones')">Stones Throw Camp ASP2025</button>
+  </div>
+
+  <div id="AstrosphericContainer" style="width:640px;"></div>
+</section>
+
+<script>
+  // Define your two locations
+  const locations = {
+    calgary: { lat: 51.0486, lon: -114.0708 },
+    darksky: { lat: 51.6630, lon: -112.9081 },
+    stones: { lat: 50.5974, lon: -112.8299 }
+  };
+
+   document.addEventListener("DOMContentLoaded", function () {
+    const { lat, lon } = locations.calgary;
+    m_AstrosphericEmbed.Create("AstrosphericContainer", lat, lon);
+  });
+
+    // Button handler
+  function setAstroWeather(locationKey) {
+    const location = locations[locationKey];
+    if (location) {
+      m_AstrosphericEmbed.ChangeLocation(location.lat, location.lon);
+    }
+  }
+</script>
 
     <section id="astro-weather">
       <h2>🌤️ Dark Site Forecast for Calgary</h2>
