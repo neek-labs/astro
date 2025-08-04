@@ -183,8 +183,9 @@ footer {
   background-color: #151528;
   padding: 1rem;
   border-radius: 0.75rem;
-  margin-bottom: 1rem auto;
+  margin: 1rem auto;
   max-width: 1000px;
+  width: 98%;
   color: #ddd;
   box-shadow: 0 0 15px #0005;
 }
@@ -219,7 +220,8 @@ footer {
 .collapsible-content {
   max-height: 0;
   overflow: hidden;
-  width: 80%;
+  width: 75%;
+  margin: 0 auto;
   transition: max-height 0.3s ease-out;
   padding: 0;
 }
