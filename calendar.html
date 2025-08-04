@@ -37,21 +37,23 @@
         <img id="moon-image" src="" alt="Moon Phase" style="height: 400px; width: auto;" />
         <div>
           <p id="moon-info">Loading moon data...</p>
-          <p id="next-new-moon">Next New Moon: <strong>2025-08-10</strong></p>
+          <p id="next-new-moon">Next New Moon: <strong>2025-08-23</strong></p>
         </div>
       </div>
     </section>
 
 <section id="astro-weather-astropheric">
-  <h2>🌠 Astropheric Weather</h2>
+  <h2 style="text-align: center;">🌠 Astropheric Weather</h2>
+  <h3 style="text-align: center;">This is my favourite weather planning tool as it shows the transparency, seeing and clouds. Select a location to view the weather forecast</h3>
 
-  <div style="margin-bottom: 10px;">
+  <div style="text-align: center;">
     <button onclick="setAstroWeather('calgary')">📍 Calgary</button>
     <button onclick="setAstroWeather('darksky')">🌌 Starland Recreation Area</button>
     <button onclick="setAstroWeather('stones')">Stones Throw Camp ASP2025</button>
   </div>
-
-  <div id="AstrosphericContainer" style="width:640px;"></div>
+  <div style="display: flex; justify-content: center; margin-top: 10px;">
+    <div id="AstrosphericContainer" style="width:800px;"></div>
+  </div>
 </section>
 
 <script>
