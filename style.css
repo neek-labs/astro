@@ -213,6 +213,7 @@ footer {
   border-bottom: 1px solid #333;
   font-family: 'Orbitron', sans-serif;
   transition: background-color 0.2s ease;
+  display: block;
 }
 
 .collapsible:hover {
@@ -224,12 +225,12 @@ footer {
   overflow: hidden;
   width: 75%;
   margin: 0 auto;
-  transition: max-height 0.3s ease-out;
+  transition: max-height 0.5s ease-out;
   padding: 0;
 }
 
 .collapsible-content.open {
-  max-height: none; /* Enough for all content */
+  max-height: 2000px;
   padding: 1rem 0;
 }
 
