@@ -46,12 +46,20 @@
     </div>
   </div>
 
-  <!-- 💬 Orion AI Panel -->
-  <div class="nebulounge-orion-panel" id="orionPanel">
-    <h2>Orion, Space Explorer</h2>
-    <p>"The stars tonight whisper old secrets. What do you seek, stargazer?"</p>
-    <button onclick="toggleOrion()">Close</button>
+
+
+  <div id="orion-terminal" class="slideout">
+  <div class="orion-header">
+    <img src="orion-avatar.gif" alt="Orion" />
+    <h2>TALK TO ORION</h2>
   </div>
+  <div id="chat-window" class="terminal-output"></div>
+  <div class="terminal-input">
+    <input id="user-input" type="text" placeholder="Ask Orion..." />
+    <button onclick="sendToOrion()">SEND</button>
+  </div>
+</div>
+
 
   <!-- 🌠 Scripts -->
   <script src="stars.js"></script>
