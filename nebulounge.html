@@ -10,7 +10,6 @@
 </head>
 <body>
 <div class="page-wrapper">
-  <body class="nebulounge-body">
   <!-- 🔭 Astro Navigation -->
   <div class="astro-nav-wrapper">
     <nav class="astro-nav">
@@ -46,10 +45,6 @@
     </div>
   </div>
 
-
-
-<button onclick="toggleOrion()" id="orionToggleBtn">🪐 Talk to Orion</button>
-
 <!-- 💬 Orion Terminal Panel -->
 <div id="orion-terminal" class="slideout">
   <div class="orion-header">
@@ -57,7 +52,7 @@
     <button onclick="toggleOrion()">✖</button>
   </div>
   <div id="chat-window" class="terminal-output">
-    <p class="orion-msg">Orion: "The stars tonight whisper old secrets. What do you seek, stargazer?"</p>
+    <p class="orion-msg">Orion: "What do you seek, stargazer?"</p>
   </div>
   <div class="terminal-input">
     <input id="user-input" type="text" placeholder="Ask Orion..." />
@@ -70,10 +65,10 @@
   <!-- 🌠 Scripts -->
   <script src="stars.js"></script>
   <script>
-    function toggleOrion() {
-      const panel = document.getElementById('orionPanel');
-      panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
-    }
+function toggleOrion() {
+  const panel = document.getElementById('orion-terminal');
+  panel.classList.toggle('open');
+}
   </script>
 
 <script>
@@ -90,6 +85,7 @@
     img.src = destinations[current];
   }
 </script>
+<script src="orion.js"></script>
 <footer>
   <p>© 2025 Nick Hall — Stargazer. Astrophotographer.</p>
 </footer>
