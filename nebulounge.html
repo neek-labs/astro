@@ -48,17 +48,23 @@
 
 
 
-  <div id="orion-terminal" class="slideout">
+<button onclick="toggleOrion()" id="orionToggleBtn">🪐 Talk to Orion</button>
+
+<!-- 💬 Orion Terminal Panel -->
+<div id="orion-terminal" class="slideout">
   <div class="orion-header">
-    <img src="orion-avatar.gif" alt="Orion" />
     <h2>TALK TO ORION</h2>
+    <button onclick="toggleOrion()">✖</button>
   </div>
-  <div id="chat-window" class="terminal-output"></div>
+  <div id="chat-window" class="terminal-output">
+    <p class="orion-msg">Orion: "The stars tonight whisper old secrets. What do you seek, stargazer?"</p>
+  </div>
   <div class="terminal-input">
     <input id="user-input" type="text" placeholder="Ask Orion..." />
     <button onclick="sendToOrion()">SEND</button>
   </div>
 </div>
+
 
 
   <!-- 🌠 Scripts -->
