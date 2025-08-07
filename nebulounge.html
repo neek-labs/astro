@@ -59,17 +59,11 @@
     <button onclick="sendToOrion()">SEND</button>
   </div>
 </div>
-
-
-
-  <!-- 🌠 Scripts -->
-  <script src="stars.js"></script>
-  <script>
-function toggleOrion() {
-  const panel = document.getElementById('orion-terminal');
-  panel.classList.toggle('open');
-}
-  </script>
+<div id="orion-avatar-container">
+  <img id="orion-avatar" src="/assets/orion-avatar.png" alt="Orion AI Avatar" />
+</div>
+<!-- 🌠 Scripts -->
+<script src="stars.js"></script>
 
 <script>
   const destinations = [
@@ -85,7 +79,9 @@ function toggleOrion() {
     img.src = destinations[current];
   }
 </script>
+
 <script src="orion.js"></script>
+
 <footer>
   <p>© 2025 Nick Hall — Stargazer. Astrophotographer.</p>
 </footer>

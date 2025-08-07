@@ -715,3 +715,36 @@ footer {
   flex-direction: column;
   flex: 1;
 }
+
+#orion-avatar-container {
+  position: fixed;
+  bottom: 100px; /* adjust based on your UI layout */
+  right: 30px;
+  z-index: 999;
+  background: rgba(10, 10, 25, 0.7);
+  border: 1px solid #4cc9f0;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 0 15px #4cc9f0;
+  animation: pulseAvatar 3s infinite ease-in-out;
+}
+
+#orion-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Cool glow animation */
+@keyframes pulseAvatar {
+  0% {
+    box-shadow: 0 0 5px #4cc9f0;
+  }
+  50% {
+    box-shadow: 0 0 20px #4cc9f0;
+  }
+  100% {
+    box-shadow: 0 0 5px #4cc9f0;
+  }
+}
