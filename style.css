@@ -748,3 +748,26 @@ footer {
     box-shadow: 0 0 5px #4cc9f0;
   }
 }
+
+.orion-avatar-embedded {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.orion-avatar-embedded img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #4cc9f0;
+  box-shadow: 0 0 12px #4cc9f055;
+  background-color: #0a0a1e;
+  padding: 4px;
+  transition: transform 0.3s ease;
+}
+
+.orion-avatar-embedded img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #89f0ff;
+}

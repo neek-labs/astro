@@ -51,16 +51,19 @@
     <h2>TALK TO ORION</h2>
     <button onclick="toggleOrion()">✖</button>
   </div>
+
+  <div class="orion-avatar-embedded">
+    <img src="/assets/orion-avatar.png" alt="Orion AI Avatar" />
+  </div>
+
   <div id="chat-window" class="terminal-output">
     <p class="orion-msg">Orion: "What do you seek, stargazer?"</p>
   </div>
+
   <div class="terminal-input">
     <input id="user-input" type="text" placeholder="Ask Orion..." />
     <button onclick="sendToOrion()">SEND</button>
   </div>
-</div>
-<div id="orion-avatar-container">
-  <img id="orion-avatar" src="/assets/orion-avatar.png" alt="Orion AI Avatar" />
 </div>
 <!-- 🌠 Scripts -->
 <script src="stars.js"></script>
