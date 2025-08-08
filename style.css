@@ -546,9 +546,9 @@ footer {
   width: 400px;
   height: 100%;
   background-color: #000a05;
-  color: #00ff99;
+  color: #21a35a;
   font-family: monospace;
-  border-left: 2px solid #00ff99;
+  border-left: 2px solid #21a35a;
   transform: translateX(100%);
   transition: transform 0.5s ease-in-out;
   display: flex;
@@ -560,30 +560,30 @@ footer {
   transform: translateX(0);
 }
 
-/* Top half: Orion avatar */
+/* Top half for Orion avatar */
 .orion-avatar-embedded {
-  height: 50%;
-  background-color: #000;
+  flex: 0 0 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #000;
   border-bottom: 1px solid rgba(0, 255, 153, 0.3);
 }
 
 .orion-avatar-embedded img {
-  height: 100%;
-  width: auto;
+  max-height: 100%;
+  max-width: 100%;
   object-fit: contain;
   filter: drop-shadow(0 0 12px rgba(0, 255, 153, 0.4));
 }
 
-/* Bottom half: Chat area */
+/* Bottom half for chat */
 .terminal-output {
   flex: 1;
   padding: 1em;
   overflow-y: auto;
   background-color: #000;
-  color: #00ff99;
+  color: #21a35a;
 }
 
 .terminal-input {
@@ -596,7 +596,7 @@ footer {
 .terminal-input input {
   flex: 1;
   background-color: black;
-  color: #00ff99;
+  color: #21a35a;
   border: 1px solid rgba(0, 255, 153, 0.5);
   font-family: monospace;
   padding: 0.5em;
@@ -604,7 +604,7 @@ footer {
 
 .terminal-input button {
   background-color: black;
-  color: #00ff99;
+  color: #21a35a;
   border: 1px solid rgba(0, 255, 153, 0.5);
   padding: 0.5em 1em;
   cursor: pointer;
@@ -619,10 +619,10 @@ footer {
   margin-bottom: 0.5em;
 }
 
-/* Headings and panel text */
+/* Panel headings and text */
 .nebulounge-orion-panel h2 {
   margin-top: 0;
-  color: #00ff99;
+  color: #21a35a;
   font-family: 'Orbitron', sans-serif;
 }
 
@@ -633,11 +633,10 @@ footer {
   margin: 0.5rem 0 1rem;
 }
 
-/* Buttons in panel */
 .nebulounge-orion-panel button {
   background: transparent;
-  color: #00ff99;
-  border: 1px solid #00ff99;
+  color: #21a35a;
+  border: 1px solid #21a35a;
   padding: 5px 12px;
   font-size: 0.85rem;
   border-radius: 6px;
@@ -750,7 +749,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 2px solid #00ff99;
+  border-bottom: 2px solid #21a35a;
   box-shadow: 0 0 20px rgba(0, 255, 153, 0.4);
 }
 
@@ -758,7 +757,7 @@ footer {
   height: 100%;
   width: auto;
   object-fit: contain;
-  filter: drop-shadow(0 0 10px #00ff99);
+  filter: drop-shadow(0 0 10px #21a35a);
 }
 
 
