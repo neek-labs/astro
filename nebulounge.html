@@ -47,13 +47,8 @@
 
 <!-- 💬 Orion Terminal Panel -->
 <div id="orion-terminal" class="slideout">
-  <div class="orion-header">
-    <h2>TALK TO ORION</h2>
-    <button onclick="toggleOrion()">✖</button>
-  </div>
-
   <div class="orion-avatar-embedded">
-    <img src="/assets/orion-avatar.png" alt="Orion AI Avatar" />
+    <img id="orion-avatar" src="/assets/orion-avatar.png" alt="Orion AI Avatar" />
   </div>
 
   <div id="chat-window" class="terminal-output">
@@ -65,6 +60,7 @@
     <button onclick="sendToOrion()">SEND</button>
   </div>
 </div>
+
 <!-- 🌠 Scripts -->
 <script src="stars.js"></script>
 
