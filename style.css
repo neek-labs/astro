@@ -545,10 +545,10 @@ footer {
   top: 0;
   width: 400px;
   height: 100%;
-  background-color: #000;
-  color: #00ff00;
+  background-color: #000a05;
+  color: #00ff99;
   font-family: monospace;
-  border-left: 2px solid #0f0;
+  border-left: 2px solid #00ff99;
   transform: translateX(100%);
   transition: transform 0.5s ease-in-out;
   display: flex;
@@ -560,42 +560,58 @@ footer {
   transform: translateX(0);
 }
 
-.orion-header {
+/* Top half: Orion avatar */
+.orion-avatar-embedded {
+  height: 50%;
+  background-color: #000;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 1em;
-  border-bottom: 1px solid #0f0;
+  justify-content: center;
+  border-bottom: 1px solid rgba(0, 255, 153, 0.3);
 }
 
+.orion-avatar-embedded img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 12px rgba(0, 255, 153, 0.4));
+}
+
+/* Bottom half: Chat area */
 .terminal-output {
   flex: 1;
   padding: 1em;
   overflow-y: auto;
+  background-color: #000;
+  color: #00ff99;
 }
 
 .terminal-input {
   padding: 1em;
   display: flex;
   gap: 0.5em;
-  border-top: 1px solid #0f0;
+  border-top: 1px solid rgba(0, 255, 153, 0.3);
 }
 
 .terminal-input input {
   flex: 1;
   background-color: black;
-  color: #0f0;
-  border: 1px solid #0f0;
+  color: #00ff99;
+  border: 1px solid rgba(0, 255, 153, 0.5);
   font-family: monospace;
   padding: 0.5em;
 }
 
 .terminal-input button {
   background-color: black;
-  color: #0f0;
-  border: 1px solid #0f0;
+  color: #00ff99;
+  border: 1px solid rgba(0, 255, 153, 0.5);
   padding: 0.5em 1em;
   cursor: pointer;
+}
+
+.terminal-input button:hover {
+  background-color: rgba(0, 255, 153, 0.15);
 }
 
 .orion-msg,
@@ -603,9 +619,10 @@ footer {
   margin-bottom: 0.5em;
 }
 
+/* Headings and panel text */
 .nebulounge-orion-panel h2 {
   margin-top: 0;
-  color: #89f0ff;
+  color: #00ff99;
   font-family: 'Orbitron', sans-serif;
 }
 
@@ -616,10 +633,11 @@ footer {
   margin: 0.5rem 0 1rem;
 }
 
+/* Buttons in panel */
 .nebulounge-orion-panel button {
   background: transparent;
-  color: #00ffff;
-  border: 1px solid #00ffff;
+  color: #00ff99;
+  border: 1px solid #00ff99;
   padding: 5px 12px;
   font-size: 0.85rem;
   border-radius: 6px;
@@ -628,7 +646,7 @@ footer {
 }
 
 .nebulounge-orion-panel button:hover {
-  background-color: rgba(0, 255, 255, 0.1);
+  background-color: rgba(0, 255, 153, 0.1);
 }
 
 .nebulounge-viewport-window {

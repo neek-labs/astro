@@ -46,20 +46,19 @@
   </div>
 
 <!-- 💬 Orion Terminal Panel -->
-<div id="orion-terminal" class="slideout">
+<div class="nebulounge-orion-panel" id="orionPanel">
   <div class="orion-avatar-embedded">
-    <img id="orion-avatar" src="/assets/orion-avatar.png" alt="Orion AI Avatar" />
+    <img src="images/orion-avatar-cropped.png" alt="Orion AI">
   </div>
-
-  <div id="chat-window" class="terminal-output">
-    <p class="orion-msg">Orion: "What do you seek, stargazer?"</p>
-  </div>
-
-  <div class="terminal-input">
-    <input id="user-input" type="text" placeholder="Ask Orion..." />
-    <button onclick="sendToOrion()">SEND</button>
+  <div class="orion-chat">
+    <div class="orion-message">"What do you seek, stargazer?"</div>
+    <div class="orion-input-area">
+      <input type="text" id="orionInput" placeholder="Ask Orion...">
+      <button onclick="sendOrion()">SEND</button>
+    </div>
   </div>
 </div>
+
 
 <!-- 🌠 Scripts -->
 <script src="stars.js"></script>
