@@ -567,14 +567,21 @@ footer {
   align-items: center;
   justify-content: center;
   background-color: #000;
-  border-bottom: 1px solid rgba(0, 255, 153, 0.3);
+  border-bottom: 2px solid #21a35a;
+  box-shadow: 0 0 20px rgba(33, 163, 90, 0.4);
 }
 
 .orion-avatar-embedded img {
-  max-height: 100%;
-  max-width: 100%;
+  height: 100%;
+  width: auto;
   object-fit: contain;
-  filter: drop-shadow(0 0 12px rgba(0, 255, 153, 0.4));
+  filter: drop-shadow(0 0 10px #21a35a);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.orion-avatar-embedded img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #21a35a;
 }
 
 /* Bottom half for chat */
@@ -590,28 +597,28 @@ footer {
   padding: 1em;
   display: flex;
   gap: 0.5em;
-  border-top: 1px solid rgba(0, 255, 153, 0.3);
+  border-top: 1px solid rgba(33, 163, 90, 0.3);
 }
 
 .terminal-input input {
   flex: 1;
-  background-color: black;
+  background-color: #000;
   color: #21a35a;
-  border: 1px solid rgba(0, 255, 153, 0.5);
+  border: 1px solid rgba(33, 163, 90, 0.5);
   font-family: monospace;
   padding: 0.5em;
 }
 
 .terminal-input button {
-  background-color: black;
+  background-color: #000;
   color: #21a35a;
-  border: 1px solid rgba(0, 255, 153, 0.5);
+  border: 1px solid rgba(33, 163, 90, 0.5);
   padding: 0.5em 1em;
   cursor: pointer;
 }
 
 .terminal-input button:hover {
-  background-color: rgba(0, 255, 153, 0.15);
+  background-color: rgba(33, 163, 90, 0.15);
 }
 
 .orion-msg,
@@ -706,88 +713,4 @@ footer {
   display: flex;
   flex-direction: column;
   flex: 1;
-}
-
-#orion-avatar-container {
-  position: fixed;
-  bottom: 100px; /* adjust based on your UI layout */
-  right: 30px;
-  z-index: 999;
-  background: rgba(10, 10, 25, 0.7);
-  border: 1px solid #4cc9f0;
-  border-radius: 50%;
-  padding: 10px;
-  box-shadow: 0 0 15px #4cc9f0;
-  animation: pulseAvatar 3s infinite ease-in-out;
-}
-
-#orion-avatar {
-  max-width: 100%;
-  height: auto;
-  max-height: 150px;
-  margin: 0 auto;
-  display: block;
-}
-
-/* Cool glow animation */
-@keyframes pulseAvatar {
-  0% {
-    box-shadow: 0 0 5px #4cc9f0;
-  }
-  50% {
-    box-shadow: 0 0 20px #4cc9f0;
-  }
-  100% {
-    box-shadow: 0 0 5px #4cc9f0;
-  }
-}
-
-.orion-avatar-embedded {
-  width: 100%;
-  height: 40%;
-  background-color: #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 2px solid #21a35a;
-  box-shadow: 0 0 20px rgba(0, 255, 153, 0.4);
-}
-
-.orion-avatar-embedded img {
-  height: 100%;
-  width: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 0 10px #21a35a);
-}
-
-
-.orion-avatar-embedded img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #89f0ff;
-}
-
-.orion-panel {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  overflow: hidden;
-}
-
-.orion-chat-header {
-  flex: 0 0 auto;
-}
-
-.orion-chat-body {
-  flex: 1 1 auto;
-  overflow-y: auto;
-}
-
-.orion-chat-input {
-  flex: 0 0 auto;
-}
-
-#orion-avatar {
-  border-radius: 10px;
-  box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
 }
