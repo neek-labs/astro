@@ -560,6 +560,11 @@ footer {
   transform: translateX(0);
 }
 
+/* Ensure Orion does not affect page flow */
+#orion-terminal.hidden {
+  display: none; /* Hide the terminal when not open */
+}
+
 /* Top half for Orion avatar */
 .orion-avatar-embedded {
   flex: 0 0 50%;
