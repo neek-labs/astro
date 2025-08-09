@@ -16,7 +16,7 @@ const prompts = [
 function toggleOrion() {
   const panel = document.getElementById("orion-terminal");
   panel.classList.toggle("open");
-  if (panel.classList.contains("open")) {
+  if (panel.classList.contains("open") && typeof suggestPrompt === "function") {
     suggestPrompt();
   }
 }
