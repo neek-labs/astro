@@ -568,23 +568,25 @@ footer {
 
 /* Top half for Orion avatar */
 .orion-avatar-embedded {
-  flex: 0 0 auto; 
+  width: 100%;              /* match chatbox width exactly */
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #000;
   border-bottom: 2px solid #21a35a;
   box-shadow: 0 0 20px rgba(33, 163, 90, 0.4);
-  padding: 10px;
+  padding: 10px;             /* breathing room around avatar */
+  box-sizing: border-box;    /* include padding in width */
 }
 
 .orion-avatar-embedded img {
-  max-width: 80%;
+  width: auto;
+  max-width: 60%;
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 0 10px #21a35a);
+  display: block;
 }
-
 /* Bottom half for chat */
 .terminal-output {
   flex: 1;
