@@ -640,10 +640,18 @@ footer {
 }
 
 .orion-header button {
-  background: transparent;
+  background: none;
   border: none;
-  font-size: 1.5rem;
+  color: #21a35a;
+  font-size: 1.2rem;
   cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.orion-header button:hover {
+  color: #6bff66;/* even brighter on hover */
 }
 
 /* Panel headings and text */
