@@ -626,6 +626,23 @@ footer {
   margin-bottom: 0.5em;
 }
 
+.orion-header {
+  display: flex;
+  justify-content: space-between; /* puts title left, button right */
+  align-items: center;            /* vertically center them */
+}
+
+.orion-header h2 {
+  margin: 0; /* remove extra spacing */
+}
+
+.orion-header button {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
 /* Panel headings and text */
 .nebulounge-orion-panel h2 {
   margin-top: 0;
