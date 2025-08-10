@@ -45,21 +45,6 @@
     </div>
   </div>
 
-<!-- 💬 Orion Terminal Panel -->
-<div class="nebulounge-orion-panel" id="orionPanel">
-  <div class="orion-avatar-embedded">
-    <img src="images/orion-avatar.png" alt="Orion AI">
-  </div>
-  <div class="orion-chat">
-    <div class="orion-message">"What do you seek, stargazer?"</div>
-    <div class="orion-input-area">
-      <input type="text" id="orionInput" placeholder="Ask Orion...">
-      <button onclick="sendOrion()">SEND</button>
-    </div>
-  </div>
-</div>
-
-
 <!-- 🌠 Scripts -->
 <script src="stars.js"></script>
 
@@ -77,12 +62,30 @@
     img.src = destinations[current];
   }
 </script>
-
 <script src="orion.js"></script>
+</div>
+<!-- 💬 Orion Terminal Panel -->
+  <div id="orion-terminal">
+    <div class="orion-avatar-embedded">
+      <img src="assets/orion-avatar.png" alt="Orion AI Avatar">
+    </div>
 
+    <div class="orion-header">
+      <h2>TALK TO ORION</h2>
+      <button onclick="toggleOrion()">✖</button>
+    </div>
+
+    <div class="terminal-output" id="chat-window">
+      <p class="orion-msg">Orion: "What do you seek, stargazer?"</p>
+    </div>
+
+    <div class="terminal-input">
+      <input id="user-input" type="text" placeholder="Ask Orion..." />
+      <button onclick="sendToOrion()">SEND</button>
+    </div>
+  </div>
 <footer>
   <p>© 2025 Nick Hall — Stargazer. Astrophotographer.</p>
 </footer>
-</div>
 </body>
 </html>
