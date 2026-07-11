@@ -1,0 +1,107 @@
+{
+  "location": {
+    "name": "Calgary, Alberta",
+    "latitude": 51.12,
+    "longitude": -114.11,
+    "elevationMeters": 1100,
+    "timezone": "America/Edmonton"
+  },
+  "forecast": {
+    "lengthNights": 7,
+    "gridMinutes": 30,
+    "openMeteoForecastDays": 9
+  },
+  "weather": {
+    "openMeteoUrl": "https://api.open-meteo.com/v1/forecast",
+    "userAgent": "neek-labs-astro-session-planner/2.0 (https://astro.nickhall.tech)",
+    "timeouts": {
+      "connectSeconds": 5,
+      "readSeconds": 15
+    },
+    "hourlyFields": [
+      "cloud_cover",
+      "cloud_cover_low",
+      "cloud_cover_mid",
+      "cloud_cover_high",
+      "precipitation_probability",
+      "precipitation",
+      "temperature_2m",
+      "dew_point_2m",
+      "relative_humidity_2m",
+      "visibility",
+      "wind_speed_10m",
+      "wind_gusts_10m",
+      "weather_code"
+    ]
+  },
+  "limits": {
+    "hardBlockers": {
+      "maxPrecipitationMm": 0,
+      "maxPrecipitationProbabilityPercent": 40,
+      "maxCloudCoverPercent": 80,
+      "maxGustKph": 50,
+      "minDewPointSpreadC": 0.5
+    },
+    "visualCandidate": {
+      "minimumMinutes": 45,
+      "maxCloudCoverPercent": 70,
+      "maxPrecipitationProbabilityPercent": 35,
+      "maxPrecipitationMm": 0,
+      "maxWindKph": 35,
+      "maxGustKph": 50,
+      "minDewPointSpreadC": 0.5,
+      "minVisibilityMeters": 5000
+    },
+    "imagingCandidate": {
+      "minimumMinutes": 90,
+      "maxCloudCoverPercent": 40,
+      "maxPrecipitationProbabilityPercent": 20,
+      "maxPrecipitationMm": 0,
+      "maxWindKph": 25,
+      "maxGustKph": 40,
+      "minDewPointSpreadC": 2,
+      "minVisibilityMeters": 8000
+    },
+    "strong": {
+      "minimumMinutes": 120,
+      "maxCloudCoverPercent": 25,
+      "maxPrecipitationProbabilityPercent": 15,
+      "maxWindKph": 20,
+      "maxGustKph": 30,
+      "minDewPointSpreadC": 3
+    },
+    "exceptional": {
+      "minimumMinutes": 180,
+      "maxCloudCoverPercent": 12,
+      "maxPrecipitationProbabilityPercent": 5,
+      "maxWindKph": 15,
+      "maxGustKph": 25,
+      "minDewPointSpreadC": 4
+    }
+  },
+  "scoring": {
+    "weights": {
+      "clouds": 35,
+      "precipitation": 15,
+      "duration": 15,
+      "wind": 10,
+      "dewHumidity": 10,
+      "visibility": 5,
+      "darkness": 5,
+      "convenience": 5
+    }
+  },
+  "classification": {
+    "thresholds": {
+      "visual": 30,
+      "possible": 50,
+      "strong": 72,
+      "exceptional": 88
+    }
+  },
+  "scheduling": {
+    "weekendDays": ["Friday", "Saturday"],
+    "lateNightHour": 1,
+    "weekdayLateNightPenaltyPoints": 8
+  }
+}
