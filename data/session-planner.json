@@ -1,0 +1,235 @@
+{
+  "sampleData": true,
+  "location": {
+    "name": "Calgary, Alberta",
+    "latitude": 51.12,
+    "longitude": -114.11,
+    "timezone": "America/Edmonton"
+  },
+  "generatedAt": "2026-07-10T20:00:00-06:00",
+  "dataSource": "Sample Stage 1 mock data for visual proof of concept only. No live weather or astronomy calculations are used.",
+  "nights": [
+    {
+      "date": "2026-07-11",
+      "weekday": "Saturday",
+      "recommendation": {
+        "label": "Don't bother",
+        "level": "poor",
+        "confidence": "High"
+      },
+      "conditions": {
+        "bestWindow": "No reliable window",
+        "usableHours": 0,
+        "averageCloudCoverPercent": 92,
+        "precipitationProbabilityPercent": 70,
+        "wind": {
+          "sustainedKph": 24,
+          "gustKph": 43
+        },
+        "temperature": {
+          "expectedC": 9,
+          "dewPointSpreadC": 1
+        },
+        "moon": {
+          "illuminationPercent": 14
+        }
+      },
+      "suggestedTarget": "Image processing backlog",
+      "suggestedEquipment": "Processing laptop and calibration frames",
+      "warnings": [
+        "High cloud cover blocks useful observing.",
+        "Rain risk and gusts make setup impractical."
+      ],
+      "explanation": "Cloud cover, precipitation risk, and wind all point to a poor session from Calgary."
+    },
+    {
+      "date": "2026-07-12",
+      "weekday": "Sunday",
+      "recommendation": {
+        "label": "Visual only",
+        "level": "visual",
+        "confidence": "Medium"
+      },
+      "conditions": {
+        "bestWindow": "23:30-01:15 MDT",
+        "usableHours": 1.75,
+        "averageCloudCoverPercent": 48,
+        "precipitationProbabilityPercent": 20,
+        "wind": {
+          "sustainedKph": 18,
+          "gustKph": 30
+        },
+        "temperature": {
+          "expectedC": 11,
+          "dewPointSpreadC": 3
+        },
+        "moon": {
+          "illuminationPercent": 8
+        }
+      },
+      "suggestedTarget": "Moonlit double stars and bright clusters",
+      "suggestedEquipment": "Binoculars or NexStar 6SE",
+      "warnings": [
+        "Intermittent cloud gaps may be too short for imaging."
+      ],
+      "explanation": "Short cloud breaks and moderate gusts are acceptable for casual visual observing but risky for imaging."
+    },
+    {
+      "date": "2026-07-13",
+      "weekday": "Monday",
+      "recommendation": {
+        "label": "Imaging possible",
+        "level": "possible",
+        "confidence": "Medium"
+      },
+      "conditions": {
+        "bestWindow": "00:10-03:00 MDT",
+        "usableHours": 2.8,
+        "averageCloudCoverPercent": 34,
+        "precipitationProbabilityPercent": 10,
+        "wind": {
+          "sustainedKph": 13,
+          "gustKph": 21
+        },
+        "temperature": {
+          "expectedC": 10,
+          "dewPointSpreadC": 4
+        },
+        "moon": {
+          "illuminationPercent": 4
+        }
+      },
+      "suggestedTarget": "M27 Dumbbell Nebula",
+      "suggestedEquipment": "Wide-field refractor with light pollution filter",
+      "warnings": [],
+      "explanation": "Clouds thin after midnight and the Moon is low enough for a short imaging run."
+    },
+    {
+      "date": "2026-07-14",
+      "weekday": "Tuesday",
+      "recommendation": {
+        "label": "Imaging night",
+        "level": "strong",
+        "confidence": "High"
+      },
+      "conditions": {
+        "bestWindow": "22:55-03:45 MDT",
+        "usableHours": 4.8,
+        "averageCloudCoverPercent": 18,
+        "precipitationProbabilityPercent": 5,
+        "wind": {
+          "sustainedKph": 8,
+          "gustKph": 15
+        },
+        "temperature": {
+          "expectedC": 8,
+          "dewPointSpreadC": 6
+        },
+        "moon": {
+          "illuminationPercent": 1
+        }
+      },
+      "suggestedTarget": "North America Nebula",
+      "suggestedEquipment": "William Optics Zenithstar 61 with cooled mono camera",
+      "warnings": [],
+      "explanation": "Low cloud cover, light wind, dry air, and a nearly new Moon make this a strong imaging candidate."
+    },
+    {
+      "date": "2026-07-15",
+      "weekday": "Wednesday",
+      "recommendation": {
+        "label": "Exceptional imaging night",
+        "level": "exceptional",
+        "confidence": "High"
+      },
+      "conditions": {
+        "bestWindow": "22:45-04:20 MDT",
+        "usableHours": 5.6,
+        "averageCloudCoverPercent": 6,
+        "precipitationProbabilityPercent": 0,
+        "wind": {
+          "sustainedKph": 5,
+          "gustKph": 10
+        },
+        "temperature": {
+          "expectedC": 7,
+          "dewPointSpreadC": 8
+        },
+        "moon": {
+          "illuminationPercent": 2
+        }
+      },
+      "suggestedTarget": "Veil Nebula",
+      "suggestedEquipment": "Zenithstar 61, narrowband filters, guided mount",
+      "warnings": [
+        "Sample data only; verify live conditions before travelling."
+      ],
+      "explanation": "The mock profile combines very low cloud, no precipitation signal, calm wind, dry air, and dark skies."
+    },
+    {
+      "date": "2026-07-16",
+      "weekday": "Thursday",
+      "recommendation": {
+        "label": "Imaging possible",
+        "level": "possible",
+        "confidence": "Low"
+      },
+      "conditions": {
+        "bestWindow": "01:00-03:30 MDT",
+        "usableHours": 2.5,
+        "averageCloudCoverPercent": 42,
+        "precipitationProbabilityPercent": 15,
+        "wind": {
+          "sustainedKph": 11,
+          "gustKph": 18
+        },
+        "temperature": {
+          "expectedC": 12,
+          "dewPointSpreadC": 2
+        },
+        "moon": {
+          "illuminationPercent": 7
+        }
+      },
+      "suggestedTarget": "M13 Hercules Globular Cluster",
+      "suggestedEquipment": "EdgeHD 8 with short exposure plan",
+      "warnings": [
+        "Thin cloud and dew risk may reduce image quality."
+      ],
+      "explanation": "A short usable window exists, but confidence is low because cloud and dew margins are tight."
+    },
+    {
+      "date": "2026-07-17",
+      "weekday": "Friday",
+      "recommendation": {
+        "label": "Visual only",
+        "level": "visual",
+        "confidence": "Medium"
+      },
+      "conditions": {
+        "bestWindow": "22:30-00:30 MDT",
+        "usableHours": 2,
+        "averageCloudCoverPercent": 55,
+        "precipitationProbabilityPercent": 25,
+        "wind": {
+          "sustainedKph": 15,
+          "gustKph": 27
+        },
+        "temperature": {
+          "expectedC": 13,
+          "dewPointSpreadC": 4
+        },
+        "moon": {
+          "illuminationPercent": 13
+        }
+      },
+      "suggestedTarget": "Saturn, bright clusters, and casual sky tour",
+      "suggestedEquipment": "NexStar 6SE or binoculars",
+      "warnings": [
+        "Later-week forecasts are less reliable.",
+        "Clouds may close the observing window early."
+      ],
+      "explanation": "The first part of the night may allow visual observing, but clouds and forecast uncertainty limit planning value."
+    }
+  ]
+}
