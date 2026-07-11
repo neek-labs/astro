@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="session-planner.js" defer></script>
+  <title>Calgary Astronomy Session Planner | Nick Hall</title>
+</head>
+<body>
+<div class="page-wrapper">
+  <script src="stars.js"></script>
+  <canvas id="starfield"></canvas>
+
+  <div class="astro-nav-wrapper">
+    <nav class="astro-nav">
+      <a href="https://nickhall.tech" target="_blank" class="main-site-link"><i class="fas fa-home"></i> Return to nickhall.tech</a>
+      <a href="index.html"><i class="fas fa-rocket"></i> Astro Home</a>
+      <a href="equipment.html"><i class="fas fa-satellite-dish"></i> Equipment</a>
+      <a href="gallery.html"><i class="fas fa-camera"></i> Photo Gallery</a>
+      <a href="log.html"><i class="fas fa-book"></i> Observation Log</a>
+      <a href="calendar.html"><i class="fas fa-calendar-alt"></i> Sky Calendar</a>
+      <a href="session-planner.html"><i class="fas fa-cloud-moon"></i> Session Planner</a>
+      <a href="tools.html"><i class="fas fa-wrench"></i> Tools</a>
+      <a href="nebulounge.html"><i class="fas fa-comments"></i> Nebulounge</a>
+    </nav>
+  </div>
+
+  <main class="content session-planner-page">
+    <section class="session-planner-hero">
+      <p class="session-planner-kicker">Stage 1 proof of concept</p>
+      <h1 class="site-title">Calgary Astronomy Session Planner</h1>
+      <p class="session-planner-intro">
+        This planner evaluates upcoming nights for astronomy from Calgary, comparing mock sky conditions,
+        moonlight, weather risk, and practical equipment suggestions.
+      </p>
+      <p id="session-planner-sample-note" class="session-planner-sample-note">Loading sample data...</p>
+    </section>
+
+    <section id="session-planner-summary" class="session-planner-summary" aria-live="polite">
+      <h2>Best nights this week</h2>
+      <p>Loading nightly recommendations...</p>
+    </section>
+
+    <section class="session-planner-meta" aria-label="Forecast metadata">
+      <p id="session-planner-location">Location loading...</p>
+      <p id="session-planner-generated">Generated timestamp loading...</p>
+      <p id="session-planner-source">Data source loading...</p>
+    </section>
+
+    <section id="session-planner-cards" class="session-planner-cards" aria-live="polite">
+      <p>Loading forecast cards...</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Nick Hall &mdash; Stargazer. Astrophotographer.</p>
+  </footer>
+</div>
+</body>
+</html>

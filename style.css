@@ -742,3 +742,245 @@ footer {
   flex-direction: column;
   flex: 1;
 }
+
+/* Session Planner */
+.session-planner-page {
+  box-sizing: border-box;
+  width: min(1180px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 2.5rem 0 0;
+  text-align: left;
+}
+
+.session-planner-page *,
+.session-planner-page *::before,
+.session-planner-page *::after {
+  box-sizing: border-box;
+}
+
+.session-planner-hero {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 2rem;
+}
+
+.session-planner-kicker {
+  margin: 0 0 0.5rem;
+  color: #9cd2ff;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.session-planner-intro {
+  max-width: 760px;
+  margin: 0.75rem auto;
+  color: #ddd;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.session-planner-sample-note {
+  display: inline-block;
+  margin: 1rem auto 0;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(255, 212, 96, 0.55);
+  border-radius: 8px;
+  background: rgba(80, 58, 10, 0.55);
+  color: #ffe7a3;
+}
+
+.session-planner-summary,
+.session-planner-meta,
+.session-planner-card,
+.session-planner-error {
+  border: 1px solid rgba(156, 210, 255, 0.25);
+  border-radius: 8px;
+  background: rgba(14, 17, 32, 0.86);
+  box-shadow: 0 0 18px rgba(0, 170, 255, 0.14);
+}
+
+.session-planner-summary {
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.session-planner-summary h2,
+.session-planner-error h2 {
+  margin: 0 0 0.75rem;
+  color: #9cd2ff;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.session-planner-summary p,
+.session-planner-meta p,
+.session-planner-card p {
+  line-height: 1.5;
+}
+
+.session-planner-disclaimer {
+  margin-bottom: 0;
+  color: #bbb;
+  font-size: 0.95rem;
+}
+
+.session-planner-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  color: #d8e9ff;
+}
+
+.session-planner-meta p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.session-planner-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.session-planner-card {
+  position: relative;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.session-planner-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 6px;
+  background: #9cd2ff;
+}
+
+.session-planner-card--poor::before {
+  background: #ff6b6b;
+}
+
+.session-planner-card--visual::before {
+  background: #ffd166;
+}
+
+.session-planner-card--possible::before {
+  background: #7bdff2;
+}
+
+.session-planner-card--strong::before {
+  background: #80ed99;
+}
+
+.session-planner-card--exceptional::before {
+  background: #f7b2ff;
+}
+
+.session-planner-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.session-planner-card h3 {
+  margin: 0 0 0.3rem;
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.1rem;
+}
+
+.session-planner-card-header p {
+  margin: 0;
+  color: #c9d5e8;
+  font-size: 0.92rem;
+}
+
+.session-planner-recommendation {
+  flex: 0 0 auto;
+  max-width: 46%;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.session-planner-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(110px, 0.8fr) minmax(0, 1.2fr);
+  gap: 0.55rem 0.75rem;
+  margin: 0;
+}
+
+.session-planner-detail-grid dt {
+  color: #9cd2ff;
+  font-weight: 700;
+}
+
+.session-planner-detail-grid dd {
+  margin: 0;
+  color: #eee;
+  overflow-wrap: anywhere;
+}
+
+.session-planner-explanation {
+  margin: 1rem 0 0;
+  color: #d9d9d9;
+}
+
+.session-planner-warnings {
+  margin: 1rem 0 0;
+  padding-left: 1.2rem;
+  color: #ffe7a3;
+}
+
+.session-planner-warnings li + li {
+  margin-top: 0.35rem;
+}
+
+.session-planner-error {
+  padding: 1.25rem;
+  color: #ffd6d6;
+}
+
+@media screen and (max-width: 768px) {
+  .session-planner-page {
+    width: min(100% - 1rem, 1180px);
+    padding-top: 1.5rem;
+  }
+
+  .session-planner-page .site-title {
+    font-size: 2rem;
+  }
+
+  .session-planner-meta,
+  .session-planner-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .session-planner-card-header {
+    flex-direction: column;
+  }
+
+  .session-planner-recommendation {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .session-planner-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .session-planner-detail-grid dd {
+    margin-bottom: 0.35rem;
+  }
+}
