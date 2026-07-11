@@ -62,7 +62,7 @@
     setText("session-planner-source", `Data source: ${data.dataSource}`);
     setText(
       "session-planner-sample-note",
-      data.sampleData ? "Sample data is being displayed for Stage 1. Do not use it for real observing decisions." : ""
+      data.sampleData ? "Sample data is being displayed. Do not use it for real observing decisions." : ""
     );
 
     renderSummary(data.nights);
@@ -83,10 +83,10 @@
     const copy = document.createElement("p");
     if (bestNights.length > 0) {
       copy.textContent = bestNights
-        .map((night) => `${night.weekday}, ${night.date}: ${night.recommendation.label}`)
+        .map((night) => `${night.weekday}, ${night.date}: ${night.recommendation.label} (${formatScore(night.recommendation.score)})`)
         .join(" | ");
     } else {
-      copy.textContent = "No strong imaging nights appear in this sample week.";
+      copy.textContent = "No strong imaging nights appear in this forecast window.";
     }
 
     const disclaimer = document.createElement("p");
@@ -111,7 +111,7 @@
       const date = document.createElement("h3");
       date.textContent = `${night.weekday}, ${night.date}`;
       const confidence = document.createElement("p");
-      confidence.textContent = `Confidence: ${text(night.recommendation && night.recommendation.confidence)}`;
+      confidence.textContent = `Confidence: ${text(night.recommendation && night.recommendation.confidence)} | Score: ${formatScore(night.recommendation && night.recommendation.score)}`;
       title.append(date, confidence);
 
       const badge = document.createElement("div");
@@ -124,11 +124,15 @@
       details.className = "session-planner-detail-grid";
       addDetail(details, "Best window", night.conditions && night.conditions.bestWindow);
       addDetail(details, "Usable hours", formatHours(night.conditions && night.conditions.usableHours));
+      addDetail(details, "Visual usable", formatHours(night.conditions && night.conditions.visualUsableHours));
+      addDetail(details, "Imaging usable", formatHours(night.conditions && night.conditions.imagingUsableHours));
+      addDetail(details, "Astronomical night", formatBoolean(night.conditions && night.conditions.astronomicalNightOccurs));
       addDetail(details, "Cloud cover", formatPercent(night.conditions && night.conditions.averageCloudCoverPercent));
+      addDetail(details, "Low cloud", formatPercent(night.conditions && night.conditions.averageLowCloudCoverPercent));
       addDetail(details, "Precipitation", formatPercent(night.conditions && night.conditions.precipitationProbabilityPercent));
       addDetail(details, "Wind", formatWind(night.conditions && night.conditions.wind));
       addDetail(details, "Temp/dew spread", formatTemperature(night.conditions && night.conditions.temperature));
-      addDetail(details, "Moon", formatPercent(night.conditions && night.conditions.moon && night.conditions.moon.illuminationPercent));
+      addDetail(details, "Moon", formatMoon(night.conditions && night.conditions.moon));
       addDetail(details, "Target", night.suggestedTarget);
       addDetail(details, "Equipment", night.suggestedEquipment);
 
@@ -171,7 +175,7 @@
     heading.textContent = "Forecast data could not be loaded";
 
     const message = document.createElement("p");
-    message.textContent = "The Session Planner is unavailable because the sample JSON file is missing or malformed. Please try again after the data file is restored.";
+    message.textContent = "The Session Planner is unavailable because the forecast JSON file is missing or malformed. Please try again after the data file is restored.";
 
     box.append(heading, message);
     summary.replaceChildren(box);
@@ -216,6 +220,18 @@
     return typeof value === "number" ? `${value}%` : value;
   }
 
+  function formatScore(value) {
+    return typeof value === "number" ? `${Math.round(value)}/100` : text(value);
+  }
+
+  function formatBoolean(value) {
+    if (typeof value !== "boolean") {
+      return value;
+    }
+
+    return value ? "Yes" : "No";
+  }
+
   function formatWind(wind) {
     if (!wind) {
       return "";
@@ -230,6 +246,22 @@
     }
 
     return `${text(temperature.expectedC)} C, dew spread ${text(temperature.dewPointSpreadC)} C`;
+  }
+
+  function formatMoon(moon) {
+    if (!moon) {
+      return "";
+    }
+
+    const parts = [formatPercent(moon.illuminationPercent)];
+    if (typeof moon.aboveHorizon === "boolean") {
+      parts.push(moon.aboveHorizon ? "above horizon" : "below horizon");
+    }
+    if (typeof moon.altitudeDegrees === "number") {
+      parts.push(`${moon.altitudeDegrees} deg alt`);
+    }
+
+    return parts.filter(Boolean).join(", ");
   }
 
   function setText(id, value) {
