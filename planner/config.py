@@ -31,6 +31,7 @@ def validate_config(config: dict[str, Any]) -> None:
         "location",
         "forecast",
         "targetVisibility",
+        "targetRecommendations",
         "weather",
         "limits",
         "scoring",
@@ -66,6 +67,35 @@ def validate_config(config: dict[str, Any]) -> None:
     )
     require_int(target_visibility, "timeStepMinutes", minimum=1)
     require_int(target_visibility, "forecastDays", minimum=1)
+
+    target_recommendations = config["targetRecommendations"]
+    require_int(target_recommendations, "maximumResultsPerNight", minimum=1, maximum=3)
+    require_int(target_recommendations, "minimumUsableOverlapMinutes", minimum=1)
+    require_number(
+        target_recommendations,
+        "targetClassAdjustmentMaximumPoints",
+        minimum=0,
+        maximum=10,
+    )
+    recommendation_weights = target_recommendations.get("weights")
+    expected_recommendation_weights = {
+        "usableWindowOverlap",
+        "altitudeQuality",
+        "lunarImpact",
+        "timingConvenience",
+        "cataloguePriority",
+    }
+    if not isinstance(recommendation_weights, dict) or set(recommendation_weights) != expected_recommendation_weights:
+        raise ConfigError(
+            "targetRecommendations.weights must contain the five documented components."
+        )
+    for name in expected_recommendation_weights:
+        require_number(recommendation_weights, name, minimum=0, maximum=100)
+    recommendation_total = sum(float(value) for value in recommendation_weights.values())
+    if abs(recommendation_total - 100.0) > 0.01:
+        raise ConfigError(
+            f"targetRecommendations.weights must total 100, got {recommendation_total}."
+        )
 
     weather = config["weather"]
     if not weather.get("openMeteoUrl"):
@@ -123,9 +153,17 @@ def require_number(
         raise ConfigError(f"{field} must be at most {maximum}.")
 
 
-def require_int(section: dict[str, Any], field: str, *, minimum: int | None = None) -> None:
+def require_int(
+    section: dict[str, Any],
+    field: str,
+    *,
+    minimum: int | None = None,
+    maximum: int | None = None,
+) -> None:
     value = section.get(field)
     if not isinstance(value, int):
         raise ConfigError(f"Expected integer value for {field}.")
     if minimum is not None and value < minimum:
         raise ConfigError(f"{field} must be at least {minimum}.")
+    if maximum is not None and value > maximum:
+        raise ConfigError(f"{field} must be at most {maximum}.")

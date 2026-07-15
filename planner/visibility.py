@@ -358,6 +358,13 @@ def calculate_visibility_from_altitudes(
         "maximum_altitude_time": moments[maximum_index].isoformat(),
         "altitude_at_darkness_start_deg": round(float(altitudes_deg[0]), 1),
         "altitude_at_darkness_end_deg": round(float(altitudes_deg[-1]), 1),
+        "altitude_samples": [
+            {
+                "time": moment.isoformat(),
+                "altitude_deg": round(float(altitude), 1),
+            }
+            for moment, altitude in zip(moments, altitudes_deg)
+        ],
         "visibility_rating": rating,
         "review_flags": review_flags,
     }
@@ -425,6 +432,7 @@ def _unavailable_record(target_id: str, flag: str) -> dict[str, Any]:
         "maximum_altitude_time": None,
         "altitude_at_darkness_start_deg": None,
         "altitude_at_darkness_end_deg": None,
+        "altitude_samples": [],
         "visibility_rating": "unavailable",
         "review_flags": [flag],
     }
@@ -530,7 +538,7 @@ def build_visibility_payload(
     location = config["location"]
     settings = config["targetVisibility"]
     return {
-        "schema_version": "0.2",
+        "schema_version": "0.3",
         "generated_at": generated_at.isoformat(timespec="seconds"),
         "calculation_settings": {
             "minimum_altitude_deg": float(settings["minimumAltitudeDegrees"]),

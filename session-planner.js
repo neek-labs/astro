@@ -133,14 +133,15 @@
       addDetail(details, "Wind", formatWind(night.conditions && night.conditions.wind));
       addDetail(details, "Temp/dew spread", formatTemperature(night.conditions && night.conditions.temperature));
       addDetail(details, "Moon", formatMoon(night.conditions && night.conditions.moon));
-      addDetail(details, "Target", night.suggestedTarget);
       addDetail(details, "Equipment", night.suggestedEquipment);
 
       const explanation = document.createElement("p");
       explanation.className = "session-planner-explanation";
       explanation.textContent = text(night.explanation);
 
-      card.append(header, details, explanation);
+      card.append(header, details);
+      renderTargetRecommendations(card, night);
+      card.append(explanation);
 
       if (Array.isArray(night.warnings) && night.warnings.length > 0) {
         const warnings = document.createElement("ul");
@@ -155,6 +156,125 @@
 
       container.appendChild(card);
     });
+  }
+
+  function renderTargetRecommendations(card, night) {
+    const section = document.createElement("section");
+    section.className = "session-planner-targets";
+
+    const heading = document.createElement("h4");
+    heading.textContent = "Target recommendations";
+    section.appendChild(heading);
+
+    const recommendations = night && night.targetRecommendations;
+    const validTargets = getValidTargetRecommendations(night);
+    if (validTargets.length === 0) {
+      const unavailable = document.createElement("p");
+      unavailable.className = "session-planner-targets-unavailable";
+      unavailable.textContent = recommendations && typeof recommendations.message === "string"
+        ? recommendations.message
+        : "Detailed target recommendations are unavailable for this forecast.";
+      section.appendChild(unavailable);
+      card.appendChild(section);
+      return;
+    }
+
+    const primary = validTargets[0];
+    const primaryCard = document.createElement("div");
+    primaryCard.className = "session-planner-primary-target";
+
+    const title = document.createElement("div");
+    title.className = "session-planner-target-title";
+    const name = document.createElement("h5");
+    name.textContent = primary.displayName;
+    const catalogueId = document.createElement("p");
+    catalogueId.textContent = primary.primaryCatalogId && primary.primaryCatalogId !== primary.displayName
+      ? primary.primaryCatalogId
+      : "Primary recommendation";
+    const score = document.createElement("strong");
+    score.textContent = `${formatDecimalScore(primary.recommendationScore)} · ${capitalize(primary.recommendationRating)}`;
+    title.append(name, catalogueId, score);
+
+    const metrics = document.createElement("dl");
+    metrics.className = "session-planner-target-metrics";
+    addDetail(metrics, "Type", primary.targetType);
+    addDetail(metrics, "Usable overlap", formatMinutes(primary.usableWindowOverlapMinutes));
+    addDetail(metrics, "Maximum altitude", formatAltitude(primary.maximumAltitudeDeg));
+    addDetail(metrics, "Peak", formatLocalTime(primary.maximumAltitudeTime));
+    addDetail(metrics, "Lunar impact", capitalize(primary.lunarImpactRating));
+    primaryCard.append(title, metrics);
+
+    appendTextList(primaryCard, primary.reasons, "session-planner-target-reasons", 3);
+    appendTextList(primaryCard, primary.warnings, "session-planner-target-warnings", 3);
+    section.appendChild(primaryCard);
+
+    if (validTargets.length > 1) {
+      const alternatives = document.createElement("details");
+      alternatives.className = "session-planner-target-alternatives";
+      const summary = document.createElement("summary");
+      summary.textContent = `Show ${validTargets.length - 1} alternative${validTargets.length > 2 ? "s" : ""}`;
+      alternatives.appendChild(summary);
+
+      validTargets.slice(1).forEach((target) => {
+        const item = document.createElement("div");
+        item.className = "session-planner-alternative-target";
+        const itemName = document.createElement("strong");
+        itemName.textContent = `#${target.rank} ${target.displayName}`;
+        const itemMetrics = document.createElement("p");
+        itemMetrics.textContent = [
+          formatDecimalScore(target.recommendationScore),
+          formatMinutes(target.usableWindowOverlapMinutes),
+          formatAltitude(target.maximumAltitudeDeg),
+          `${capitalize(target.lunarImpactRating)} lunar rating`
+        ].join(" · ");
+        item.append(itemName, itemMetrics);
+        alternatives.appendChild(item);
+      });
+      section.appendChild(alternatives);
+    }
+
+    card.appendChild(section);
+  }
+
+  function getValidTargetRecommendations(night) {
+    const recommendations = night && night.targetRecommendations;
+    if (!recommendations || !Array.isArray(recommendations.topTargets)) {
+      return [];
+    }
+
+    return recommendations.topTargets.filter(isValidTargetRecommendation).slice(0, 3);
+  }
+
+  function isValidTargetRecommendation(target) {
+    return Boolean(
+      target &&
+      typeof target === "object" &&
+      typeof target.displayName === "string" &&
+      target.displayName.length > 0 &&
+      typeof target.rank === "number" &&
+      Number.isFinite(target.recommendationScore) &&
+      target.recommendationScore >= 0 &&
+      target.recommendationScore <= 100 &&
+      Number.isFinite(target.usableWindowOverlapMinutes) &&
+      Number.isFinite(target.maximumAltitudeDeg) &&
+      typeof target.lunarImpactRating === "string"
+    );
+  }
+
+  function appendTextList(parent, values, className, maximumItems) {
+    if (!Array.isArray(values) || values.length === 0) {
+      return;
+    }
+    const list = document.createElement("ul");
+    list.className = className;
+    values.filter((value) => typeof value === "string" && value).slice(0, maximumItems).forEach((value) => {
+      const item = document.createElement("li");
+      item.textContent = value;
+      list.appendChild(item);
+    });
+    if (list.children.length > 0) {
+      parent.appendChild(list);
+    }
   }
 
   function addDetail(list, label, value) {
@@ -222,6 +342,39 @@
 
   function formatScore(value) {
     return typeof value === "number" ? `${Math.round(value)}/100` : text(value);
+  }
+
+  function formatDecimalScore(value) {
+    return typeof value === "number" ? `${value.toFixed(1)}/100` : text(value);
+  }
+
+  function formatMinutes(value) {
+    return typeof value === "number" ? `${Math.round(value)} minutes` : text(value);
+  }
+
+  function formatAltitude(value) {
+    return typeof value === "number" ? `${value.toFixed(1)}°` : text(value);
+  }
+
+  function formatLocalTime(value) {
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) {
+      return text(value);
+    }
+    return new Intl.DateTimeFormat("en-CA", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+      timeZone: "America/Edmonton",
+      timeZoneName: "short"
+    }).format(date);
+  }
+
+  function capitalize(value) {
+    if (typeof value !== "string" || value.length === 0) {
+      return text(value);
+    }
+    return value.charAt(0).toUpperCase() + value.slice(1);
   }
 
   function formatBoolean(value) {

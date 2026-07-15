@@ -157,15 +157,94 @@ python -m pytest tests/test_target_visibility_stage4a.py tests/test_lunar_impact
 python -m pytest
 ```
 
-The command prints a readable nightly summary and atomically writes schema `0.2`
+The command prints a readable nightly summary and atomically writes schema `0.3`
 JSON. Each night contains `moon.illumination_percent`; each existing Stage 4A target
-record retains its fields and gains a nested snake_case `moon` object. Serialization
-rejects non-finite values so generated output cannot contain `NaN`.
+record retains its fields and gains a nested snake_case `moon` object and compact
+timestamped `altitude_samples` used by Stage 4C. Serialization rejects non-finite
+values so generated output cannot contain `NaN`.
 
-Stage 4B intentionally excludes weather combination, equipment matching, filter
-selection, field-of-view suitability, and final ranking. Stage 4C should consume the
-visibility and lunar-impact records as separate, explainable inputs to final target
-recommendation scoring.
+### Stage 4C Final Nightly Target Recommendations
+
+Stage 4C joins these existing files without changing the static target catalogue:
+
+- `data/session-planner.json`: Stage 2 weather qualification and structured best
+  window timestamps.
+- `data/astronomy-target-visibility.json`: Stage 4A visibility, altitude samples,
+  and Stage 4B lunar impact.
+- `data/astronomy-targets-master-stage3b-coordinates.json`: stable IDs, display
+  metadata, object type, and imaging mode.
+- `config/session-planner.json`: recommendation weights, result limit, overlap
+  minimum, and class-adjustment limit.
+
+The nightly weather score still answers whether the night is suitable for observing.
+The separate target score assumes the night is usable and ranks which targets fit
+the weather-qualified window. Poor weather returns no formal targets; visual weather
+returns explicitly opportunistic visual candidates.
+
+A candidate must be observable, have positive observable duration, a finite maximum
+altitude, a Stage 4B lunar score, and at least 30 minutes of overlap with the
+structured Stage 2 best window. The model is:
+
+```text
+base target score = 30% usable-window overlap
+                  + 25% altitude quality
+                  + 25% Stage 4B lunar impact
+                  + 10% timing convenience
+                  + 10% catalogue priority
+
+final target score = clamp(base target score + target-class adjustment, 0, 100)
+```
+
+Overlap is interpolated through 0/0, 30/20, 60/50, 120/80, and 180/100
+(minutes/component score). Altitude is interpolated through 25/0, 35/35, 45/65,
+60/90, and 75/100 (degrees/component score), combining 60% maximum altitude and
+40% usable-overlap midpoint altitude. Timing combines whether the target peaks in
+the overlap (40%), coverage of the weather window (40%), and delay after the window
+begins (20%). Catalogue priority is a neutral 50 because the catalogue has no
+normalized priority field.
+
+Validated target type and imaging mode can add or subtract at most five points in
+the initial class model: narrowband emission targets receive +5, broadband galaxies
+and reflection nebulae receive -5, and globular clusters or planetary nebulae receive
++3. This adjustment and its deterministic reason are stored separately.
+
+Candidates are sorted by final score, overlap minutes, lunar score, maximum altitude,
+display name, and stable target ID, in that order. At most three are stored. They are
+not three equivalent choices: rank one is the compatibility `suggestedTarget` and
+the primary UI recommendation; ranks two and three are alternatives.
+
+Regenerate the inputs and recommendations in order:
+
+```powershell
+python scripts/generate_session_forecast.py
+python scripts/calculate_target_visibility.py
+python scripts/generate_target_recommendations.py
+```
+
+Explicit Stage 4C paths are supported, including the same forecast input/output path:
+
+```powershell
+python scripts/generate_target_recommendations.py `
+  --config config/session-planner.json `
+  --forecast data/session-planner.json `
+  --visibility data/astronomy-target-visibility.json `
+  --catalogue data/astronomy-targets-master-stage3b-coordinates.json `
+  --output data/session-planner.json
+```
+
+Run targeted or complete tests with:
+
+```powershell
+python -m pytest tests/test_target_recommendations_stage4c.py tests/test_session_planner_frontend_stage4c.py
+python -m pytest
+```
+
+The recommendation model is a practical heuristic. It does not yet include equipment
+matching, detailed field-of-view suitability, exact exposure planning, local horizon
+obstructions, seeing forecasts, atmospheric transparency beyond current weather
+proxies, personal target history, completed-target avoidance, or filter-specific
+exposure optimization. Stage 4D will automate the existing generation sequence and
+reviewable publication; it should not redefine Stage 4C scoring.
 
 ## Running Locally
 
@@ -194,6 +273,4 @@ To verify the error state, temporarily rename `data/session-planner.json` or mak
 
 ## Planned Future Stages
 
-- Stage 4C: combine target visibility, lunar impact, and weather into final target
-  recommendations before adding equipment and field-of-view suitability.
-- Add scheduled GitHub automation and reviewable pull requests.
+- Stage 4D: add scheduled GitHub generation, validation, and reviewable publication.

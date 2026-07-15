@@ -258,6 +258,8 @@ def test_generated_json_matches_frontend_required_schema() -> None:
     validate_output(payload)
     required = payload["nights"][0]["conditions"]
     assert "bestWindow" in required
+    assert datetime.fromisoformat(required["bestWindowStart"]).tzinfo is not None
+    assert datetime.fromisoformat(required["bestWindowEnd"]).tzinfo is not None
     assert "usableHours" in required
     assert "illuminationPercent" in required["moon"]
 

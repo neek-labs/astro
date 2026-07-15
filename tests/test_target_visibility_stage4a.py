@@ -47,6 +47,11 @@ def test_target_above_threshold_for_whole_interval() -> None:
     assert record["window_start"] == sample_times[0].isoformat()
     assert record["window_end"] == sample_times[-1].isoformat()
     assert record["observable_minutes"] == 60
+    assert record["altitude_samples"][0] == {
+        "time": sample_times[0].isoformat(),
+        "altitude_deg": 45.0,
+    }
+    assert len(record["altitude_samples"]) == len(sample_times)
 
 
 def test_target_rises_above_threshold_partway_through_night() -> None:

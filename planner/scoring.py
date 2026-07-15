@@ -100,6 +100,8 @@ def evaluate_night(
         },
         "conditions": {
             "bestWindow": format_window(chosen),
+            "bestWindowStart": chosen.start.isoformat() if chosen else None,
+            "bestWindowEnd": chosen.end.isoformat() if chosen else None,
             "usableHours": round((chosen.minutes / 60) if chosen else 0, 2),
             "visualUsableHours": visual_hours,
             "imagingUsableHours": imaging_hours,

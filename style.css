@@ -937,6 +937,118 @@ footer {
   color: #d9d9d9;
 }
 
+.session-planner-targets {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(156, 210, 255, 0.2);
+}
+
+.session-planner-targets h4 {
+  margin: 0 0 0.75rem;
+  color: #9cd2ff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.95rem;
+}
+
+.session-planner-targets-unavailable {
+  margin: 0;
+  color: #c9d5e8;
+}
+
+.session-planner-primary-target {
+  padding: 0.85rem;
+  border: 1px solid rgba(128, 237, 153, 0.28);
+  border-radius: 8px;
+  background: rgba(128, 237, 153, 0.06);
+}
+
+.session-planner-target-title {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.2rem 0.75rem;
+  align-items: start;
+}
+
+.session-planner-target-title h5 {
+  margin: 0;
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+}
+
+.session-planner-target-title p {
+  grid-column: 1;
+  margin: 0;
+  color: #b9c9dc;
+  font-size: 0.86rem;
+}
+
+.session-planner-target-title strong {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  color: #80ed99;
+  white-space: nowrap;
+}
+
+.session-planner-target-metrics {
+  display: grid;
+  grid-template-columns: minmax(100px, 0.8fr) minmax(0, 1.2fr);
+  gap: 0.35rem 0.6rem;
+  margin: 0.8rem 0 0;
+  font-size: 0.9rem;
+}
+
+.session-planner-target-metrics dt {
+  color: #9cd2ff;
+  font-weight: 700;
+}
+
+.session-planner-target-metrics dd {
+  margin: 0;
+  color: #eee;
+}
+
+.session-planner-target-reasons,
+.session-planner-target-warnings {
+  margin: 0.75rem 0 0;
+  padding-left: 1.15rem;
+  font-size: 0.9rem;
+}
+
+.session-planner-target-reasons {
+  color: #d9e8f7;
+}
+
+.session-planner-target-warnings {
+  color: #ffe7a3;
+}
+
+.session-planner-target-alternatives {
+  margin-top: 0.75rem;
+  color: #d9e8f7;
+}
+
+.session-planner-target-alternatives summary {
+  cursor: pointer;
+  color: #9cd2ff;
+  font-weight: 700;
+}
+
+.session-planner-alternative-target {
+  padding: 0.65rem 0;
+  border-bottom: 1px solid rgba(156, 210, 255, 0.14);
+}
+
+.session-planner-alternative-target:last-child {
+  border-bottom: 0;
+}
+
+.session-planner-alternative-target p {
+  margin: 0.25rem 0 0;
+  color: #b9c9dc;
+  font-size: 0.86rem;
+}
+
 .session-planner-warnings {
   margin: 1rem 0 0;
   padding-left: 1.2rem;
@@ -982,5 +1094,18 @@ footer {
 
   .session-planner-detail-grid dd {
     margin-bottom: 0.35rem;
+  }
+
+  .session-planner-target-title {
+    grid-template-columns: 1fr;
+  }
+
+  .session-planner-target-title strong {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .session-planner-target-metrics {
+    grid-template-columns: 1fr;
   }
 }

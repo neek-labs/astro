@@ -16,6 +16,18 @@
     "timeStepMinutes": 10,
     "forecastDays": 7
   },
+  "targetRecommendations": {
+    "maximumResultsPerNight": 3,
+    "weights": {
+      "usableWindowOverlap": 30,
+      "altitudeQuality": 25,
+      "lunarImpact": 25,
+      "timingConvenience": 10,
+      "cataloguePriority": 10
+    },
+    "minimumUsableOverlapMinutes": 30,
+    "targetClassAdjustmentMaximumPoints": 10
+  },
   "weather": {
     "openMeteoUrl": "https://api.open-meteo.com/v1/forecast",
     "userAgent": "neek-labs-astro-session-planner/2.0 (https://astro.nickhall.tech)",
