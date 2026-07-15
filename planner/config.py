@@ -30,6 +30,7 @@ def validate_config(config: dict[str, Any]) -> None:
     required_sections = [
         "location",
         "forecast",
+        "targetVisibility",
         "weather",
         "limits",
         "scoring",
@@ -55,6 +56,16 @@ def validate_config(config: dict[str, Any]) -> None:
     require_int(forecast, "lengthNights", minimum=1)
     require_int(forecast, "gridMinutes", minimum=15)
     require_int(forecast, "openMeteoForecastDays", minimum=2)
+
+    target_visibility = config["targetVisibility"]
+    require_number(
+        target_visibility,
+        "minimumAltitudeDegrees",
+        minimum=-90,
+        maximum=90,
+    )
+    require_int(target_visibility, "timeStepMinutes", minimum=1)
+    require_int(target_visibility, "forecastDays", minimum=1)
 
     weather = config["weather"]
     if not weather.get("openMeteoUrl"):

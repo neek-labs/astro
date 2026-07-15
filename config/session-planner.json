@@ -11,6 +11,11 @@
     "gridMinutes": 30,
     "openMeteoForecastDays": 9
   },
+  "targetVisibility": {
+    "minimumAltitudeDegrees": 25.0,
+    "timeStepMinutes": 10,
+    "forecastDays": 7
+  },
   "weather": {
     "openMeteoUrl": "https://api.open-meteo.com/v1/forecast",
     "userAgent": "neek-labs-astro-session-planner/2.0 (https://astro.nickhall.tech)",
