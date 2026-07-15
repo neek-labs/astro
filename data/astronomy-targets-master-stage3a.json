@@ -1,0 +1,796 @@
+{
+  "schema_version": "0.2-draft",
+  "stage": "3A_merged_identity_normalization",
+  "catalogue_policy": {
+    "primary_identifier_preference": [
+      "NGC",
+      "IC",
+      "Messier",
+      "Sharpless",
+      "vdB"
+    ],
+    "classification_basis": "Field of view rather than telescope model",
+    "coordinates_included": false,
+    "angular_dimensions_included": false,
+    "public_personal_fields_included": false,
+    "notes": "FOV recommendations are provisional and derived from the user's existing target lists. They should be recalculated after angular dimensions are added."
+  },
+  "fov_profiles": {
+    "narrow_field": {
+      "width_deg": 0.46,
+      "height_deg": 0.46,
+      "description": "Best suited to compact targets or detailed framing."
+    },
+    "wide_field": {
+      "width_deg": 1.8,
+      "height_deg": 1.8,
+      "description": "Best suited to large nebulae, extended galaxies, or broader context framing."
+    }
+  },
+  "target_count": 42,
+  "targets": [
+    {
+      "id": "ic-1396",
+      "primary_catalog_id": "IC 1396",
+      "display_name": "Elephant's Trunk Region",
+      "identifiers": {
+        "ic": "IC 1396",
+        "cederblad": "Ced 195"
+      },
+      "object_type": "emission_nebula_region",
+      "magnitude": 3.5,
+      "imaging_mode": "narrowband",
+      "identity_notes": "For the Zenithstar 61, this record intentionally represents the wider IC 1396 region rather than the narrower IC 1396A trunk feature used for the EdgeHD list.",
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "wide_field"
+      ],
+      "framing_scope": "wide_field"
+    },
+    {
+      "id": "ic-1396a",
+      "primary_catalog_id": "IC 1396A",
+      "display_name": "Elephant's Trunk Nebula",
+      "identifiers": {
+        "ic": "IC 1396A",
+        "parent_region": "IC 1396",
+        "cederblad": "Ced 195"
+      },
+      "object_type": "dark_nebula_in_emission_region",
+      "magnitude": 3.5,
+      "imaging_mode": "narrowband",
+      "identity_notes": "IC 1396A is the Elephant's Trunk feature; IC 1396 is the much larger emission region. Magnitude likely refers to the broader region and should be reviewed later.",
+      "review_status": "needs_framing_review",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "ic-1805",
+      "primary_catalog_id": "IC 1805",
+      "display_name": "Heart Nebula",
+      "identifiers": {
+        "ic": "IC 1805"
+      },
+      "object_type": "emission_nebula",
+      "magnitude": 6.5,
+      "imaging_mode": "narrowband",
+      "identity_notes": "For wide-field imaging, IC 1805 is an appropriate practical identity for the Heart Nebula complex. The exact framing center can be refined later.",
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "wide_field"
+      ],
+      "framing_scope": "wide_field"
+    },
+    {
+      "id": "ic-1848",
+      "primary_catalog_id": "IC 1848",
+      "display_name": "Soul Nebula",
+      "identifiers": {
+        "ic": "IC 1848"
+      },
+      "object_type": "emission_nebula",
+      "magnitude": null,
+      "imaging_mode": "narrowband",
+      "identity_notes": "The exact framing center can be refined later.",
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "wide_field"
+      ],
+      "framing_scope": "wide_field"
+    },
+    {
+      "id": "ic-342",
+      "primary_catalog_id": "IC 342",
+      "display_name": "Hidden Galaxy",
+      "identifiers": {
+        "ic": "IC 342",
+        "caldwell": "Caldwell 5"
+      },
+      "object_type": "galaxy",
+      "magnitude": 9.1,
+      "imaging_mode": "LRGB",
+      "identity_notes": "No NGC designation. Replaced 'Unnamed spiral galaxy' with the commonly used name Hidden Galaxy.",
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "ic-405",
+      "primary_catalog_id": "IC 405",
+      "display_name": "Flaming Star Nebula",
+      "identifiers": {
+        "ic": "IC 405",
+        "caldwell": "Caldwell 31"
+      },
+      "object_type": "emission_and_reflection_nebula",
+      "magnitude": null,
+      "imaging_mode": "narrowband",
+      "identity_notes": null,
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "wide_field"
+      ],
+      "framing_scope": "wide_field"
+    },
+    {
+      "id": "ic-5070",
+      "primary_catalog_id": "IC 5070",
+      "display_name": "Pelican Nebula",
+      "identifiers": {
+        "ic": "IC 5070",
+        "alternate_ic": "IC 5067"
+      },
+      "object_type": "emission_nebula",
+      "magnitude": null,
+      "imaging_mode": "narrowband",
+      "identity_notes": "Pelican Nebula is commonly referenced as IC 5070, with IC 5067 often used for part of the same nebular complex.",
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "wide_field"
+      ],
+      "framing_scope": "wide_field"
+    },
+    {
+      "id": "ic-5146",
+      "primary_catalog_id": "IC 5146",
+      "display_name": "Cocoon Nebula",
+      "identifiers": {
+        "ic": "IC 5146",
+        "caldwell": "Caldwell 19"
+      },
+      "object_type": "emission_and_reflection_nebula",
+      "magnitude": 7.2,
+      "imaging_mode": "narrowband",
+      "identity_notes": "No NGC designation. The target includes emission, reflection, and associated dark nebulosity.",
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "m-16-eagle-nebula",
+      "primary_catalog_id": "M16",
+      "display_name": "Eagle Nebula",
+      "identifiers": {
+        "messier": "M16",
+        "ngc": "NGC 6611",
+        "ic": "IC 4703"
+      },
+      "object_type": "emission_nebula_and_open_cluster",
+      "magnitude": 6.0,
+      "imaging_mode": "narrowband",
+      "identity_notes": "NGC 6611 identifies the embedded open cluster; IC 4703 identifies the surrounding emission nebula. The combined imaging target is conventionally M16.",
+      "review_status": "normalized_with_component_note",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "m-8-lagoon-nebula",
+      "primary_catalog_id": "M8",
+      "display_name": "Lagoon Nebula",
+      "identifiers": {
+        "messier": "M8",
+        "ngc": "NGC 6523"
+      },
+      "object_type": "emission_nebula",
+      "magnitude": 6.0,
+      "imaging_mode": "narrowband",
+      "identity_notes": "Messier 8 is the clearest practical primary identifier for the imaging target.",
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "wide_field"
+      ],
+      "framing_scope": "wide_field"
+    },
+    {
+      "id": "ngc-1333",
+      "primary_catalog_id": "NGC 1333",
+      "display_name": "Embryo Nebula",
+      "identifiers": {
+        "ngc": "NGC 1333",
+        "cederblad": "Ced 16"
+      },
+      "object_type": "reflection_nebula",
+      "magnitude": 9.5,
+      "imaging_mode": "LRGB",
+      "identity_notes": "Ced 16 is retained as a Cederblad designation, not a Caldwell number.",
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "ngc-1499",
+      "primary_catalog_id": "NGC 1499",
+      "display_name": "California Nebula",
+      "identifiers": {
+        "ngc": "NGC 1499",
+        "caldwell": "Caldwell 26"
+      },
+      "object_type": "emission_nebula",
+      "magnitude": null,
+      "imaging_mode": "narrowband",
+      "identity_notes": "Corrected 'Ced 26' to Caldwell 26.",
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "wide_field"
+      ],
+      "framing_scope": "wide_field"
+    },
+    {
+      "id": "ngc-224",
+      "primary_catalog_id": "NGC 224",
+      "display_name": "Andromeda Galaxy",
+      "identifiers": {
+        "ngc": "NGC 224",
+        "messier": "M31"
+      },
+      "object_type": "galaxy",
+      "magnitude": 3.44,
+      "imaging_mode": "LRGB",
+      "identity_notes": null,
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "wide_field"
+      ],
+      "framing_scope": "wide_field"
+    },
+    {
+      "id": "ngc-2403",
+      "primary_catalog_id": "NGC 2403",
+      "display_name": "NGC 2403 Galaxy",
+      "identifiers": {
+        "ngc": "NGC 2403",
+        "caldwell": "Caldwell 7",
+        "pgc": "PGC 21396"
+      },
+      "object_type": "galaxy",
+      "magnitude": 8.9,
+      "imaging_mode": "LRGB",
+      "identity_notes": "PGC 21396 is an alternate catalogue identifier, not the descriptive name.",
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "ngc-281",
+      "primary_catalog_id": "NGC 281",
+      "display_name": "Pacman Nebula",
+      "identifiers": {
+        "ngc": "NGC 281",
+        "caldwell": "Caldwell 3",
+        "ic": "IC 11",
+        "sharpless": "Sh2-184"
+      },
+      "object_type": "emission_nebula",
+      "magnitude": 7.4,
+      "imaging_mode": "narrowband",
+      "identity_notes": "Corrected 'Ced 3' to Caldwell 3. IC 1590 is the embedded open cluster and is not used as the primary target identity.",
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "ngc-3031",
+      "primary_catalog_id": "NGC 3031",
+      "display_name": "Bode's Galaxy",
+      "identifiers": {
+        "ngc": "NGC 3031",
+        "messier": "M81"
+      },
+      "object_type": "galaxy",
+      "magnitude": 6.94,
+      "imaging_mode": "LRGB",
+      "identity_notes": null,
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "ngc-4258",
+      "primary_catalog_id": "NGC 4258",
+      "display_name": "Messier 106",
+      "identifiers": {
+        "ngc": "NGC 4258",
+        "messier": "M106"
+      },
+      "object_type": "galaxy",
+      "magnitude": 8.41,
+      "imaging_mode": "LRGB",
+      "identity_notes": "A descriptive nickname is not necessary; M106 is the familiar display label.",
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "ngc-5055",
+      "primary_catalog_id": "NGC 5055",
+      "display_name": "Sunflower Galaxy",
+      "identifiers": {
+        "ngc": "NGC 5055",
+        "messier": "M63"
+      },
+      "object_type": "galaxy",
+      "magnitude": 8.59,
+      "imaging_mode": "LRGB",
+      "identity_notes": null,
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "ngc-5194",
+      "primary_catalog_id": "NGC 5194",
+      "display_name": "Whirlpool Galaxy",
+      "identifiers": {
+        "ngc": "NGC 5194",
+        "messier": "M51",
+        "companion": "NGC 5195"
+      },
+      "object_type": "interacting_galaxy_pair",
+      "magnitude": 8.1,
+      "imaging_mode": "LRGB",
+      "identity_notes": "The common imaging field includes companion galaxy NGC 5195.",
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "ngc-5457",
+      "primary_catalog_id": "NGC 5457",
+      "display_name": "Pinwheel Galaxy",
+      "identifiers": {
+        "ngc": "NGC 5457",
+        "messier": "M101"
+      },
+      "object_type": "galaxy",
+      "magnitude": 7.86,
+      "imaging_mode": "LRGB",
+      "identity_notes": null,
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "ngc-5866",
+      "primary_catalog_id": "NGC 5866",
+      "display_name": "Spindle Galaxy",
+      "identifiers": {
+        "ngc": "NGC 5866",
+        "messier": "M102"
+      },
+      "object_type": "lenticular_galaxy",
+      "magnitude": 9.89,
+      "imaging_mode": "LRGB",
+      "identity_notes": "M102 is commonly identified with NGC 5866, though the historical identification is not completely certain. Removed 'Fool's Gold'.",
+      "review_status": "normalized_with_historical_note",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "ngc-5907",
+      "primary_catalog_id": "NGC 5907",
+      "display_name": "Splinter Galaxy",
+      "identifiers": {
+        "ngc": "NGC 5907",
+        "alternate_ngc": "NGC 5906"
+      },
+      "object_type": "galaxy",
+      "magnitude": 11.8,
+      "imaging_mode": "LRGB",
+      "identity_notes": "Normalized the imaging target to NGC 5907. NGC 5906 is often treated as an alternate or duplicate designation. 'Cat Scratch Galaxy' is retained only as an optional nickname pending review.",
+      "review_status": "needs_nickname_review",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "ngc-598",
+      "primary_catalog_id": "NGC 598",
+      "display_name": "Triangulum Galaxy",
+      "identifiers": {
+        "ngc": "NGC 598",
+        "messier": "M33"
+      },
+      "object_type": "galaxy",
+      "magnitude": 5.72,
+      "imaging_mode": "LRGB",
+      "identity_notes": null,
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "wide_field"
+      ],
+      "framing_scope": "wide_field"
+    },
+    {
+      "id": "ngc-6205",
+      "primary_catalog_id": "NGC 6205",
+      "display_name": "Hercules Globular Cluster",
+      "identifiers": {
+        "ngc": "NGC 6205",
+        "messier": "M13"
+      },
+      "object_type": "globular_cluster",
+      "magnitude": 5.8,
+      "imaging_mode": "LRGB",
+      "identity_notes": null,
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "ngc-628",
+      "primary_catalog_id": "NGC 628",
+      "display_name": "Phantom Galaxy",
+      "identifiers": {
+        "ngc": "NGC 628",
+        "messier": "M74"
+      },
+      "object_type": "galaxy",
+      "magnitude": 9.39,
+      "imaging_mode": "LRGB",
+      "identity_notes": null,
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "ngc-6341",
+      "primary_catalog_id": "NGC 6341",
+      "display_name": "Messier 92",
+      "identifiers": {
+        "ngc": "NGC 6341",
+        "messier": "M92"
+      },
+      "object_type": "globular_cluster",
+      "magnitude": 6.4,
+      "imaging_mode": "LRGB",
+      "identity_notes": null,
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "ngc-6514",
+      "primary_catalog_id": "NGC 6514",
+      "display_name": "Trifid Nebula",
+      "identifiers": {
+        "ngc": "NGC 6514",
+        "messier": "M20"
+      },
+      "object_type": "emission_and_reflection_nebula",
+      "magnitude": 6.3,
+      "imaging_mode": "LRGB",
+      "identity_notes": "The target contains both emission and reflection components; filter strategy can be refined in Stage 3B. Normalized object type from 'cluster with nebulosity' to the more direct nebular identity used for imaging.",
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "narrow_field",
+        "wide_field"
+      ],
+      "framing_scope": "multi_scale"
+    },
+    {
+      "id": "ngc-6720",
+      "primary_catalog_id": "NGC 6720",
+      "display_name": "Ring Nebula",
+      "identifiers": {
+        "ngc": "NGC 6720",
+        "messier": "M57"
+      },
+      "object_type": "planetary_nebula",
+      "magnitude": 8.8,
+      "imaging_mode": "narrowband",
+      "identity_notes": null,
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "ngc-6826",
+      "primary_catalog_id": "NGC 6826",
+      "display_name": "Blinking Planetary Nebula",
+      "identifiers": {
+        "ngc": "NGC 6826",
+        "caldwell": "Caldwell 15"
+      },
+      "object_type": "planetary_nebula",
+      "magnitude": 8.8,
+      "imaging_mode": "narrowband",
+      "identity_notes": null,
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "ngc-6853",
+      "primary_catalog_id": "NGC 6853",
+      "display_name": "Dumbbell Nebula",
+      "identifiers": {
+        "ngc": "NGC 6853",
+        "messier": "M27"
+      },
+      "object_type": "planetary_nebula",
+      "magnitude": 7.4,
+      "imaging_mode": "narrowband",
+      "identity_notes": null,
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "ngc-6888",
+      "primary_catalog_id": "NGC 6888",
+      "display_name": "Crescent Nebula",
+      "identifiers": {
+        "ngc": "NGC 6888",
+        "caldwell": "Caldwell 27",
+        "sharpless": "Sh2-105"
+      },
+      "object_type": "emission_nebula",
+      "magnitude": 7.4,
+      "imaging_mode": "narrowband",
+      "identity_notes": "Corrected spelling from 'Cresent' to 'Crescent'.",
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "ngc-6946",
+      "primary_catalog_id": "NGC 6946",
+      "display_name": "Fireworks Galaxy",
+      "identifiers": {
+        "ngc": "NGC 6946",
+        "caldwell": "Caldwell 12"
+      },
+      "object_type": "galaxy",
+      "magnitude": 9.6,
+      "imaging_mode": "LRGB",
+      "identity_notes": null,
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "ngc-6960",
+      "primary_catalog_id": "NGC 6960",
+      "display_name": "West Veil Nebula",
+      "identifiers": {
+        "ngc": "NGC 6960",
+        "caldwell": "Caldwell 34"
+      },
+      "object_type": "supernova_remnant",
+      "magnitude": null,
+      "imaging_mode": "narrowband",
+      "identity_notes": "This is the western section of the Veil Nebula complex.",
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "wide_field"
+      ],
+      "framing_scope": "wide_field"
+    },
+    {
+      "id": "ngc-6992",
+      "primary_catalog_id": "NGC 6992",
+      "display_name": "East Veil Nebula",
+      "identifiers": {
+        "ngc": "NGC 6992",
+        "caldwell": "Caldwell 33",
+        "related_ngc": "NGC 6995"
+      },
+      "object_type": "supernova_remnant",
+      "magnitude": null,
+      "imaging_mode": "narrowband",
+      "identity_notes": "This record uses NGC 6992 as the primary identity for the eastern arc of the Veil Nebula; NGC 6995 is a closely related designation in the same eastern section.",
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "wide_field"
+      ],
+      "framing_scope": "wide_field"
+    },
+    {
+      "id": "ngc-7000",
+      "primary_catalog_id": "NGC 7000",
+      "display_name": "North America Nebula",
+      "identifiers": {
+        "ngc": "NGC 7000"
+      },
+      "object_type": "emission_nebula",
+      "magnitude": 4.0,
+      "imaging_mode": "narrowband",
+      "identity_notes": null,
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "wide_field"
+      ],
+      "framing_scope": "wide_field"
+    },
+    {
+      "id": "ngc-7023",
+      "primary_catalog_id": "NGC 7023",
+      "display_name": "Iris Nebula",
+      "identifiers": {
+        "ngc": "NGC 7023",
+        "caldwell": "Caldwell 4"
+      },
+      "object_type": "reflection_nebula",
+      "magnitude": 6.8,
+      "imaging_mode": "LRGB",
+      "identity_notes": null,
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "ngc-7078",
+      "primary_catalog_id": "NGC 7078",
+      "display_name": "Messier 15",
+      "identifiers": {
+        "ngc": "NGC 7078",
+        "messier": "M15"
+      },
+      "object_type": "globular_cluster",
+      "magnitude": 6.3,
+      "imaging_mode": "LRGB",
+      "identity_notes": "'Pegasus Cluster' can be used as an optional nickname, but M15 is clearer and less ambiguous.",
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "ngc-7293",
+      "primary_catalog_id": "NGC 7293",
+      "display_name": "Helix Nebula",
+      "identifiers": {
+        "ngc": "NGC 7293",
+        "caldwell": "Caldwell 63"
+      },
+      "object_type": "planetary_nebula",
+      "magnitude": 7.6,
+      "imaging_mode": "narrowband",
+      "identity_notes": "Removed the incorrect 'Sunflower Nebula' alias.",
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "ngc-7331",
+      "primary_catalog_id": "NGC 7331",
+      "display_name": "Deer Lick Group",
+      "identifiers": {
+        "ngc": "NGC 7331",
+        "caldwell": "Caldwell 30"
+      },
+      "object_type": "galaxy_group_field",
+      "magnitude": 9.48,
+      "imaging_mode": "LRGB",
+      "identity_notes": "NGC 7331 is the dominant galaxy and pointing anchor; 'Deer Lick Group' describes the wider imaging field.",
+      "review_status": "normalized_with_field_note",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "ngc-7635",
+      "primary_catalog_id": "NGC 7635",
+      "display_name": "Bubble Nebula",
+      "identifiers": {
+        "ngc": "NGC 7635",
+        "caldwell": "Caldwell 11",
+        "sharpless": "Sh2-162"
+      },
+      "object_type": "emission_nebula",
+      "magnitude": 10.16,
+      "imaging_mode": "narrowband",
+      "identity_notes": null,
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "sh2-142",
+      "primary_catalog_id": "Sh2-142",
+      "display_name": "Wizard Nebula",
+      "identifiers": {
+        "sharpless": "Sh2-142",
+        "ngc": "NGC 7380"
+      },
+      "object_type": "emission_nebula_and_open_cluster",
+      "magnitude": 7.2,
+      "imaging_mode": "narrowband",
+      "identity_notes": "Sh2-142 identifies the emission nebula; NGC 7380 identifies the embedded open cluster. Removed the unverified 'Ced 206' assignment.",
+      "review_status": "normalized_with_component_note",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    },
+    {
+      "id": "vdb-141",
+      "primary_catalog_id": "vdB 141",
+      "display_name": "Ghost Nebula",
+      "identifiers": {
+        "vdb": "vdB 141",
+        "sharpless": "Sh2-136"
+      },
+      "object_type": "reflection_nebula",
+      "magnitude": 9.4,
+      "imaging_mode": "LRGB",
+      "identity_notes": "No NGC designation. Corrected the catalogue family: vdB is the van den Bergh reflection-nebula catalogue, not Caldwell.",
+      "review_status": "normalized",
+      "recommended_fov_classes": [
+        "narrow_field"
+      ],
+      "framing_scope": "narrow_field"
+    }
+  ]
+}
