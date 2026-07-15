@@ -6,73 +6,13 @@
     "longitude": -114.11,
     "timezone": "America/Edmonton"
   },
-  "generatedAt": "2026-07-11T12:46:59.642606-06:00",
+  "generatedAt": "2026-07-14T20:30:55.395333-06:00",
   "dataSource": "Open-Meteo Forecast API with deterministic local solar, lunar, and scoring calculations.",
   "nights": [
     {
-      "date": "2026-07-11",
-      "weekday": "Saturday",
+      "date": "2026-07-14",
+      "weekday": "Tuesday",
       "forecastLeadHours": 0,
-      "recommendation": {
-        "label": "Imaging possible",
-        "level": "possible",
-        "confidence": "High",
-        "score": 85
-      },
-      "conditions": {
-        "bestWindow": "00:00-04:00 MDT",
-        "usableHours": 4.0,
-        "visualUsableHours": 6.0,
-        "imagingUsableHours": 4.0,
-        "astronomicalNightOccurs": false,
-        "averageCloudCoverPercent": 12,
-        "averageLowCloudCoverPercent": 3,
-        "precipitationProbabilityPercent": 0,
-        "averageHumidityPercent": 86,
-        "visibilityKm": 14.3,
-        "wind": {
-          "sustainedKph": 5,
-          "gustKph": 10
-        },
-        "temperature": {
-          "expectedC": 15.2,
-          "dewPointSpreadC": 2.3
-        },
-        "moon": {
-          "illuminationPercent": 6.6,
-          "aboveHorizon": false,
-          "altitudeDegrees": -5.6,
-          "context": "bestWindowMidpoint"
-        }
-      },
-      "suggestedTarget": "Target recommendations arrive in Stage 3",
-      "suggestedEquipment": "EdgeHD 8 with CGEM II or Zenithstar 61 with Star Adventurer",
-      "warnings": [
-        "Dew-point spread is tight; watch for dew formation.",
-        "Calgary does not reach true astronomical darkness for this observing night."
-      ],
-      "explanation": "Imaging possible: Best contiguous window is 4.0 hours. Average cloud cover is 12%. Average precipitation probability is 0%. The selected window meets imaging darkness and weather limits.",
-      "scoreBreakdown": {
-        "clouds": 87.9,
-        "precipitation": 100,
-        "duration": 100,
-        "wind": 84.4,
-        "dewHumidity": 42.7,
-        "visibility": 62.3,
-        "darkness": 70,
-        "convenience": 100
-      },
-      "reasons": [
-        "Best contiguous window is 4.0 hours.",
-        "Average cloud cover is 12%.",
-        "Average precipitation probability is 0%.",
-        "The selected window meets imaging darkness and weather limits."
-      ]
-    },
-    {
-      "date": "2026-07-12",
-      "weekday": "Sunday",
-      "forecastLeadHours": 23.2,
       "recommendation": {
         "label": "Imaging night",
         "level": "strong",
@@ -80,143 +20,23 @@
         "score": 91
       },
       "conditions": {
-        "bestWindow": "00:00-02:00 MDT",
-        "usableHours": 2.0,
-        "visualUsableHours": 4.0,
-        "imagingUsableHours": 2.0,
+        "bestWindow": "00:00-04:00 MDT",
+        "usableHours": 4.0,
+        "visualUsableHours": 6.0,
+        "imagingUsableHours": 4.0,
         "astronomicalNightOccurs": false,
-        "averageCloudCoverPercent": 0,
-        "averageLowCloudCoverPercent": 0,
-        "precipitationProbabilityPercent": 0,
-        "averageHumidityPercent": 50,
-        "visibilityKm": 37.1,
-        "wind": {
-          "sustainedKph": 2,
-          "gustKph": 9
-        },
-        "temperature": {
-          "expectedC": 13.4,
-          "dewPointSpreadC": 10.1
-        },
-        "moon": {
-          "illuminationPercent": 2.0,
-          "aboveHorizon": false,
-          "altitudeDegrees": -12.1,
-          "context": "bestWindowMidpoint"
-        }
-      },
-      "suggestedTarget": "Target recommendations arrive in Stage 3",
-      "suggestedEquipment": "EdgeHD 8 with CGEM II or Zenithstar 61 with Star Adventurer",
-      "warnings": [
-        "Calgary does not reach true astronomical darkness for this observing night."
-      ],
-      "explanation": "Imaging night: Best contiguous window is 2.0 hours. Average cloud cover is 0%. Average precipitation probability is 0%. The selected window meets imaging darkness and weather limits.",
-      "scoreBreakdown": {
-        "clouds": 100.0,
-        "precipitation": 100,
-        "duration": 66.7,
-        "wind": 88.7,
-        "dewHumidity": 82.3,
-        "visibility": 100,
-        "darkness": 70,
-        "convenience": 100
-      },
-      "reasons": [
-        "Best contiguous window is 2.0 hours.",
-        "Average cloud cover is 0%.",
-        "Average precipitation probability is 0%.",
-        "The selected window meets imaging darkness and weather limits."
-      ]
-    },
-    {
-      "date": "2026-07-13",
-      "weekday": "Monday",
-      "forecastLeadHours": 47.2,
-      "recommendation": {
-        "label": "Visual only",
-        "level": "visual",
-        "confidence": "High",
-        "score": 76
-      },
-      "conditions": {
-        "bestWindow": "03:00-04:00 MDT",
-        "usableHours": 1.0,
-        "visualUsableHours": 1.0,
-        "imagingUsableHours": 0,
-        "astronomicalNightOccurs": false,
-        "averageCloudCoverPercent": 5,
+        "averageCloudCoverPercent": 1,
         "averageLowCloudCoverPercent": 0,
         "precipitationProbabilityPercent": 1,
-        "averageHumidityPercent": 94,
-        "visibilityKm": 24.1,
+        "averageHumidityPercent": 80,
+        "visibilityKm": 17.8,
         "wind": {
-          "sustainedKph": 8,
-          "gustKph": 17
+          "sustainedKph": 10,
+          "gustKph": 15
         },
         "temperature": {
-          "expectedC": 9.2,
-          "dewPointSpreadC": 0.9
-        },
-        "moon": {
-          "illuminationPercent": 0.1,
-          "aboveHorizon": false,
-          "altitudeDegrees": -11.5,
-          "context": "bestWindowMidpoint"
-        }
-      },
-      "suggestedTarget": "Bright visual targets; detailed recommendations arrive in Stage 3",
-      "suggestedEquipment": "NexStar 6SE or EdgeHD 8 on the alt-az mount",
-      "warnings": [
-        "Dew-point spread is tight; watch for dew formation.",
-        "Conditions are not strong enough for a planned imaging session.",
-        "Calgary does not reach true astronomical darkness for this observing night."
-      ],
-      "explanation": "Visual only: Best contiguous window is 1.0 hours. Average cloud cover is 5%. Average precipitation probability is 1%. Only visual-usable conditions met the configured limits.",
-      "scoreBreakdown": {
-        "clouds": 95.6,
-        "precipitation": 97.5,
-        "duration": 33.3,
-        "wind": 73.2,
-        "dewHumidity": 16.7,
-        "visibility": 100,
-        "darkness": 70,
-        "convenience": 100
-      },
-      "reasons": [
-        "Best contiguous window is 1.0 hours.",
-        "Average cloud cover is 5%.",
-        "Average precipitation probability is 1%.",
-        "Only visual-usable conditions met the configured limits."
-      ]
-    },
-    {
-      "date": "2026-07-14",
-      "weekday": "Tuesday",
-      "forecastLeadHours": 71.2,
-      "recommendation": {
-        "label": "Visual only",
-        "level": "visual",
-        "confidence": "Medium",
-        "score": 79
-      },
-      "conditions": {
-        "bestWindow": "23:00-05:00 MDT",
-        "usableHours": 6.0,
-        "visualUsableHours": 6.0,
-        "imagingUsableHours": 0,
-        "astronomicalNightOccurs": false,
-        "averageCloudCoverPercent": 10,
-        "averageLowCloudCoverPercent": 0,
-        "precipitationProbabilityPercent": 10,
-        "averageHumidityPercent": 92,
-        "visibilityKm": 24.1,
-        "wind": {
-          "sustainedKph": 14,
-          "gustKph": 31
-        },
-        "temperature": {
-          "expectedC": 13.1,
-          "dewPointSpreadC": 1.2
+          "expectedC": 15.4,
+          "dewPointSpreadC": 3.4
         },
         "moon": {
           "illuminationPercent": 1.3,
@@ -225,127 +45,122 @@
           "context": "bestWindowMidpoint"
         }
       },
-      "suggestedTarget": "Bright visual targets; detailed recommendations arrive in Stage 3",
-      "suggestedEquipment": "NexStar 6SE or EdgeHD 8 on the alt-az mount",
+      "suggestedTarget": "Target recommendations arrive in Stage 3",
+      "suggestedEquipment": "EdgeHD 8 with CGEM II or Zenithstar 61 with Star Adventurer",
       "warnings": [
-        "Dew-point spread is tight; watch for dew formation.",
-        "Wind gusts may reduce imaging quality.",
-        "Conditions are not strong enough for a planned imaging session.",
-        "Weekday window runs substantially after midnight; schedule fatigue penalty applied.",
         "Calgary does not reach true astronomical darkness for this observing night."
       ],
-      "explanation": "Visual only: Best contiguous window is 6.0 hours. Average cloud cover is 10%. Average precipitation probability is 10%. Only visual-usable conditions met the configured limits.",
+      "explanation": "Imaging night: Best contiguous window is 4.0 hours. Average cloud cover is 1%. Average precipitation probability is 1%. The selected window meets imaging darkness and weather limits.",
       "scoreBreakdown": {
-        "clouds": 91.1,
-        "precipitation": 75.8,
+        "clouds": 98.8,
+        "precipitation": 97.5,
         "duration": 100,
-        "wind": 52.0,
-        "dewHumidity": 21.9,
-        "visibility": 100,
+        "wind": 72.8,
+        "dewHumidity": 63.1,
+        "visibility": 85.3,
         "darkness": 70,
-        "convenience": 92
+        "convenience": 100
       },
       "reasons": [
-        "Best contiguous window is 6.0 hours.",
-        "Average cloud cover is 10%.",
-        "Average precipitation probability is 10%.",
-        "Only visual-usable conditions met the configured limits."
+        "Best contiguous window is 4.0 hours.",
+        "Average cloud cover is 1%.",
+        "Average precipitation probability is 1%.",
+        "The selected window meets imaging darkness and weather limits."
       ]
     },
     {
       "date": "2026-07-15",
       "weekday": "Wednesday",
-      "forecastLeadHours": 95.2,
+      "forecastLeadHours": 15.5,
       "recommendation": {
-        "label": "Visual only",
-        "level": "visual",
-        "confidence": "Medium",
-        "score": 80
+        "label": "Exceptional imaging night",
+        "level": "exceptional",
+        "confidence": "High",
+        "score": 92
       },
       "conditions": {
-        "bestWindow": "01:00-05:00 MDT",
+        "bestWindow": "00:00-04:00 MDT",
         "usableHours": 4.0,
-        "visualUsableHours": 4.0,
-        "imagingUsableHours": 0,
+        "visualUsableHours": 6.5,
+        "imagingUsableHours": 4.0,
         "astronomicalNightOccurs": false,
-        "averageCloudCoverPercent": 4,
+        "averageCloudCoverPercent": 2,
         "averageLowCloudCoverPercent": 0,
-        "precipitationProbabilityPercent": 24,
-        "averageHumidityPercent": 90,
-        "visibilityKm": 24.1,
+        "precipitationProbabilityPercent": 1,
+        "averageHumidityPercent": 73,
+        "visibilityKm": 22.0,
         "wind": {
-          "sustainedKph": 7,
-          "gustKph": 6
+          "sustainedKph": 10,
+          "gustKph": 16
         },
         "temperature": {
-          "expectedC": 12.4,
-          "dewPointSpreadC": 1.6
+          "expectedC": 14.6,
+          "dewPointSpreadC": 4.8
         },
         "moon": {
-          "illuminationPercent": 5.5,
+          "illuminationPercent": 5.3,
           "aboveHorizon": false,
-          "altitudeDegrees": -24.1,
+          "altitudeDegrees": -21.3,
           "context": "bestWindowMidpoint"
         }
       },
-      "suggestedTarget": "Bright visual targets; detailed recommendations arrive in Stage 3",
-      "suggestedEquipment": "NexStar 6SE or EdgeHD 8 on the alt-az mount",
+      "suggestedTarget": "Target recommendations arrive in Stage 3",
+      "suggestedEquipment": "EdgeHD 8 with CGEM II or Zenithstar 61 with Star Adventurer",
       "warnings": [
-        "Dew-point spread is tight; watch for dew formation.",
-        "Conditions are not strong enough for a planned imaging session.",
         "Calgary does not reach true astronomical darkness for this observing night."
       ],
-      "explanation": "Visual only: Best contiguous window is 4.0 hours. Average cloud cover is 4%. Average precipitation probability is 24%. Only visual-usable conditions met the configured limits.",
+      "explanation": "Exceptional imaging night: Best contiguous window is 4.0 hours. Average cloud cover is 2%. Average precipitation probability is 1%. The selected window meets imaging darkness and weather limits. Exceptional thresholds require very low cloud, calm wind, dry air, and at least three hours.",
       "scoreBreakdown": {
-        "clouds": 96.7,
-        "precipitation": 40.0,
+        "clouds": 98.2,
+        "precipitation": 96.9,
         "duration": 100,
-        "wind": 85.3,
-        "dewHumidity": 29.1,
+        "wind": 72.1,
+        "dewHumidity": 74.5,
         "visibility": 100,
         "darkness": 70,
         "convenience": 100
       },
       "reasons": [
         "Best contiguous window is 4.0 hours.",
-        "Average cloud cover is 4%.",
-        "Average precipitation probability is 24%.",
-        "Only visual-usable conditions met the configured limits."
+        "Average cloud cover is 2%.",
+        "Average precipitation probability is 1%.",
+        "The selected window meets imaging darkness and weather limits.",
+        "Exceptional thresholds require very low cloud, calm wind, dry air, and at least three hours."
       ]
     },
     {
       "date": "2026-07-16",
       "weekday": "Thursday",
-      "forecastLeadHours": 119.2,
+      "forecastLeadHours": 39.5,
       "recommendation": {
         "label": "Visual only",
         "level": "visual",
-        "confidence": "Medium",
-        "score": 72
+        "confidence": "High",
+        "score": 80
       },
       "conditions": {
-        "bestWindow": "22:30-05:00 MDT",
-        "usableHours": 6.5,
-        "visualUsableHours": 6.5,
+        "bestWindow": "02:00-03:00 MDT",
+        "usableHours": 1.0,
+        "visualUsableHours": 1.0,
         "imagingUsableHours": 0,
         "astronomicalNightOccurs": false,
-        "averageCloudCoverPercent": 14,
-        "averageLowCloudCoverPercent": 4,
-        "precipitationProbabilityPercent": 23,
-        "averageHumidityPercent": 93,
-        "visibilityKm": 23.8,
+        "averageCloudCoverPercent": 0,
+        "averageLowCloudCoverPercent": 0,
+        "precipitationProbabilityPercent": 2,
+        "averageHumidityPercent": 88,
+        "visibilityKm": 24.1,
         "wind": {
-          "sustainedKph": 13,
-          "gustKph": 34
+          "sustainedKph": 5,
+          "gustKph": 6
         },
         "temperature": {
-          "expectedC": 15.3,
-          "dewPointSpreadC": 1.1
+          "expectedC": 15.7,
+          "dewPointSpreadC": 2.0
         },
         "moon": {
-          "illuminationPercent": 11.5,
+          "illuminationPercent": 11.8,
           "aboveHorizon": false,
-          "altitudeDegrees": -20.0,
+          "altitudeDegrees": -25.8,
           "context": "bestWindowMidpoint"
         }
       },
@@ -353,38 +168,36 @@
       "suggestedEquipment": "NexStar 6SE or EdgeHD 8 on the alt-az mount",
       "warnings": [
         "Dew-point spread is tight; watch for dew formation.",
-        "Wind gusts may reduce imaging quality.",
         "Conditions are not strong enough for a planned imaging session.",
-        "Weekday window runs substantially after midnight; schedule fatigue penalty applied.",
         "Calgary does not reach true astronomical darkness for this observing night."
       ],
-      "explanation": "Visual only: Best contiguous window is 6.5 hours. Average cloud cover is 14%. Average precipitation probability is 23%. Only visual-usable conditions met the configured limits.",
+      "explanation": "Visual only: Best contiguous window is 1.0 hours. Average cloud cover is 0%. Average precipitation probability is 2%. Only visual-usable conditions met the configured limits.",
       "scoreBreakdown": {
-        "clouds": 86.3,
-        "precipitation": 42.7,
-        "duration": 100,
-        "wind": 52.3,
-        "dewHumidity": 20.9,
+        "clouds": 100.0,
+        "precipitation": 95.0,
+        "duration": 33.3,
+        "wind": 87.1,
+        "dewHumidity": 36.7,
         "visibility": 100,
         "darkness": 70,
-        "convenience": 92
+        "convenience": 100
       },
       "reasons": [
-        "Best contiguous window is 6.5 hours.",
-        "Average cloud cover is 14%.",
-        "Average precipitation probability is 23%.",
+        "Best contiguous window is 1.0 hours.",
+        "Average cloud cover is 0%.",
+        "Average precipitation probability is 2%.",
         "Only visual-usable conditions met the configured limits."
       ]
     },
     {
       "date": "2026-07-17",
       "weekday": "Friday",
-      "forecastLeadHours": 143.2,
+      "forecastLeadHours": 63.5,
       "recommendation": {
-        "label": "Imaging possible",
-        "level": "possible",
-        "confidence": "Low",
-        "score": 85
+        "label": "Imaging night",
+        "level": "strong",
+        "confidence": "Medium",
+        "score": 87
       },
       "conditions": {
         "bestWindow": "02:00-04:00 MDT",
@@ -394,16 +207,16 @@
         "astronomicalNightOccurs": false,
         "averageCloudCoverPercent": 0,
         "averageLowCloudCoverPercent": 0,
-        "precipitationProbabilityPercent": 3,
-        "averageHumidityPercent": 52,
+        "precipitationProbabilityPercent": 2,
+        "averageHumidityPercent": 40,
         "visibilityKm": 24.1,
         "wind": {
-          "sustainedKph": 18,
-          "gustKph": 37
+          "sustainedKph": 11,
+          "gustKph": 29
         },
         "temperature": {
-          "expectedC": 15.2,
-          "dewPointSpreadC": 9.7
+          "expectedC": 17.5,
+          "dewPointSpreadC": 14.0
         },
         "moon": {
           "illuminationPercent": 20.0,
@@ -415,16 +228,15 @@
       "suggestedTarget": "Target recommendations arrive in Stage 3",
       "suggestedEquipment": "EdgeHD 8 with CGEM II or Zenithstar 61 with Star Adventurer",
       "warnings": [
-        "Wind gusts may reduce imaging quality.",
         "Calgary does not reach true astronomical darkness for this observing night."
       ],
-      "explanation": "Imaging possible: Best contiguous window is 2.0 hours. Average cloud cover is 0%. Average precipitation probability is 3%. The selected window meets imaging darkness and weather limits.",
+      "explanation": "Imaging night: Best contiguous window is 2.0 hours. Average cloud cover is 0%. Average precipitation probability is 2%. The selected window meets imaging darkness and weather limits.",
       "scoreBreakdown": {
         "clouds": 100.0,
-        "precipitation": 92.5,
+        "precipitation": 95.0,
         "duration": 66.7,
-        "wind": 41.7,
-        "dewHumidity": 81.6,
+        "wind": 58.1,
+        "dewHumidity": 86.2,
         "visibility": 100,
         "darkness": 70,
         "convenience": 100
@@ -432,8 +244,175 @@
       "reasons": [
         "Best contiguous window is 2.0 hours.",
         "Average cloud cover is 0%.",
-        "Average precipitation probability is 3%.",
+        "Average precipitation probability is 2%.",
         "The selected window meets imaging darkness and weather limits."
+      ]
+    },
+    {
+      "date": "2026-07-18",
+      "weekday": "Saturday",
+      "forecastLeadHours": 87.5,
+      "recommendation": {
+        "label": "Visual only",
+        "level": "visual",
+        "confidence": "Medium",
+        "score": 86
+      },
+      "conditions": {
+        "bestWindow": "22:30-05:30 MDT",
+        "usableHours": 7.0,
+        "visualUsableHours": 7.0,
+        "imagingUsableHours": 0,
+        "astronomicalNightOccurs": true,
+        "averageCloudCoverPercent": 0,
+        "averageLowCloudCoverPercent": 0,
+        "precipitationProbabilityPercent": 7,
+        "averageHumidityPercent": 92,
+        "visibilityKm": 23.9,
+        "wind": {
+          "sustainedKph": 12,
+          "gustKph": 21
+        },
+        "temperature": {
+          "expectedC": 13.4,
+          "dewPointSpreadC": 1.2
+        },
+        "moon": {
+          "illuminationPercent": 28.9,
+          "aboveHorizon": false,
+          "altitudeDegrees": -23.2,
+          "context": "bestWindowMidpoint"
+        }
+      },
+      "suggestedTarget": "Bright visual targets; detailed recommendations arrive in Stage 3",
+      "suggestedEquipment": "NexStar 6SE or EdgeHD 8 on the alt-az mount",
+      "warnings": [
+        "Dew-point spread is tight; watch for dew formation.",
+        "Conditions are not strong enough for a planned imaging session."
+      ],
+      "explanation": "Visual only: Best contiguous window is 7.0 hours. Average cloud cover is 0%. Average precipitation probability is 7%. Only visual-usable conditions met the configured limits.",
+      "scoreBreakdown": {
+        "clouds": 100.0,
+        "precipitation": 82.9,
+        "duration": 100,
+        "wind": 64.3,
+        "dewHumidity": 22.7,
+        "visibility": 100,
+        "darkness": 100,
+        "convenience": 100
+      },
+      "reasons": [
+        "Best contiguous window is 7.0 hours.",
+        "Average cloud cover is 0%.",
+        "Average precipitation probability is 7%.",
+        "Only visual-usable conditions met the configured limits."
+      ]
+    },
+    {
+      "date": "2026-07-19",
+      "weekday": "Sunday",
+      "forecastLeadHours": 111.5,
+      "recommendation": {
+        "label": "Imaging possible",
+        "level": "possible",
+        "confidence": "Medium",
+        "score": 77
+      },
+      "conditions": {
+        "bestWindow": "23:30-01:00 MDT",
+        "usableHours": 1.5,
+        "visualUsableHours": 2.5,
+        "imagingUsableHours": 1.5,
+        "astronomicalNightOccurs": true,
+        "averageCloudCoverPercent": 5,
+        "averageLowCloudCoverPercent": 0,
+        "precipitationProbabilityPercent": 14,
+        "averageHumidityPercent": 86,
+        "visibilityKm": 23.5,
+        "wind": {
+          "sustainedKph": 4,
+          "gustKph": 5
+        },
+        "temperature": {
+          "expectedC": 13.6,
+          "dewPointSpreadC": 2.3
+        },
+        "moon": {
+          "illuminationPercent": 37.9,
+          "aboveHorizon": false,
+          "altitudeDegrees": -3.2,
+          "context": "bestWindowMidpoint"
+        }
+      },
+      "suggestedTarget": "Target recommendations arrive in Stage 3",
+      "suggestedEquipment": "EdgeHD 8 with CGEM II or Zenithstar 61 with Star Adventurer",
+      "warnings": [
+        "Dew-point spread is tight; watch for dew formation.",
+        "Weekday window runs substantially after midnight; schedule fatigue penalty applied."
+      ],
+      "explanation": "Imaging possible: Best contiguous window is 1.5 hours. Average cloud cover is 5%. Average precipitation probability is 14%. The selected window meets imaging darkness and weather limits.",
+      "scoreBreakdown": {
+        "clouds": 95.3,
+        "precipitation": 65.0,
+        "duration": 50.0,
+        "wind": 90.3,
+        "dewHumidity": 42.3,
+        "visibility": 100,
+        "darkness": 70,
+        "convenience": 100
+      },
+      "reasons": [
+        "Best contiguous window is 1.5 hours.",
+        "Average cloud cover is 5%.",
+        "Average precipitation probability is 14%.",
+        "The selected window meets imaging darkness and weather limits."
+      ]
+    },
+    {
+      "date": "2026-07-20",
+      "weekday": "Monday",
+      "forecastLeadHours": 135.5,
+      "recommendation": {
+        "label": "Don't bother",
+        "level": "poor",
+        "confidence": "Low",
+        "score": 0
+      },
+      "conditions": {
+        "bestWindow": "No reliable window",
+        "usableHours": 0,
+        "visualUsableHours": 0,
+        "imagingUsableHours": 0,
+        "astronomicalNightOccurs": true,
+        "averageCloudCoverPercent": 0,
+        "averageLowCloudCoverPercent": 0,
+        "precipitationProbabilityPercent": 0,
+        "averageHumidityPercent": 0,
+        "visibilityKm": 0.0,
+        "wind": {
+          "sustainedKph": 0,
+          "gustKph": 0
+        },
+        "temperature": {
+          "expectedC": 0,
+          "dewPointSpreadC": 0
+        },
+        "moon": {
+          "illuminationPercent": 47.9,
+          "aboveHorizon": false,
+          "altitudeDegrees": -1.2,
+          "context": "localMidnight"
+        }
+      },
+      "suggestedTarget": "No observing target recommended",
+      "suggestedEquipment": "None recommended",
+      "warnings": [
+        "No contiguous window met the configured darkness and weather limits."
+      ],
+      "explanation": "No usable observing interval met the configured weather and darkness limits.",
+      "scoreBreakdown": {},
+      "reasons": [
+        "No qualifying contiguous visual or imaging window was found."
       ]
     }
   ]

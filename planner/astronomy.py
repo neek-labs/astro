@@ -19,6 +19,13 @@ class AstroPoint:
     moon_illumination_percent: float
 
 
+def moon_illumination_percent_from_elongation(elongation_degrees: float) -> float:
+    """Return the illuminated lunar disc percentage for a Sun-Moon elongation."""
+
+    illumination = (1 - cos(radians(float(elongation_degrees)))) * 50
+    return max(0.0, min(100.0, illumination))
+
+
 def observing_bounds(evening_date: date, timezone_name: str) -> tuple[datetime, datetime]:
     timezone = ZoneInfo(timezone_name)
     start = datetime.combine(evening_date, time(12, 0), tzinfo=timezone)
@@ -73,13 +80,13 @@ def calculate_astronomy_grid(config: dict[str, Any], start: datetime, end: datet
 
     points: list[AstroPoint] = []
     for index, moment in enumerate(moments):
-        illumination = (1 - cos(radians(float(elongations[index])))) * 50
+        illumination = moon_illumination_percent_from_elongation(elongations[index])
         points.append(
             AstroPoint(
                 time=moment,
                 sun_altitude_degrees=float(sun_altitudes[index]),
                 moon_altitude_degrees=float(moon_altitudes[index]),
-                moon_illumination_percent=round(max(0.0, min(100.0, illumination)), 1),
+                moon_illumination_percent=round(illumination, 1),
             )
         )
     return points

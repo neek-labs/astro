@@ -10,6 +10,16 @@ from typing import Any, Callable, Sequence
 from zoneinfo import ZoneInfo
 
 from planner.astronomy import observing_bounds
+from planner.lunar import (
+    ILLUMINATION_WEIGHT,
+    LUNAR_IMPACT_FIELDS,
+    MOON_ALTITUDE_WEIGHT,
+    SEPARATION_WEIGHT,
+    MoonSampleGrid,
+    build_moon_sample_grid,
+    calculate_target_lunar_impact,
+    lunar_impact_rating,
+)
 from planner.output import write_atomic_json
 
 
@@ -427,8 +437,9 @@ def build_nightly_visibility(
     config: dict[str, Any],
     *,
     calculator: Callable[[dict[str, Any], Sequence[datetime], Any, float], dict[str, Any]] = calculate_target_visibility,
+    moon_grid_builder: Callable[[Sequence[datetime], Any], MoonSampleGrid] = build_moon_sample_grid,
 ) -> dict[str, Any]:
-    """Calculate and sort one output record for every catalogue target."""
+    """Calculate Stage 4A visibility and Stage 4B Moon impact for one night."""
 
     settings = config["targetVisibility"]
     records: list[tuple[dict[str, Any], str]] = []
@@ -439,9 +450,11 @@ def build_nightly_visibility(
             settings["timeStepMinutes"],
         )
         location = _earth_location(config)
+        moon_grid = moon_grid_builder(moments, location)
     else:
         moments = []
         location = None
+        moon_grid = None
 
     for index, raw_target in enumerate(targets):
         target = raw_target if isinstance(raw_target, dict) else {}
@@ -463,6 +476,13 @@ def build_nightly_visibility(
         for flag in darkness.review_flags:
             if flag not in record["review_flags"]:
                 record["review_flags"].append(flag)
+        try:
+            record["moon"] = calculate_target_lunar_impact(target, record, moon_grid)
+        except Exception as exc:  # keep malformed individual targets isolated
+            LOGGER.warning("Lunar calculation failed for %s: %s", target_id, exc)
+            record["moon"] = calculate_target_lunar_impact(target, record, None)
+            if "lunar_calculation_error" not in record["review_flags"]:
+                record["review_flags"].append("lunar_calculation_error")
         records.append((record, display_name))
 
     records.sort(key=_target_sort_key)
@@ -476,6 +496,11 @@ def build_nightly_visibility(
             if darkness.sun_altitude_threshold_deg is not None
             else {"source": darkness.source}
         ),
+        "moon": {
+            "illumination_percent": (
+                round(moon_grid.night_illumination_percent, 1) if moon_grid is not None else None
+            )
+        },
         "targets": [record for record, _ in records],
     }
 
@@ -498,19 +523,24 @@ def build_visibility_payload(
     nights: list[dict[str, Any]],
     forecast_days: int,
 ) -> dict[str, Any]:
-    """Build the stable Stage 4A output envelope."""
+    """Build the stable Stage 4A/4B output envelope."""
 
     if generated_at.tzinfo is None:
         raise VisibilityError("Generated timestamp must be timezone aware.")
     location = config["location"]
     settings = config["targetVisibility"]
     return {
-        "schema_version": "0.1",
+        "schema_version": "0.2",
         "generated_at": generated_at.isoformat(timespec="seconds"),
         "calculation_settings": {
             "minimum_altitude_deg": float(settings["minimumAltitudeDegrees"]),
             "time_step_minutes": settings["timeStepMinutes"],
             "forecast_days": forecast_days,
+            "lunar_impact_heuristic": {
+                "separation_weight": SEPARATION_WEIGHT,
+                "illumination_weight": ILLUMINATION_WEIGHT,
+                "moon_altitude_weight": MOON_ALTITUDE_WEIGHT,
+            },
         },
         "location": {
             "name": location["name"],
@@ -529,12 +559,50 @@ def write_visibility_output(payload: dict[str, Any], destination: str | Path) ->
     nights = payload.get("nights")
     if not isinstance(nights, list):
         raise VisibilityError("Visibility output must contain a nights array.")
+    _validate_finite_numbers(payload)
     expected_targets: int | None = None
     for night in nights:
         if not isinstance(night, dict) or not isinstance(night.get("targets"), list):
             raise VisibilityError("Every visibility night must contain a targets array.")
+        night_moon = night.get("moon")
+        if not isinstance(night_moon, dict):
+            raise VisibilityError("Every visibility night must contain Moon context.")
+        illumination = night_moon.get("illumination_percent")
+        if illumination is not None and (
+            isinstance(illumination, bool)
+            or not isinstance(illumination, (int, float))
+            or not 0 <= illumination <= 100
+        ):
+            raise VisibilityError("Nightly Moon illumination must be between 0 and 100.")
         if expected_targets is None:
             expected_targets = len(night["targets"])
         elif len(night["targets"]) != expected_targets:
             raise VisibilityError("Every night must contain one record per target.")
+        for target in night["targets"]:
+            moon = target.get("moon") if isinstance(target, dict) else None
+            if not isinstance(moon, dict) or any(field not in moon for field in LUNAR_IMPACT_FIELDS):
+                raise VisibilityError("Every target must contain complete lunar-impact fields.")
+            score = moon["lunar_impact_score"]
+            rating = moon["lunar_impact_rating"]
+            if score is None:
+                if rating is not None:
+                    raise VisibilityError("An unavailable lunar score cannot have a rating.")
+            elif (
+                isinstance(score, bool)
+                or not isinstance(score, (int, float))
+                or not 0 <= score <= 100
+                or rating != lunar_impact_rating(float(score))
+            ):
+                raise VisibilityError("Target lunar score or rating is invalid.")
     write_atomic_json(payload, destination)
+
+
+def _validate_finite_numbers(value: Any, path: str = "root") -> None:
+    if isinstance(value, float) and not isfinite(value):
+        raise VisibilityError(f"Visibility output contains a non-finite number at {path}.")
+    if isinstance(value, dict):
+        for key, child in value.items():
+            _validate_finite_numbers(child, f"{path}.{key}")
+    elif isinstance(value, list):
+        for index, child in enumerate(value):
+            _validate_finite_numbers(child, f"{path}[{index}]")
