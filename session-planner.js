@@ -209,11 +209,11 @@
     section.appendChild(primaryCard);
 
     if (validTargets.length > 1) {
-      const alternatives = document.createElement("details");
+      const alternatives = document.createElement("div");
       alternatives.className = "session-planner-target-alternatives";
-      const summary = document.createElement("summary");
-      summary.textContent = `Show ${validTargets.length - 1} alternative${validTargets.length > 2 ? "s" : ""}`;
-      alternatives.appendChild(summary);
+      const alternativesHeading = document.createElement("h5");
+      alternativesHeading.textContent = "Also recommended";
+      alternatives.appendChild(alternativesHeading);
 
       validTargets.slice(1).forEach((target) => {
         const item = document.createElement("div");

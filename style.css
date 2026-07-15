@@ -1025,12 +1025,18 @@ footer {
 
 .session-planner-target-alternatives {
   margin-top: 0.75rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid rgba(156, 210, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(156, 210, 255, 0.04);
   color: #d9e8f7;
 }
 
-.session-planner-target-alternatives summary {
-  cursor: pointer;
+.session-planner-target-alternatives h5 {
+  margin: 0;
   color: #9cd2ff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.85rem;
   font-weight: 700;
 }
 

@@ -24,7 +24,8 @@ def test_frontend_skips_one_malformed_recommendation_locally() -> None:
 
 def test_frontend_uses_semantic_safe_dom_rendering() -> None:
     source = frontend_source()
-    assert 'document.createElement("details")' in source
+    assert 'alternativesHeading.textContent = "Also recommended"' in source
+    assert 'validTargets.slice(1).forEach((target) =>' in source
     assert 'document.createElement("section")' in source
     assert ".textContent" in source
     assert "innerHTML" not in source
