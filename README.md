@@ -246,6 +246,114 @@ proxies, personal target history, completed-target avoidance, or filter-specific
 exposure optimization. Stage 4D will automate the existing generation sequence and
 reviewable publication; it should not redefine Stage 4C scoring.
 
+### Stage 4D Scheduled Validation and Reviewable Publication
+
+Stage 4D keeps ordinary validation separate from privileged forecast publication:
+
+- `.github/workflows/session-planner-ci.yml` runs on relevant pull requests to
+  `main`, relevant pushes to `main`, and manual dispatch. It has read-only contents
+  permission, compiles `planner` and `scripts`, and runs the complete test suite. It
+  cannot create commits, branches, or pull requests.
+- `.github/workflows/refresh-session-planner.yml` runs daily at `15 14 * * *` and
+  on manual dispatch. GitHub cron is UTC, so this is approximately 08:15 during
+  Calgary daylight time and 07:15 during standard time. The one-hour seasonal shift
+  is intentional; the workflow does not attempt dynamic timezone cron logic.
+
+The refresh workflow uses a fixed `session-planner-refresh` concurrency group with
+`cancel-in-progress: false`, so generation and publication runs cannot overlap. It
+uses only the workflow-provided `GITHUB_TOKEN`, with `contents: write` and
+`pull-requests: write` permissions. No custom secrets or deployment credentials are
+required.
+
+Before any weather request, the workflow compiles the Python sources and runs the
+complete test suite. It then executes the generation stages sequentially:
+
+```text
+python scripts/generate_session_forecast.py
+python scripts/calculate_target_visibility.py
+python scripts/generate_target_recommendations.py
+```
+
+Only the Open-Meteo weather command is retried. It receives at most three attempts,
+with a ten-second delay between failed attempts. Command output remains visible and
+the final failed exit status stops the workflow. Visibility and recommendation
+generation are not retried.
+
+After generation, `scripts/validate_session_planner_pipeline.py` performs read-only
+cross-file validation. In addition to reusing the existing Stage 2, Stage 4A/4B, and
+Stage 4C validators, it checks:
+
+- finite JSON-object data and current schemas;
+- configured night counts, unique ordered dates, and exact forecast/visibility date
+  agreement;
+- timezone-aware timestamps, freshness, and a reasonable first forecast date;
+- weather recommendations and structured best-window timestamps when a usable
+  window exists;
+- target recommendation status, configured result limits, consecutive ranks, and
+  finite 0-100 scores;
+- rank-one compatibility with `suggestedTarget`;
+- every recommended ID against both the catalogue and that night's visibility data;
+- exactly one visibility record per catalogue target on every night; and
+- valid poor-weather and unavailable/no-eligible-target states.
+
+The complete test suite runs again after validation. The workflow then calls
+`scripts/check_session_planner_changes.py`, which fails unless the only changed paths
+are:
+
+```text
+data/session-planner.json
+data/astronomy-target-visibility.json
+```
+
+If neither file changed, the workflow succeeds without a commit or pull request. If
+data changed, `scripts/summarize_session_planner_pipeline.py` creates deterministic
+Markdown containing the generated timestamp, forecast range, best weather night,
+rank-one targets, availability counts, and verification results. The same Markdown
+is written to the Actions step summary and the review pull request.
+
+Publication uses the rolling `automation/session-planner-refresh` branch and the
+stable title `[automation] Refresh session planner forecast`. Existing open refresh
+pull requests are updated instead of duplicated. A merged or closed refresh can be
+followed by a new pull request on a later run. Before replacing the rolling branch,
+the workflow verifies its unique commits are bot-authored and its diff contains only
+the generated-file allowlist. It also refuses publication if `main` advances after
+generation begins. Updates use a force-with-lease restricted to that dedicated
+branch so a concurrent or human-authored update causes a safe failure.
+The workflow never commits directly to `main`, never auto-merges, and never modifies
+unrelated pull requests.
+
+Merging the review pull request updates the JSON consumed by the existing static
+site flow. Stage 4D does not add a Pages build or deployment workflow, and it does
+not change `CNAME`, DNS, or hosting configuration. Automatic merging should remain
+disabled until the rolling workflow has operated reliably and review has shown that
+provider anomalies and scientifically surprising diffs are caught consistently.
+
+On failure, publication steps do not run. If a later PR API operation fails after a
+branch push, the workflow attempts to restore the previous dedicated branch state.
+The generated JSON, generation and validation logs, and summary (when available)
+are uploaded as a three-day diagnostic artifact. Main and any existing review pull
+request remain unchanged by generation or validation failures.
+
+Run the complete publication-equivalent pipeline locally from a clean checkout:
+
+```bash
+python -m pip install -r requirements.txt
+python -m compileall planner scripts
+python -m pytest
+python scripts/generate_session_forecast.py
+python scripts/calculate_target_visibility.py
+python scripts/generate_target_recommendations.py
+python scripts/validate_session_planner_pipeline.py
+python -m pytest
+python scripts/check_session_planner_changes.py
+python scripts/summarize_session_planner_pipeline.py
+```
+
+The validation script accepts alternate `--forecast`, `--visibility`, `--catalogue`,
+and `--config` paths plus deterministic `--now` and freshness options. The summary
+script accepts `--forecast` and optional `--output`. The changed-file checker can
+also validate an existing automation branch with `--base` and `--head`.
+
 ## Running Locally
 
 Because the Session Planner fetches JSON, test it through a local web server instead of opening the page with `file://`.
@@ -273,4 +381,5 @@ To verify the error state, temporarily rename `data/session-planner.json` or mak
 
 ## Planned Future Stages
 
-- Stage 4D: add scheduled GitHub generation, validation, and reviewable publication.
+Future automation changes may be considered after the Stage 4D rolling review
+workflow has demonstrated reliable operation.

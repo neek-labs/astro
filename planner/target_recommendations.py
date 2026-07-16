@@ -181,7 +181,7 @@ def enrich_forecast_payload(
         night["suggestedEquipment"] = "Equipment matching is not yet implemented."
         summaries.append(summary)
 
-    _validate_enriched_output(enriched)
+    validate_enriched_output(enriched)
     return enriched, summaries
 
 
@@ -596,7 +596,9 @@ def _display_target_type(value: Any) -> str:
     return str(value).replace("_", " ").title() if isinstance(value, str) else "Unavailable"
 
 
-def _validate_enriched_output(payload: dict[str, Any]) -> None:
+def validate_enriched_output(payload: dict[str, Any]) -> None:
+    """Validate Stage 4C fields without modifying the forecast payload."""
+
     _validate_finite(payload)
     for night in payload["nights"]:
         recommendations = night.get("targetRecommendations")

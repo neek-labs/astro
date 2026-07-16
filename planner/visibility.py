@@ -561,8 +561,8 @@ def build_visibility_payload(
     }
 
 
-def write_visibility_output(payload: dict[str, Any], destination: str | Path) -> None:
-    """Atomically write visibility JSON after basic schema validation."""
+def validate_visibility_output(payload: dict[str, Any]) -> None:
+    """Validate the stable Stage 4A/4B output without modifying it."""
 
     nights = payload.get("nights")
     if not isinstance(nights, list):
@@ -602,6 +602,12 @@ def write_visibility_output(payload: dict[str, Any], destination: str | Path) ->
                 or rating != lunar_impact_rating(float(score))
             ):
                 raise VisibilityError("Target lunar score or rating is invalid.")
+
+
+def write_visibility_output(payload: dict[str, Any], destination: str | Path) -> None:
+    """Atomically write visibility JSON after basic schema validation."""
+
+    validate_visibility_output(payload)
     write_atomic_json(payload, destination)
 
 
