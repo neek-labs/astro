@@ -243,10 +243,22 @@ The recommendation model is a practical heuristic. It does not yet include equip
 matching, detailed field-of-view suitability, exact exposure planning, local horizon
 obstructions, seeing forecasts, atmospheric transparency beyond current weather
 proxies, personal target history, completed-target avoidance, or filter-specific
-exposure optimization. Stage 4D will automate the existing generation sequence and
-reviewable publication; it should not redefine Stage 4C scoring.
+exposure optimization. Stage 4D automates the existing generation sequence and
+publication; it does not redefine Stage 4C scoring.
 
-### Stage 4D Scheduled Validation and Reviewable Publication
+### Stage 4D Scheduled Validation and Automatic Publication
+
+```text
+Scheduled generation
+→ Validation
+→ Rolling PR creation/update
+→ Automatic squash merge
+→ Existing site publication
+```
+
+No human review happens before each generated forecast is merged. The rolling pull
+request remains an audit record and a safety boundary, rather than a manual approval
+gate.
 
 Stage 4D keeps ordinary validation separate from privileged forecast publication:
 
@@ -309,7 +321,9 @@ If neither file changed, the workflow succeeds without a commit or pull request.
 data changed, `scripts/summarize_session_planner_pipeline.py` creates deterministic
 Markdown containing the generated timestamp, forecast range, best weather night,
 rank-one targets, availability counts, and verification results. The same Markdown
-is written to the Actions step summary and the review pull request.
+is written to the Actions step summary and the rolling pull request. The Actions
+summary also records the PR number, merge result, merged commit SHA, generated
+timestamp, and an initial-run live-site verification reminder.
 
 Publication uses the rolling `automation/session-planner-refresh` branch and the
 stable title `[automation] Refresh session planner forecast`. Existing open refresh
@@ -319,20 +333,56 @@ the workflow verifies its unique commits are bot-authored and its diff contains 
 the generated-file allowlist. It also refuses publication if `main` advances after
 generation begins. Updates use a force-with-lease restricted to that dedicated
 branch so a concurrent or human-authored update causes a safe failure.
-The workflow never commits directly to `main`, never auto-merges, and never modifies
-unrelated pull requests.
+The workflow never commits directly to `main` and never modifies unrelated pull
+requests.
 
-Merging the review pull request updates the JSON consumed by the existing static
-site flow. Stage 4D does not add a Pages build or deployment workflow, and it does
-not change `CNAME`, DNS, or hosting configuration. Automatic merging should remain
-disabled until the rolling workflow has operated reliably and review has shown that
-provider anomalies and scientifically surprising diffs are caught consistently.
+After creating or updating the PR, `scripts/merge_session_planner_pr.py` queries the
+PR, its complete commit list, and its complete changed-file list through the GitHub
+API. Immediately before merging it re-reads both `main` and the PR and requires:
 
-On failure, publication steps do not run. If a later PR API operation fails after a
-branch push, the workflow attempts to restore the previous dedicated branch state.
-The generated JSON, generation and validation logs, and summary (when available)
-are uploaded as a three-day diagnostic artifact. Main and any existing review pull
-request remain unchanged by generation or validation failures.
+- the recorded PR number, title, open state, and non-draft state;
+- base `main` and head `automation/session-planner-refresh`, both in this repository;
+- the PR head SHA to equal the commit just pushed by this workflow;
+- the PR base SHA and current `main` SHA to equal the generation base;
+- every PR commit to be authored and committed by `github-actions[bot]`;
+- every changed path to be in the two-file generated-data allowlist; and
+- GitHub to report the PR as mergeable.
+
+It then calls GitHub's pull-request merge API with the expected head SHA,
+`merge_method: squash`, and commit title
+`chore: refresh session planner forecast`. GitHub rejecting the merge fails the job;
+the workflow does not fall back to a direct push. The rolling branch is not deleted
+by the workflow and can be recreated or updated on later runs. Set the repository
+Actions variable `SESSION_PLANNER_AUTO_MERGE` to the exact value `false` to disable
+only the merge step quickly while preserving generation and rolling PR updates.
+
+#### Existing site publication and `GITHUB_TOKEN` limitation
+
+The repository currently uses legacy GitHub Pages branch publication from `main`
+at the repository root, with `CNAME` serving `astro.nickhall.tech`. Stage 4D does not
+replace that hosting system, add a Pages deployment workflow, or change DNS.
+
+The automatic merge uses the workflow-provided `GITHUB_TOKEN`. GitHub suppresses
+new workflow runs and legacy Pages builds for most events created by that token to
+avoid recursive automation. Consequently, the squash merge updates `main`, but it
+must not be assumed to trigger this repository's current legacy Pages build. During
+the first automated runs, compare the generated timestamp on the live Session
+Planner with `data/session-planner.json` on `main` and inspect the repository's Pages
+deployment/build history.
+
+If the generated data reaches `main` but the live site does not update, an additional
+deployment change is required. The preferred follow-up is an explicit GitHub Pages
+deployment job/workflow using the official Pages artifact/deploy actions and the
+additional `pages: write` and `id-token: write` permissions. Another option is a
+GitHub App or PAT whose merge event can trigger legacy branch publication, but no
+such credential is needed or introduced for the merge itself.
+
+On a generation, validation, test, allowlist, stale-base, or branch-ownership
+failure, merge steps do not run. If PR creation or update fails after a branch push,
+the workflow attempts to restore the previous dedicated branch state. A merge API
+failure is reported and does not trigger a direct-push fallback. The generated JSON,
+generation and validation logs, and summary (when available) are uploaded as a
+three-day diagnostic artifact.
 
 Run the complete publication-equivalent pipeline locally from a clean checkout:
 
@@ -352,7 +402,9 @@ python scripts/summarize_session_planner_pipeline.py
 The validation script accepts alternate `--forecast`, `--visibility`, `--catalogue`,
 and `--config` paths plus deterministic `--now` and freshness options. The summary
 script accepts `--forecast` and optional `--output`. The changed-file checker can
-also validate an existing automation branch with `--base` and `--head`.
+also validate an existing automation branch with `--base` and `--head`. The merge
+script is intentionally not included in local pipeline commands because it performs
+an authenticated GitHub mutation; its decision helper is covered by unit tests.
 
 ## Running Locally
 

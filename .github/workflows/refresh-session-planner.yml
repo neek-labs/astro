@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   refresh:
-    name: Generate, validate, and publish for review
+    name: Generate, validate, and merge forecast
     runs-on: ubuntu-latest
     timeout-minutes: 45
     env:
@@ -136,6 +136,7 @@ jobs:
           fi
 
       - name: Update rolling branch and review pull request
+        id: publication
         if: steps.changes.outputs.changed == 'true'
         shell: bash
         env:
@@ -228,7 +229,54 @@ jobs:
               --title "${PR_TITLE}" \
               --body-file "${summary_file}"
           fi
+
+          pr_number="$(gh pr list \
+            --repo "${GITHUB_REPOSITORY}" \
+            --base main \
+            --head "${AUTOMATION_BRANCH}" \
+            --state open \
+            --json number \
+            --jq 'if length == 1 then .[0].number else empty end')"
+          if [[ -z "${pr_number}" ]]; then
+            echo "Could not identify exactly one rolling automation pull request." >&2
+            exit 1
+          fi
+          echo "pr_number=${pr_number}" >> "${GITHUB_OUTPUT}"
+          echo "head_sha=$(git rev-parse HEAD)" >> "${GITHUB_OUTPUT}"
           trap - ERR
+
+      - name: Verify and squash-merge automation pull request
+        if: >-
+          steps.changes.outputs.changed == 'true' &&
+          vars.SESSION_PLANNER_AUTO_MERGE != 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BASE_SHA: ${{ steps.base.outputs.sha }}
+          PR_NUMBER: ${{ steps.publication.outputs.pr_number }}
+          HEAD_SHA: ${{ steps.publication.outputs.head_sha }}
+        run: |
+          python scripts/merge_session_planner_pr.py \
+            --repository "${GITHUB_REPOSITORY}" \
+            --pr-number "${PR_NUMBER}" \
+            --expected-head-sha "${HEAD_SHA}" \
+            --expected-base-sha "${BASE_SHA}"
+
+      - name: Record disabled automatic merge
+        if: >-
+          steps.changes.outputs.changed == 'true' &&
+          vars.SESSION_PLANNER_AUTO_MERGE == 'false'
+        env:
+          PR_NUMBER: ${{ steps.publication.outputs.pr_number }}
+        run: |
+          python scripts/merge_session_planner_pr.py \
+            --pr-number "${PR_NUMBER}" \
+            --summary-only-result "Skipped because SESSION_PLANNER_AUTO_MERGE is false"
+
+      - name: Record no-change merge result
+        if: steps.changes.outputs.changed == 'false'
+        run: |
+          python scripts/merge_session_planner_pr.py \
+            --summary-only-result "Not needed because generated data did not change"
 
       - name: Upload failure diagnostics
         if: failure()
