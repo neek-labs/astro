@@ -60,10 +60,6 @@
     setText("session-planner-location", `${data.location.name} (${data.location.latitude}, ${data.location.longitude})`);
     setText("session-planner-generated", `Generated: ${formatGeneratedAt(data.generatedAt, data.location.timezone)}`);
     setText("session-planner-source", `Data source: ${data.dataSource}`);
-    setText(
-      "session-planner-sample-note",
-      data.sampleData ? "Sample data is being displayed. Do not use it for real observing decisions." : ""
-    );
 
     renderSummary(data.nights);
     renderCards(data.nights);

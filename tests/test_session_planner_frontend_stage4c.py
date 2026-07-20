@@ -8,6 +8,22 @@ def frontend_source() -> str:
     return (ROOT / "session-planner.js").read_text(encoding="utf-8")
 
 
+def frontend_html() -> str:
+    return (ROOT / "session-planner.html").read_text(encoding="utf-8")
+
+
+def test_generated_timestamp_replaces_sample_note_in_hero() -> None:
+    html = frontend_html()
+    source = frontend_source()
+    hero = html.split('<section class="session-planner-hero">', 1)[1].split(
+        "</section>", 1
+    )[0]
+    assert html.count('id="session-planner-generated"') == 1
+    assert 'id="session-planner-generated"' in hero
+    assert "session-planner-sample-note" not in html
+    assert "session-planner-sample-note" not in source
+
+
 def test_frontend_keeps_weather_rendering_when_recommendations_are_missing() -> None:
     source = frontend_source()
     assert 'addDetail(details, "Best window"' in source
