@@ -1,5 +1,23 @@
 (function () {
   const dataUrl = "data/session-planner.json";
+  const astrosphericScriptUrl = "https://astrosphericcloudstorage.blob.core.windows.net/embed/astrosphericembed.js";
+  const astrosphericLocations = {
+    calgary: {
+      label: "Calgary",
+      lat: 51.0486,
+      lon: -114.0708
+    },
+    darksky: {
+      label: "Starland Recreation Area",
+      lat: 51.6630,
+      lon: -112.9081
+    },
+    stones: {
+      label: "Stones Throw Camp",
+      lat: 50.5974,
+      lon: -112.8299
+    }
+  };
   const levelRank = {
     poor: 0,
     visual: 1,
@@ -7,10 +25,166 @@
     strong: 3,
     exceptional: 4
   };
+  let astrosphericScriptPromise = null;
+  let astrosphericInitialized = false;
+  let selectedAstrosphericLocationKey = "calgary";
+  let clearDarkSkyLoaded = false;
 
   document.addEventListener("DOMContentLoaded", () => {
+    initializeDetailedForecastPanels();
     loadPlannerData();
   });
+
+  function initializeDetailedForecastPanels() {
+    const astrosphericPanel = document.getElementById("astrospheric-forecast");
+    const clearDarkSkyPanel = document.getElementById("clear-dark-sky-forecast");
+
+    if (astrosphericPanel) {
+      astrosphericPanel.addEventListener("toggle", () => {
+        if (astrosphericPanel.open) {
+          openAstrosphericPanel();
+        }
+      });
+
+      document.querySelectorAll("[data-astrospheric-location]").forEach((button) => {
+        button.addEventListener("click", () => {
+          changeAstrosphericLocation(button.dataset.astrosphericLocation);
+        });
+      });
+    }
+
+    if (clearDarkSkyPanel) {
+      clearDarkSkyPanel.addEventListener("toggle", () => {
+        if (clearDarkSkyPanel.open) {
+          loadClearDarkSkyChart();
+        }
+      });
+    }
+  }
+
+  async function openAstrosphericPanel() {
+    setAstrosphericControlsDisabled(true);
+    setForecastStatus("astrospheric-status", "Loading the Astropheric forecast...");
+
+    try {
+      await loadAstrospheric();
+      initializeAstrosphericEmbed();
+      setAstrosphericControlsDisabled(false);
+      updateAstrosphericButtonState();
+    } catch (error) {
+      console.error("Astropheric forecast error:", error);
+      setForecastStatus(
+        "astrospheric-status",
+        "The Astropheric forecast could not be loaded. Please use the Session Planner recommendations or try again after reloading the page.",
+        true
+      );
+    }
+  }
+
+  function loadAstrospheric() {
+    if (astrosphericScriptPromise) {
+      return astrosphericScriptPromise;
+    }
+
+    astrosphericScriptPromise = new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = astrosphericScriptUrl;
+      script.async = true;
+      script.addEventListener("load", resolve, { once: true });
+      script.addEventListener("error", () => {
+        reject(new Error("The Astropheric script request failed."));
+      }, { once: true });
+      document.head.appendChild(script);
+    });
+
+    return astrosphericScriptPromise;
+  }
+
+  function initializeAstrosphericEmbed() {
+    if (astrosphericInitialized) {
+      setAstrosphericReadyStatus();
+      return;
+    }
+
+    const embed = window.m_AstrosphericEmbed;
+    if (!embed || typeof embed.Create !== "function" || typeof embed.ChangeLocation !== "function") {
+      throw new Error("The Astropheric embed API is unavailable after loading.");
+    }
+
+    const location = astrosphericLocations[selectedAstrosphericLocationKey];
+    embed.Create("astrospheric-embed", location.lat, location.lon);
+    astrosphericInitialized = true;
+    setAstrosphericReadyStatus();
+  }
+
+  function changeAstrosphericLocation(locationKey) {
+    const location = astrosphericLocations[locationKey];
+    if (!location || !astrosphericInitialized) {
+      return;
+    }
+
+    try {
+      window.m_AstrosphericEmbed.ChangeLocation(location.lat, location.lon);
+      selectedAstrosphericLocationKey = locationKey;
+      updateAstrosphericButtonState();
+      setAstrosphericReadyStatus();
+    } catch (error) {
+      console.error("Astropheric location error:", error);
+      setForecastStatus("astrospheric-status", "The Astropheric location could not be changed. Please try another location.", true);
+    }
+  }
+
+  function setAstrosphericControlsDisabled(disabled) {
+    document.querySelectorAll("[data-astrospheric-location]").forEach((button) => {
+      button.disabled = disabled;
+    });
+  }
+
+  function updateAstrosphericButtonState() {
+    document.querySelectorAll("[data-astrospheric-location]").forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.astrosphericLocation === selectedAstrosphericLocationKey));
+    });
+  }
+
+  function setAstrosphericReadyStatus() {
+    const location = astrosphericLocations[selectedAstrosphericLocationKey];
+    setForecastStatus("astrospheric-status", `Showing the Astropheric forecast for ${location.label}.`);
+  }
+
+  function loadClearDarkSkyChart() {
+    if (clearDarkSkyLoaded) {
+      return;
+    }
+
+    const chart = document.getElementById("clear-dark-sky-chart");
+    const source = chart && chart.dataset.src;
+    if (!chart || !source) {
+      setForecastStatus("clear-dark-sky-status", "The Clear Dark Sky chart is unavailable.", true);
+      return;
+    }
+
+    clearDarkSkyLoaded = true;
+    setForecastStatus("clear-dark-sky-status", "Loading the Clear Dark Sky chart...");
+    chart.addEventListener("load", () => {
+      chart.hidden = false;
+      setForecastStatus("clear-dark-sky-status", "Clear Dark Sky chart loaded for Calgary.");
+    }, { once: true });
+    chart.addEventListener("error", () => {
+      setForecastStatus("clear-dark-sky-status", "The Clear Dark Sky chart could not be loaded. Use the link below to open its forecast page.", true);
+    }, { once: true });
+    chart.src = source;
+    chart.removeAttribute("data-src");
+  }
+
+  function setForecastStatus(id, message, isError) {
+    const status = document.getElementById(id);
+    if (!status) {
+      return;
+    }
+
+    status.textContent = message;
+    status.classList.toggle("detailed-forecast-status--error", Boolean(isError));
+  }
 
   async function loadPlannerData() {
     const summary = document.getElementById("session-planner-summary");
@@ -57,7 +231,7 @@
   }
 
   function renderPlanner(data) {
-    setText("session-planner-location", `${data.location.name} (${data.location.latitude}, ${data.location.longitude})`);
+    setText("session-planner-location", `Forecasted location: ${data.location.name} (${data.location.latitude}, ${data.location.longitude})`);
     setText("session-planner-generated", `Generated: ${formatGeneratedAt(data.generatedAt, data.location.timezone)}`);
     setText("session-planner-source", `Data source: ${data.dataSource}`);
 
@@ -129,7 +303,6 @@
       addDetail(details, "Wind", formatWind(night.conditions && night.conditions.wind));
       addDetail(details, "Temp/dew spread", formatTemperature(night.conditions && night.conditions.temperature));
       addDetail(details, "Moon", formatMoon(night.conditions && night.conditions.moon));
-      addDetail(details, "Equipment", night.suggestedEquipment);
 
       const explanation = document.createElement("p");
       explanation.className = "session-planner-explanation";

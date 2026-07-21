@@ -8,6 +8,20 @@ The Session Planner helps evaluate upcoming Calgary nights for visual astronomy 
 
 The Stage 2 generator writes `data/session-planner.json` for the static `session-planner.html` page. It does not run on a schedule, create pull requests, deploy, or use AI. Stage 4A/4B target geometry and lunar impact are generated separately as described below.
 
+### Stage 5A Forecast Consolidation
+
+The Session Planner is the site's central astronomy planning and forecast page. Its
+generated weekly recommendations, Moon conditions, and target recommendations are
+supplemented by optional Astropheric and Clear Dark Sky panels. Both third-party
+resources are closed by default and are requested only after their respective panel
+is opened, so they do not delay or interfere with the primary planner data.
+
+The former client-side Moon API widget and its exposed WeatherAPI key were removed;
+the planner continues to show its calculated Moon illumination, horizon state, and
+target-specific lunar impact. `calendar.html` is retained only as a lightweight
+redirect to `session-planner.html`. Equipment-profile matching remains future Stage
+5B work.
+
 ### Stage 2 Capabilities
 
 - Fetches live hourly forecast data from the Open-Meteo Forecast API for Calgary, Alberta.
@@ -427,11 +441,20 @@ To verify normal loading:
 1. Start the local server with `python -m http.server 8000`.
 2. Open `http://localhost:8000/session-planner.html`.
 3. Confirm the generated timestamp, data source, weekly summary, score, darkness details, and seven nightly cards render.
-4. Confirm the browser console has no errors.
+4. Confirm nightly Moon details and target recommendations, including lunar-impact values, render.
+5. In the browser network panel, confirm neither Astropheric nor the Clear Dark Sky chart is requested on initial load.
+6. Open Astropheric, confirm the Calgary forecast loads, try all three location buttons, then close and reopen it without a second script request.
+7. Open Clear Dark Sky, confirm its chart loads once and its link opens the Calgary forecast in a new tab.
+8. Simulate or block each third-party request and confirm its panel shows an error while the main planner remains usable.
+9. Check the page at a narrow mobile width and confirm the panels, buttons, embeds, and chart do not overflow the page.
+10. Open `http://localhost:8000/calendar.html` and confirm it redirects to the Session Planner.
+11. Confirm the browser console has no errors.
 
 To verify the error state, temporarily rename `data/session-planner.json` or make a malformed local copy while testing through the web server. Reload the page and confirm a visible error message appears. Restore the valid JSON file before committing.
 
 ## Planned Future Stages
 
-Future automation changes may be considered after the Stage 4D rolling review
-workflow has demonstrated reliable operation.
+Stage 5B may add equipment-profile matching. Equipment profiles, stored equipment
+preferences, field-of-view matching, and framing simulation are intentionally not
+part of Stage 5A. Future automation changes may also be considered after the Stage
+4D rolling review workflow has demonstrated reliable operation.

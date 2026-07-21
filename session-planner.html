@@ -20,7 +20,6 @@
       <a href="index.html"><i class="fas fa-rocket"></i> Astro Home</a>
       <a href="equipment.html"><i class="fas fa-satellite-dish"></i> Equipment</a>
       <a href="gallery.html"><i class="fas fa-camera"></i> Photo Gallery</a>
-      <a href="calendar.html"><i class="fas fa-calendar-alt"></i> Sky Forecast</a>
       <a href="session-planner.html"><i class="fas fa-cloud-moon"></i> Session Planner</a>
       <a href="tools.html"><i class="fas fa-wrench"></i> Tools</a>
     </nav>
@@ -31,8 +30,10 @@
       <p class="session-planner-kicker">Weekly forecast</p>
       <h1 class="site-title">Calgary Astronomy Session Planner</h1>
       <p class="session-planner-intro">
-        This planner (still in development) evaluates upcoming Calgary nights using Open-Meteo forecasts,
-        calculated twilight, Moon impact, target visibility, and practical observing constraints.
+        Use this astronomy planning hub to compare weekly observing conditions, Moon conditions,
+        target recommendations, and optional detailed third-party forecasts for upcoming Calgary nights.
+        The planner combines Open-Meteo forecasts with calculated twilight, lunar impact, target visibility,
+        and practical observing constraints.
       </p>
       <p id="session-planner-generated" class="session-planner-generated">Generated timestamp loading...</p>
     </section>
@@ -43,12 +44,48 @@
     </section>
 
     <section class="session-planner-meta" aria-label="Forecast metadata">
-      <p id="session-planner-location">Location loading...</p>
+      <p id="session-planner-location">Forecasted location: loading...</p>
       <p id="session-planner-source">Data source loading...</p>
     </section>
 
     <section id="session-planner-cards" class="session-planner-cards" aria-live="polite">
       <p>Loading forecast cards...</p>
+    </section>
+
+    <section class="detailed-forecasts" aria-labelledby="detailed-forecasts-title">
+      <div class="detailed-forecasts-header">
+        <h2 id="detailed-forecasts-title">Detailed Astronomy Forecasts</h2>
+        <p>Compare the Session Planner recommendation with detailed third-party astronomy forecasts.</p>
+        <p class="detailed-forecasts-note">Moon illumination and lunar impact are included in each nightly recommendation.</p>
+      </div>
+
+      <details id="astrospheric-forecast" class="detailed-forecast-card">
+        <summary>Astropheric</summary>
+        <div class="detailed-forecast-content">
+          <p>View cloud, transparency, and seeing forecasts for one of three observing locations.</p>
+          <div class="forecast-location-buttons" role="group" aria-label="Astropheric forecast location">
+            <button type="button" data-astrospheric-location="calgary" aria-pressed="true" disabled>Calgary</button>
+            <button type="button" data-astrospheric-location="darksky" aria-pressed="false" disabled>Starland Recreation Area</button>
+            <button type="button" data-astrospheric-location="stones" aria-pressed="false" disabled>Stones Throw Camp</button>
+          </div>
+          <p id="astrospheric-status" class="detailed-forecast-status" role="status" aria-live="polite">Open this panel to load the Astropheric forecast.</p>
+          <div class="detailed-forecast-embed" role="region" aria-label="Astropheric forecast embed">
+            <div id="astrospheric-embed"></div>
+          </div>
+        </div>
+      </details>
+
+      <details id="clear-dark-sky-forecast" class="detailed-forecast-card">
+        <summary>Clear Dark Sky</summary>
+        <div class="detailed-forecast-content">
+          <p>View the Calgary astronomy forecast chart from Clear Dark Sky.</p>
+          <p id="clear-dark-sky-status" class="detailed-forecast-status" role="status" aria-live="polite">Open this panel to load the Clear Dark Sky chart.</p>
+          <a class="clear-dark-sky-link" href="https://www.cleardarksky.com/c/Calgarykey.html" target="_blank" rel="noopener noreferrer">
+            <img id="clear-dark-sky-chart" class="clear-dark-sky-chart" data-src="https://www.cleardarksky.com/c/Calgarycsk.gif?c=118854" alt="Clear Dark Sky astronomy forecast chart for Calgary" hidden>
+            <span>Open the Calgary forecast on Clear Dark Sky (new tab)</span>
+          </a>
+        </div>
+      </details>
     </section>
   </main>
 

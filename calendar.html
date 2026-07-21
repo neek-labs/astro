@@ -1,94 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script type="text/javascript" src="https://astrosphericcloudstorage.blob.core.windows.net/embed/astrosphericembed.js" />
-  <title>Astro | Nick Hall</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="0; url=session-planner.html">
+  <script>
+    window.location.replace("session-planner.html");
+  </script>
+  <title>Sky Forecast Has Moved</title>
 </head>
 <body>
-<div class="page-wrapper">
-<script src="stars.js"></script>
-<canvas id="starfield"></canvas>
-
-  <!-- 🔭 Navigation Bar -->
-  <div class="astro-nav-wrapper">
-    <nav class="astro-nav">
-      <a href="https://nickhall.tech" target="_blank" class="main-site-link"><i class="fas fa-home"></i> Return to nickhall.tech</a>
-      <a href="index.html"><i class="fas fa-rocket"></i> Astro Home</a>
-      <a href="equipment.html"><i class="fas fa-satellite-dish"></i> Equipment</a>
-      <a href="gallery.html"><i class="fas fa-camera"></i> Photo Gallery</a>
-      <a href="calendar.html"><i class="fas fa-calendar-alt"></i> Sky Forecast</a>
-      <a href="session-planner.html"><i class="fas fa-cloud-moon"></i> Session Planner</a>
-      <a href="tools.html"><i class="fas fa-wrench"></i> Tools</a>
-    </nav>
-  </div>
-
-  <div class="content">
-    <h1>Sky Calendar</h1>
-
-    <section id="moon-phase">
-      <h2>🌙 Current Moon Phase</h2>
-      <div id="moon-phase-wrapper">
-        <img id="moon-image" src="" alt="Moon Phase" style="height: 400px; width: auto;" />
-        <div>
-          <p id="moon-info">Loading moon data...</p>
-          <p id="next-new-moon">Next New Moon: <strong>2025-09-21</strong></p>
-        </div>
-      </div>
-    </section>
-
-<section id="astro-weather-astropheric">
-  <h2 style="text-align: center;">🌠 Astropheric Weather</h2>
-  <h3 style="text-align: center;">This is my favourite weather planning tool as it shows the transparency, seeing and clouds. Select a location to view the weather forecast</h3>
-
-  <div style="text-align: center;">
-    <button onclick="setAstroWeather('calgary')">📍 Calgary</button>
-    <button onclick="setAstroWeather('darksky')">🌌 Starland Recreation Area</button>
-    <button onclick="setAstroWeather('stones')">Stones Throw Camp ASP2025</button>
-  </div>
-  <div style="display: flex; justify-content: center; margin-top: 10px;">
-    <div id="AstrosphericContainer" style="width:800px;"></div>
-  </div>
-</section>
-
-<script>
-  // Define your two locations
-  const locations = {
-    calgary: { lat: 51.0486, lon: -114.0708 },
-    darksky: { lat: 51.6630, lon: -112.9081 },
-    stones: { lat: 50.5974, lon: -112.8299 }
-  };
-
-   document.addEventListener("DOMContentLoaded", function () {
-    const { lat, lon } = locations.calgary;
-    m_AstrosphericEmbed.Create("AstrosphericContainer", lat, lon);
-  });
-
-    // Button handler
-  function setAstroWeather(locationKey) {
-    const location = locations[locationKey];
-    if (location) {
-      m_AstrosphericEmbed.ChangeLocation(location.lat, location.lon);
-    }
-  }
-</script>
-
-    <section id="astro-weather">
-      <h2>🌤️ Dark Site Forecast for Calgary</h2>
-      <a href="https://www.cleardarksky.com/c/Calgarykey.html">
-        <img src="https://www.cleardarksky.com/c/Calgarycsk.gif?c=118854">
-      </a>
-      <p>Go to cleardarksky.com for specific weather in your area.</p>
-    </section>
-  </div>
-  <footer>
-    <p>© 2026 Nick Hall — Stargazer. Astrophotographer.</p>
-  </footer>
-</div>
-<script src="moon.js?v=1"></script>
+  <main>
+    <h1>Sky Forecast has moved to the Session Planner.</h1>
+    <p><a href="session-planner.html">Continue to the Session Planner</a>.</p>
+  </main>
 </body>
 </html>
