@@ -22,6 +22,22 @@ target-specific lunar impact. `calendar.html` is retained only as a lightweight
 redirect to `session-planner.html`. Equipment-profile matching remains future Stage
 5B work.
 
+### Stage 5A.1 Nightly Card Progressive Disclosure
+
+Each nightly forecast now renders as a native disclosure card that is collapsed by
+default. The collapsed summary provides the readable date, recommendation, score,
+confidence, best observing window, compact cloud/wind/Moon conditions, top target,
+and at most one prioritized warning or planning note. Opening a card reveals grouped
+conditions, complete primary and alternative target details, and deduplicated
+planning notes. Primary target reasons and warnings remain available in a nested
+`Why this target?` disclosure.
+
+Dates are formatted without changing their underlying ISO values, while structured
+timestamps are rendered in the forecast location's timezone using readable 12-hour
+times. Labels, units, and Moon descriptions are presentation-only improvements. No
+forecast calculations, recommendation scores, generated data, or JSON schemas are
+changed by Stage 5A.1.
+
 ### Stage 2 Capabilities
 
 - Fetches live hourly forecast data from the Open-Meteo Forecast API for Calgary, Alberta.
@@ -440,15 +456,19 @@ To verify normal loading:
 
 1. Start the local server with `python -m http.server 8000`.
 2. Open `http://localhost:8000/session-planner.html`.
-3. Confirm the generated timestamp, data source, weekly summary, score, darkness details, and seven nightly cards render.
-4. Confirm nightly Moon details and target recommendations, including lunar-impact values, render.
-5. In the browser network panel, confirm neither Astropheric nor the Clear Dark Sky chart is requested on initial load.
-6. Open Astropheric, confirm the Calgary forecast loads, try all three location buttons, then close and reopen it without a second script request.
-7. Open Clear Dark Sky, confirm its chart loads once and its link opens the Calgary forecast in a new tab.
-8. Simulate or block each third-party request and confirm its panel shows an error while the main planner remains usable.
-9. Check the page at a narrow mobile width and confirm the panels, buttons, embeds, and chart do not overflow the page.
-10. Open `http://localhost:8000/calendar.html` and confirm it redirects to the Session Planner.
-11. Confirm the browser console has no errors.
+3. Confirm the generated timestamp, data source, weekly summary, and seven nightly cards render.
+4. Confirm every nightly card starts closed and its summary shows a readable date, recommendation, score, confidence, observing window, clouds, wind, Moon illumination, and top target when available.
+5. Open each card and confirm Conditions, Target recommendations, and Planning notes are complete and readable.
+6. Open a primary target's `Why this target?` disclosure and confirm all reasons and target warnings remain available.
+7. Check poor-weather and missing-target nights, `No reliable window`, cross-midnight windows, and 12-hour target peak times.
+8. Use the keyboard to open and close both nightly cards and nested target reasoning.
+9. In the browser network panel, confirm neither Astropheric nor the Clear Dark Sky chart is requested on initial load.
+10. Open Astropheric, confirm the Calgary forecast loads, try all three location buttons, then close and reopen it without a second script request.
+11. Open Clear Dark Sky, confirm its chart loads once and its link opens the Calgary forecast in a new tab.
+12. Simulate or block each third-party request and confirm its panel shows an error while the main planner remains usable.
+13. Check the page at a narrow mobile width and confirm cards, nested disclosures, panels, buttons, embeds, and charts do not overflow.
+14. Open `http://localhost:8000/calendar.html` and confirm it redirects to the Session Planner.
+15. Confirm the browser console has no errors.
 
 To verify the error state, temporarily rename `data/session-planner.json` or make a malformed local copy while testing through the web server. Reload the page and confirm a visible error message appears. Restore the valid JSON file before committing.
 

@@ -26,7 +26,7 @@ def test_generated_timestamp_replaces_sample_note_in_hero() -> None:
 
 def test_frontend_keeps_weather_rendering_when_recommendations_are_missing() -> None:
     source = frontend_source()
-    assert 'addDetail(details, "Best window"' in source
+    assert '["Best window", formatTimeRange(' in source
     assert "if (!recommendations || !Array.isArray(recommendations.topTargets))" in source
     assert "Detailed target recommendations are unavailable for this forecast." in source
 

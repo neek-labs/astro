@@ -235,11 +235,11 @@
     setText("session-planner-generated", `Generated: ${formatGeneratedAt(data.generatedAt, data.location.timezone)}`);
     setText("session-planner-source", `Data source: ${data.dataSource}`);
 
-    renderSummary(data.nights);
-    renderCards(data.nights);
+    renderSummary(data.nights, data.location.timezone);
+    renderCards(data.nights, data.location.timezone);
   }
 
-  function renderSummary(nights) {
+  function renderSummary(nights, timezone) {
     const summary = document.getElementById("session-planner-summary");
     summary.replaceChildren();
 
@@ -253,7 +253,7 @@
     const copy = document.createElement("p");
     if (bestNights.length > 0) {
       copy.textContent = bestNights
-        .map((night) => `${night.weekday}, ${night.date}: ${night.recommendation.label} (${formatScore(night.recommendation.score)})`)
+        .map((night) => `${formatDisplayDate(night.date, night.weekday, timezone)}: ${night.recommendation.label} (${formatScore(night.recommendation.score)})`)
         .join(" | ");
     } else {
       copy.textContent = "No strong imaging nights appear in this forecast window.";
@@ -266,77 +266,171 @@
     summary.append(heading, copy, disclaimer);
   }
 
-  function renderCards(nights) {
+  function renderCards(nights, timezone) {
     const container = document.getElementById("session-planner-cards");
     container.replaceChildren();
 
     nights.forEach((night) => {
-      const card = document.createElement("article");
-      card.className = `session-planner-card session-planner-card--${getLevel(night)}`;
-
-      const header = document.createElement("div");
-      header.className = "session-planner-card-header";
-
-      const title = document.createElement("div");
-      const date = document.createElement("h3");
-      date.textContent = `${night.weekday}, ${night.date}`;
-      const confidence = document.createElement("p");
-      confidence.textContent = `Confidence: ${text(night.recommendation && night.recommendation.confidence)} | Score: ${formatScore(night.recommendation && night.recommendation.score)}`;
-      title.append(date, confidence);
-
-      const badge = document.createElement("div");
-      badge.className = "session-planner-recommendation";
-      badge.textContent = `${levelSymbol(getLevel(night))} ${text(night.recommendation && night.recommendation.label)}`;
-
-      header.append(title, badge);
-
-      const details = document.createElement("dl");
-      details.className = "session-planner-detail-grid";
-      addDetail(details, "Best window", night.conditions && night.conditions.bestWindow);
-      addDetail(details, "Usable hours", formatHours(night.conditions && night.conditions.usableHours));
-      addDetail(details, "Visual usable", formatHours(night.conditions && night.conditions.visualUsableHours));
-      addDetail(details, "Imaging usable", formatHours(night.conditions && night.conditions.imagingUsableHours));
-      addDetail(details, "Astronomical night", formatBoolean(night.conditions && night.conditions.astronomicalNightOccurs));
-      addDetail(details, "Cloud cover", formatPercent(night.conditions && night.conditions.averageCloudCoverPercent));
-      addDetail(details, "Low cloud", formatPercent(night.conditions && night.conditions.averageLowCloudCoverPercent));
-      addDetail(details, "Precipitation", formatPercent(night.conditions && night.conditions.precipitationProbabilityPercent));
-      addDetail(details, "Wind", formatWind(night.conditions && night.conditions.wind));
-      addDetail(details, "Temp/dew spread", formatTemperature(night.conditions && night.conditions.temperature));
-      addDetail(details, "Moon", formatMoon(night.conditions && night.conditions.moon));
-
-      const explanation = document.createElement("p");
-      explanation.className = "session-planner-explanation";
-      explanation.textContent = text(night.explanation);
-
-      card.append(header, details);
-      renderTargetRecommendations(card, night);
-      card.append(explanation);
-
-      if (Array.isArray(night.warnings) && night.warnings.length > 0) {
-        const warnings = document.createElement("ul");
-        warnings.className = "session-planner-warnings";
-        night.warnings.forEach((warning) => {
-          const item = document.createElement("li");
-          item.textContent = warning;
-          warnings.appendChild(item);
-        });
-        card.appendChild(warnings);
-      }
-
-      container.appendChild(card);
+      container.appendChild(renderNightCard(night, timezone));
     });
   }
 
-  function renderTargetRecommendations(card, night) {
-    const section = document.createElement("section");
-    section.className = "session-planner-targets";
+  function renderNightCard(night, timezone) {
+    const card = document.createElement("article");
+    card.className = `session-planner-card session-planner-card--${getLevel(night)}`;
 
-    const heading = document.createElement("h4");
-    heading.textContent = "Target recommendations";
-    section.appendChild(heading);
-
-    const recommendations = night && night.targetRecommendations;
+    const disclosure = document.createElement("details");
+    disclosure.className = "session-planner-night-details";
     const validTargets = getValidTargetRecommendations(night);
+    disclosure.append(
+      renderNightSummary(night, timezone, validTargets),
+      renderExpandedNightDetails(night, timezone, validTargets)
+    );
+    card.appendChild(disclosure);
+    return card;
+  }
+
+  function renderNightSummary(night, timezone, validTargets) {
+    const conditions = night && night.conditions ? night.conditions : {};
+    const recommendation = night && night.recommendation ? night.recommendation : {};
+    const summary = document.createElement("summary");
+    summary.className = "session-planner-night-summary";
+
+    const header = document.createElement("div");
+    header.className = "session-planner-night-summary-header";
+    const date = document.createElement("h3");
+    date.textContent = formatDisplayDate(night.date, night.weekday, timezone);
+    const badge = document.createElement("span");
+    badge.className = "session-planner-recommendation";
+    badge.textContent = text(recommendation.label);
+    header.append(date, badge);
+
+    const score = document.createElement("p");
+    score.className = "session-planner-score-confidence";
+    score.textContent = `${formatScore(recommendation.score)} · ${text(recommendation.confidence)} confidence`;
+
+    const window = document.createElement("p");
+    window.className = "session-planner-summary-window";
+    window.textContent = formatTimeRange(
+      conditions.bestWindowStart,
+      conditions.bestWindowEnd,
+      timezone,
+      conditions.bestWindow
+    );
+
+    const weather = document.createElement("div");
+    weather.className = "session-planner-compact-conditions";
+    appendCompactMetric(weather, "Clouds", formatPercent(conditions.averageCloudCoverPercent));
+    appendCompactMetric(weather, "Wind", formatWindSummary(conditions.wind));
+    appendCompactMetric(weather, "Moon", formatMoonIllumination(conditions.moon));
+
+    summary.append(header, score, window, weather);
+
+    if (validTargets.length > 0) {
+      const target = document.createElement("p");
+      target.className = "session-planner-summary-target";
+      const label = document.createElement("strong");
+      label.textContent = "Suggested target: ";
+      target.append(label, validTargets[0].displayName);
+      summary.appendChild(target);
+    }
+
+    const priorityWarning = selectPriorityWarning(night, validTargets[0]);
+    if (priorityWarning) {
+      const warning = document.createElement("p");
+      warning.className = "session-planner-summary-warning";
+      const label = document.createElement("strong");
+      label.textContent = `${priorityWarning.label}: `;
+      warning.append(label, priorityWarning.message);
+      summary.appendChild(warning);
+    }
+
+    const affordance = document.createElement("span");
+    affordance.className = "session-planner-expand-affordance";
+    affordance.textContent = formatExpandAffordance(validTargets.length);
+    summary.appendChild(affordance);
+    return summary;
+  }
+
+  function appendCompactMetric(parent, label, value) {
+    const metric = document.createElement("span");
+    const name = document.createElement("strong");
+    name.textContent = `${label} `;
+    metric.append(name, text(value));
+    parent.appendChild(metric);
+  }
+
+  function renderExpandedNightDetails(night, timezone, validTargets) {
+    const expanded = document.createElement("div");
+    expanded.className = "session-planner-night-expanded";
+    expanded.append(
+      renderConditionsSection(night, timezone),
+      renderTargetRecommendations(night, timezone, validTargets),
+      renderPlanningNotes(night)
+    );
+    return expanded;
+  }
+
+  function renderConditionsSection(night, timezone) {
+    const conditions = night && night.conditions ? night.conditions : {};
+    const section = createExpandedSection("Conditions", "session-planner-conditions");
+    const groups = document.createElement("div");
+    groups.className = "session-planner-condition-groups";
+
+    const observingEntries = [
+      ["Best window", formatTimeRange(conditions.bestWindowStart, conditions.bestWindowEnd, timezone, conditions.bestWindow)]
+    ];
+    if (hasDistinctUsableHours(conditions)) {
+      observingEntries.push(["Qualified window", formatHours(conditions.usableHours)]);
+    }
+    observingEntries.push(
+      ["Visual window", formatHours(conditions.visualUsableHours)],
+      ["Imaging window", formatHours(conditions.imagingUsableHours)],
+      ["Astronomical night", formatBoolean(conditions.astronomicalNightOccurs)]
+    );
+
+    groups.append(
+      createConditionGroup("Observing window", observingEntries),
+      createConditionGroup("Weather", [
+        ["Cloud cover", formatPercent(conditions.averageCloudCoverPercent)],
+        ["Low cloud", formatPercent(conditions.averageLowCloudCoverPercent)],
+        ["Precipitation", formatPercent(conditions.precipitationProbabilityPercent)],
+        ["Wind and gusts", formatWind(conditions.wind)]
+      ]),
+      createConditionGroup("Environment", [
+        ["Temperature", formatTemperatureC(conditions.temperature && conditions.temperature.expectedC)],
+        ["Dew margin", formatTemperatureC(conditions.temperature && conditions.temperature.dewPointSpreadC)],
+        ["Moon", formatMoonSummary(conditions.moon)]
+      ])
+    );
+    section.appendChild(groups);
+    return section;
+  }
+
+  function createExpandedSection(title, className) {
+    const section = document.createElement("section");
+    section.className = `session-planner-expanded-section ${className}`;
+    const heading = document.createElement("h4");
+    heading.textContent = title;
+    section.appendChild(heading);
+    return section;
+  }
+
+  function createConditionGroup(title, entries) {
+    const group = document.createElement("section");
+    group.className = "session-planner-condition-group";
+    const heading = document.createElement("h5");
+    heading.textContent = title;
+    const details = document.createElement("dl");
+    details.className = "session-planner-condition-list";
+    entries.forEach(([label, value]) => addDetail(details, label, value));
+    group.append(heading, details);
+    return group;
+  }
+
+  function renderTargetRecommendations(night, timezone, validTargets) {
+    const section = createExpandedSection("Target recommendations", "session-planner-targets");
+    const recommendations = night && night.targetRecommendations;
     if (validTargets.length === 0) {
       const unavailable = document.createElement("p");
       unavailable.className = "session-planner-targets-unavailable";
@@ -344,8 +438,7 @@
         ? recommendations.message
         : "Detailed target recommendations are unavailable for this forecast.";
       section.appendChild(unavailable);
-      card.appendChild(section);
-      return;
+      return section;
     }
 
     const primary = validTargets[0];
@@ -356,25 +449,28 @@
     title.className = "session-planner-target-title";
     const name = document.createElement("h5");
     name.textContent = primary.displayName;
-    const catalogueId = document.createElement("p");
-    catalogueId.textContent = primary.primaryCatalogId && primary.primaryCatalogId !== primary.displayName
-      ? primary.primaryCatalogId
-      : "Primary recommendation";
-    const score = document.createElement("strong");
-    score.textContent = `${formatDecimalScore(primary.recommendationScore)} · ${capitalize(primary.recommendationRating)}`;
-    title.append(name, catalogueId, score);
+    const metadata = document.createElement("p");
+    metadata.textContent = [
+      primary.primaryCatalogId && primary.primaryCatalogId !== primary.displayName ? primary.primaryCatalogId : null,
+      capitalize(primary.recommendationRating),
+      formatDecimalScore(primary.recommendationScore)
+    ].filter(Boolean).join(" · ");
+    title.append(name, metadata);
 
     const metrics = document.createElement("dl");
     metrics.className = "session-planner-target-metrics";
     addDetail(metrics, "Type", primary.targetType);
+    addDetail(metrics, "Observing window", formatTimeRange(primary.usableWindowOverlapStart, primary.usableWindowOverlapEnd, timezone));
     addDetail(metrics, "Usable overlap", formatMinutes(primary.usableWindowOverlapMinutes));
-    addDetail(metrics, "Maximum altitude", formatAltitude(primary.maximumAltitudeDeg));
-    addDetail(metrics, "Peak", formatLocalTime(primary.maximumAltitudeTime));
+    addDetail(metrics, "Peak altitude", formatAltitude(primary.maximumAltitudeDeg));
+    addDetail(metrics, "Peak time", formatLocalTime(primary.maximumAltitudeTime, timezone));
     addDetail(metrics, "Lunar impact", capitalize(primary.lunarImpactRating));
     primaryCard.append(title, metrics);
 
-    appendTextList(primaryCard, primary.reasons, "session-planner-target-reasons", 3);
-    appendTextList(primaryCard, primary.warnings, "session-planner-target-warnings", 3);
+    const reasoning = renderTargetReasoning(primary);
+    if (reasoning) {
+      primaryCard.appendChild(reasoning);
+    }
     section.appendChild(primaryCard);
 
     if (validTargets.length > 1) {
@@ -389,20 +485,199 @@
         item.className = "session-planner-alternative-target";
         const itemName = document.createElement("strong");
         itemName.textContent = `#${target.rank} ${target.displayName}`;
+        const itemIdentity = document.createElement("p");
+        itemIdentity.className = "session-planner-alternative-identity";
+        itemIdentity.textContent = [
+          target.primaryCatalogId && target.primaryCatalogId !== target.displayName ? target.primaryCatalogId : null,
+          target.targetType
+        ].filter(Boolean).join(" · ");
         const itemMetrics = document.createElement("p");
         itemMetrics.textContent = [
+          capitalize(target.recommendationRating),
           formatDecimalScore(target.recommendationScore),
-          formatMinutes(target.usableWindowOverlapMinutes),
-          formatAltitude(target.maximumAltitudeDeg),
-          `${capitalize(target.lunarImpactRating)} lunar rating`
+          formatCompactMinutes(target.usableWindowOverlapMinutes),
+          `${formatAltitude(target.maximumAltitudeDeg)} peak at ${formatLocalTime(target.maximumAltitudeTime, timezone)}`,
+          `${capitalize(target.lunarImpactRating)} Moon impact`
         ].join(" · ");
-        item.append(itemName, itemMetrics);
+        item.append(itemName);
+        if (itemIdentity.textContent) {
+          item.appendChild(itemIdentity);
+        }
+        item.appendChild(itemMetrics);
         alternatives.appendChild(item);
       });
       section.appendChild(alternatives);
     }
 
-    card.appendChild(section);
+    return section;
+  }
+
+  function renderTargetReasoning(target) {
+    const hasReasons = hasTextValues(target.reasons);
+    const hasWarnings = hasTextValues(target.warnings);
+    if (!hasReasons && !hasWarnings) {
+      return null;
+    }
+
+    const disclosure = document.createElement("details");
+    disclosure.className = "session-planner-target-reasoning";
+    const summary = document.createElement("summary");
+    summary.textContent = "Why this target?";
+    const content = document.createElement("div");
+    content.className = "session-planner-target-reasoning-content";
+
+    if (hasReasons) {
+      const label = document.createElement("p");
+      label.className = "session-planner-target-reasoning-label";
+      label.textContent = "Why it ranks well";
+      content.appendChild(label);
+      appendTextList(content, target.reasons, "session-planner-target-reasons");
+    }
+    if (hasWarnings) {
+      const label = document.createElement("p");
+      label.className = "session-planner-target-reasoning-label";
+      label.textContent = "Target considerations";
+      content.appendChild(label);
+      appendTextList(content, target.warnings, "session-planner-target-warnings");
+    }
+
+    disclosure.append(summary, content);
+    return disclosure;
+  }
+
+  function renderPlanningNotes(night) {
+    const section = createExpandedSection("Planning notes", "session-planner-planning-notes");
+    const warnings = Array.isArray(night && night.warnings) ? night.warnings : [];
+    const messages = deduplicateMessages([
+      ...(Array.isArray(night && night.reasons) ? night.reasons : []),
+      ...splitMessageSentences(night && night.explanation),
+      ...warnings
+    ]);
+
+    if (messages.length === 0) {
+      const unavailable = document.createElement("p");
+      unavailable.textContent = "No additional planning notes are available.";
+      section.appendChild(unavailable);
+      return section;
+    }
+
+    const list = document.createElement("ul");
+    list.className = "session-planner-planning-list";
+    messages.forEach((message) => {
+      const item = document.createElement("li");
+      if (warnings.some((warning) => messagesOverlap(message, warning))) {
+        item.className = "session-planner-planning-warning";
+        const label = document.createElement("strong");
+        label.textContent = "Warning: ";
+        item.append(label, message);
+      } else {
+        item.textContent = message;
+      }
+      list.appendChild(item);
+    });
+    section.appendChild(list);
+    return section;
+  }
+
+  function hasDistinctUsableHours(conditions) {
+    const usable = conditions && conditions.usableHours;
+    return typeof usable === "number" &&
+      usable !== conditions.visualUsableHours &&
+      usable !== conditions.imagingUsableHours;
+  }
+
+  function hasTextValues(values) {
+    return Array.isArray(values) && values.some((value) => typeof value === "string" && value.trim());
+  }
+
+  function formatExpandAffordance(targetCount) {
+    if (targetCount === 1) {
+      return "View full forecast and 1 target";
+    }
+    if (targetCount > 1) {
+      return `View full forecast and ${targetCount} targets`;
+    }
+    return "View full forecast";
+  }
+
+  function selectPriorityWarning(night, primaryTarget) {
+    const messages = deduplicateMessages([
+      ...(Array.isArray(night && night.warnings) ? night.warnings : []),
+      ...(Array.isArray(primaryTarget && primaryTarget.warnings) ? primaryTarget.warnings : [])
+    ]);
+    if (messages.length === 0) {
+      return null;
+    }
+
+    const ranked = messages.map((message, index) => ({
+      message,
+      index,
+      priority: warningPriority(message)
+    })).sort((left, right) => left.priority - right.priority || left.index - right.index);
+    const selected = ranked[0];
+    return {
+      label: selected.priority >= 3 && selected.priority <= 6 ? "Note" : "Warning",
+      message: selected.message
+    };
+  }
+
+  function warningPriority(message) {
+    const normalized = normalizeMessage(message);
+    if (/safety|cloud|precip|rain|snow|storm|wind|gust|weather|visibility/.test(normalized)) {
+      return 1;
+    }
+    if (/dew/.test(normalized)) {
+      return 2;
+    }
+    if (/imaging|visual observing/.test(normalized)) {
+      return 3;
+    }
+    if (/target|available|overlap|altitude|timing/.test(normalized)) {
+      return 4;
+    }
+    if (/confidence/.test(normalized)) {
+      return 5;
+    }
+    if (/weekday|schedule|fatigue|after midnight/.test(normalized)) {
+      return 6;
+    }
+    return 7;
+  }
+
+  function splitMessageSentences(value) {
+    if (typeof value !== "string" || !value.trim()) {
+      return [];
+    }
+    return value.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [];
+  }
+
+  function deduplicateMessages(values) {
+    const messages = [];
+    values.filter((value) => typeof value === "string" && value.trim()).forEach((value) => {
+      const candidate = value.trim();
+      const duplicateIndex = messages.findIndex((message) => messagesOverlap(message, candidate));
+      if (duplicateIndex === -1) {
+        messages.push(candidate);
+      } else if (candidate.length < messages[duplicateIndex].length) {
+        messages[duplicateIndex] = candidate;
+      }
+    });
+    return messages;
+  }
+
+  function messagesOverlap(left, right) {
+    const normalizedLeft = normalizeMessage(left);
+    const normalizedRight = normalizeMessage(right);
+    return normalizedLeft === normalizedRight ||
+      (Math.min(normalizedLeft.length, normalizedRight.length) >= 24 &&
+        (normalizedLeft.includes(normalizedRight) || normalizedRight.includes(normalizedLeft)));
+  }
+
+  function normalizeMessage(value) {
+    return String(value || "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, " ")
+      .trim();
   }
 
   function getValidTargetRecommendations(night) {
@@ -436,7 +711,11 @@
     }
     const list = document.createElement("ul");
     list.className = className;
-    values.filter((value) => typeof value === "string" && value).slice(0, maximumItems).forEach((value) => {
+    const validValues = values.filter((value) => typeof value === "string" && value);
+    const displayedValues = typeof maximumItems === "number"
+      ? validValues.slice(0, maximumItems)
+      : validValues;
+    displayedValues.forEach((value) => {
       const item = document.createElement("li");
       item.textContent = value;
       list.appendChild(item);
@@ -476,18 +755,6 @@
     return Object.prototype.hasOwnProperty.call(levelRank, level) ? level : "poor";
   }
 
-  function levelSymbol(level) {
-    const symbols = {
-      poor: "Stop",
-      visual: "Eye",
-      possible: "Check",
-      strong: "Camera",
-      exceptional: "Star"
-    };
-
-    return symbols[level] || "Info";
-  }
-
   function formatGeneratedAt(value, timezone) {
     const date = new Date(value);
     if (Number.isNaN(date.getTime())) {
@@ -497,12 +764,90 @@
     return new Intl.DateTimeFormat("en-CA", {
       dateStyle: "medium",
       timeStyle: "short",
+      hour12: true,
       timeZone: timezone || "America/Edmonton"
     }).format(date);
   }
 
+  function formatDisplayDate(value, fallbackWeekday, timezone) {
+    const match = typeof value === "string" && value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (!match) {
+      return [fallbackWeekday, value].filter(Boolean).join(", ") || "Date unavailable";
+    }
+
+    const year = Number(match[1]);
+    const month = Number(match[2]);
+    const day = Number(match[3]);
+    const date = new Date(Date.UTC(year, month - 1, day, 18));
+    if (date.getUTCFullYear() !== year || date.getUTCMonth() !== month - 1 || date.getUTCDate() !== day) {
+      return [fallbackWeekday, value].filter(Boolean).join(", ");
+    }
+
+    try {
+      return new Intl.DateTimeFormat("en-US", {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+        timeZone: timezone || "America/Edmonton"
+      }).format(date);
+    } catch (error) {
+      console.error("Session Planner date formatting error:", error);
+      return [fallbackWeekday, value].filter(Boolean).join(", ");
+    }
+  }
+
+  function formatTimeRange(startValue, endValue, timezone, fallback) {
+    const start = formatZonedTime(startValue, timezone);
+    const end = formatZonedTime(endValue, timezone);
+    if (!start || !end) {
+      return text(fallback);
+    }
+
+    if (start.zone && end.zone && start.zone !== end.zone) {
+      return `${start.time} ${start.zone}–${end.time} ${end.zone}`;
+    }
+    const zone = end.zone || start.zone;
+    return `${start.time}–${end.time}${zone ? ` ${zone}` : ""}`;
+  }
+
+  function formatZonedTime(value, timezone) {
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) {
+      return null;
+    }
+
+    try {
+      const options = {
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+        timeZone: timezone || "America/Edmonton"
+      };
+      const time = new Intl.DateTimeFormat("en-US", options).format(date);
+      const zoneParts = new Intl.DateTimeFormat("en-US", {
+        ...options,
+        timeZoneName: "short"
+      }).formatToParts(date);
+      const zonePart = zoneParts.find((part) => part.type === "timeZoneName");
+      return {
+        time,
+        zone: zonePart ? zonePart.value : ""
+      };
+    } catch (error) {
+      console.error("Session Planner time formatting error:", error);
+      return null;
+    }
+  }
+
   function formatHours(value) {
-    return typeof value === "number" ? `${value.toFixed(value % 1 === 0 ? 0 : 1)} hours` : value;
+    if (typeof value !== "number") {
+      return value;
+    }
+    if (value === 0) {
+      return "None";
+    }
+    const formatted = value.toFixed(value % 1 === 0 ? 0 : 1);
+    return `${formatted} ${value === 1 ? "hour" : "hours"}`;
   }
 
   function formatPercent(value) {
@@ -518,25 +863,24 @@
   }
 
   function formatMinutes(value) {
-    return typeof value === "number" ? `${Math.round(value)} minutes` : text(value);
+    if (typeof value !== "number") {
+      return text(value);
+    }
+    const rounded = Math.round(value);
+    return `${rounded} ${rounded === 1 ? "minute" : "minutes"}`;
+  }
+
+  function formatCompactMinutes(value) {
+    return typeof value === "number" ? `${Math.round(value)} min` : text(value);
   }
 
   function formatAltitude(value) {
     return typeof value === "number" ? `${value.toFixed(1)}°` : text(value);
   }
 
-  function formatLocalTime(value) {
-    const date = new Date(value);
-    if (Number.isNaN(date.getTime())) {
-      return text(value);
-    }
-    return new Intl.DateTimeFormat("en-CA", {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false,
-      timeZone: "America/Edmonton",
-      timeZoneName: "short"
-    }).format(date);
+  function formatLocalTime(value, timezone) {
+    const formatted = formatZonedTime(value, timezone);
+    return formatted ? `${formatted.time}${formatted.zone ? ` ${formatted.zone}` : ""}` : text(value);
   }
 
   function capitalize(value) {
@@ -556,34 +900,47 @@
 
   function formatWind(wind) {
     if (!wind) {
-      return "";
+      return "Wind data unavailable";
     }
 
-    return `${text(wind.sustainedKph)} kph, gusts ${text(wind.gustKph)} kph`;
+    return `${text(wind.sustainedKph)} km/h, gusts ${text(wind.gustKph)} km/h`;
   }
 
-  function formatTemperature(temperature) {
-    if (!temperature) {
-      return "";
+  function formatWindSummary(wind) {
+    if (!wind) {
+      return "unavailable";
     }
-
-    return `${text(temperature.expectedC)} C, dew spread ${text(temperature.dewPointSpreadC)} C`;
+    return `${text(wind.sustainedKph)} km/h`;
   }
 
-  function formatMoon(moon) {
-    if (!moon) {
-      return "";
+  function formatTemperatureC(value) {
+    return typeof value === "number" ? `${value}°C` : text(value);
+  }
+
+  function formatMoonIllumination(moon) {
+    if (!moon || typeof moon.illuminationPercent !== "number") {
+      return "unavailable";
+    }
+    return `${Math.round(moon.illuminationPercent)}%`;
+  }
+
+  function formatMoonSummary(moon) {
+    if (!moon || typeof moon.illuminationPercent !== "number") {
+      return "Moon data unavailable";
     }
 
-    const parts = [formatPercent(moon.illuminationPercent)];
-    if (typeof moon.aboveHorizon === "boolean") {
-      parts.push(moon.aboveHorizon ? "above horizon" : "below horizon");
+    const illumination = `${Math.round(moon.illuminationPercent)}% illuminated`;
+    if (moon.aboveHorizon === false) {
+      return `${illumination} · below horizon`;
     }
     if (typeof moon.altitudeDegrees === "number") {
-      parts.push(`${moon.altitudeDegrees} deg alt`);
+      return `${illumination} · ${Math.round(moon.altitudeDegrees)}° high`;
+    }
+    if (moon.aboveHorizon === true) {
+      return `${illumination} · above horizon`;
     }
 
-    return parts.filter(Boolean).join(", ");
+    return illumination;
   }
 
   function setText(id, value) {

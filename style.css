@@ -871,25 +871,11 @@ footer {
   background: #f7b2ff;
 }
 
-.session-planner-card-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
 .session-planner-card h3 {
   margin: 0 0 0.3rem;
   color: #fff;
   font-family: 'Orbitron', sans-serif;
   font-size: 1.1rem;
-}
-
-.session-planner-card-header p {
-  margin: 0;
-  color: #c9d5e8;
-  font-size: 0.92rem;
 }
 
 .session-planner-recommendation {
@@ -904,29 +890,6 @@ footer {
   font-size: 0.82rem;
   line-height: 1.35;
   text-align: center;
-}
-
-.session-planner-detail-grid {
-  display: grid;
-  grid-template-columns: minmax(110px, 0.8fr) minmax(0, 1.2fr);
-  gap: 0.55rem 0.75rem;
-  margin: 0;
-}
-
-.session-planner-detail-grid dt {
-  color: #9cd2ff;
-  font-weight: 700;
-}
-
-.session-planner-detail-grid dd {
-  margin: 0;
-  color: #eee;
-  overflow-wrap: anywhere;
-}
-
-.session-planner-explanation {
-  margin: 1rem 0 0;
-  color: #d9d9d9;
 }
 
 .session-planner-targets {
@@ -955,10 +918,7 @@ footer {
 }
 
 .session-planner-target-title {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 0.2rem 0.75rem;
-  align-items: start;
+  display: block;
 }
 
 .session-planner-target-title h5 {
@@ -969,17 +929,9 @@ footer {
 }
 
 .session-planner-target-title p {
-  grid-column: 1;
   margin: 0;
   color: #b9c9dc;
   font-size: 0.86rem;
-}
-
-.session-planner-target-title strong {
-  grid-column: 2;
-  grid-row: 1 / span 2;
-  color: #80ed99;
-  white-space: nowrap;
 }
 
 .session-planner-target-metrics {
@@ -1047,19 +999,271 @@ footer {
   font-size: 0.86rem;
 }
 
-.session-planner-warnings {
-  margin: 1rem 0 0;
-  padding-left: 1.2rem;
-  color: #ffe7a3;
-}
-
-.session-planner-warnings li + li {
-  margin-top: 0.35rem;
-}
-
 .session-planner-error {
   padding: 1.25rem;
   color: #ffd6d6;
+}
+
+/* Progressive nightly forecast cards */
+.session-planner-cards {
+  grid-template-columns: 1fr;
+}
+
+.session-planner-card {
+  padding: 0;
+}
+
+.session-planner-card::before {
+  z-index: 1;
+}
+
+.session-planner-night-details {
+  min-width: 0;
+}
+
+.session-planner-night-summary {
+  position: relative;
+  display: block;
+  min-height: 190px;
+  padding: 1.1rem 1.25rem 1rem 1.5rem;
+  cursor: pointer;
+  list-style: none;
+  transition: background-color 0.2s ease;
+}
+
+.session-planner-night-summary::-webkit-details-marker {
+  display: none;
+}
+
+.session-planner-night-summary:hover {
+  background: rgba(156, 210, 255, 0.06);
+}
+
+.session-planner-night-summary:focus-visible {
+  outline: 3px solid #7bdff2;
+  outline-offset: -3px;
+}
+
+.session-planner-night-details[open] > .session-planner-night-summary {
+  border-bottom: 1px solid rgba(156, 210, 255, 0.22);
+  background: rgba(156, 210, 255, 0.04);
+}
+
+.session-planner-night-summary-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.session-planner-night-summary-header h3 {
+  margin: 0;
+}
+
+.session-planner-score-confidence {
+  margin: 0.35rem 0 0;
+  color: #c9d5e8;
+  font-size: 0.92rem;
+}
+
+.session-planner-summary-window {
+  margin: 0.9rem 0 0;
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.session-planner-compact-conditions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.1rem;
+  margin-top: 0.45rem;
+  color: #c9d5e8;
+  font-size: 0.92rem;
+}
+
+.session-planner-compact-conditions strong {
+  color: #9cd2ff;
+}
+
+.session-planner-summary-target,
+.session-planner-summary-warning {
+  margin: 0.7rem 0 0;
+  font-size: 0.92rem;
+}
+
+.session-planner-summary-target {
+  color: #d9e8f7;
+}
+
+.session-planner-summary-target strong {
+  color: #80ed99;
+}
+
+.session-planner-summary-warning {
+  color: #ffe7a3;
+}
+
+.session-planner-expand-affordance {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+  color: #9cd2ff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.session-planner-expand-affordance::after {
+  content: "›";
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 1.25rem;
+  line-height: 1;
+  transform: rotate(90deg);
+  transition: transform 0.2s ease;
+}
+
+.session-planner-night-details[open] .session-planner-expand-affordance::after {
+  transform: rotate(-90deg);
+}
+
+.session-planner-night-expanded {
+  min-width: 0;
+  padding: 0 1.25rem 1.25rem 1.5rem;
+}
+
+.session-planner-expanded-section {
+  margin: 0;
+  padding: 1.25rem 0;
+  border-top: 1px solid rgba(156, 210, 255, 0.16);
+}
+
+.session-planner-expanded-section:first-child {
+  border-top: 0;
+}
+
+.session-planner-expanded-section > h4 {
+  margin: 0 0 0.85rem;
+  color: #9cd2ff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+}
+
+.session-planner-condition-groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.session-planner-condition-group {
+  min-width: 0;
+  padding: 0.9rem;
+  border: 1px solid rgba(156, 210, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(156, 210, 255, 0.035);
+}
+
+.session-planner-condition-group h5 {
+  margin: 0 0 0.7rem;
+  color: #d8efff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.86rem;
+}
+
+.session-planner-condition-list {
+  display: grid;
+  grid-template-columns: minmax(105px, 0.8fr) minmax(0, 1.2fr);
+  gap: 0.45rem 0.65rem;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.session-planner-condition-list dt {
+  color: #9cd2ff;
+  font-weight: 700;
+}
+
+.session-planner-condition-list dd {
+  margin: 0;
+  color: #eee;
+  overflow-wrap: anywhere;
+}
+
+.session-planner-targets {
+  margin: 0;
+  padding-top: 1.25rem;
+}
+
+.session-planner-target-title p {
+  margin-top: 0.3rem;
+  color: #b9c9dc;
+}
+
+.session-planner-target-metrics {
+  grid-template-columns: minmax(125px, 0.55fr) minmax(0, 1.45fr);
+  max-width: 720px;
+}
+
+.session-planner-target-reasoning {
+  margin-top: 0.85rem;
+  border: 1px solid rgba(156, 210, 255, 0.2);
+  border-radius: 7px;
+  background: rgba(14, 17, 32, 0.45);
+}
+
+.session-planner-target-reasoning > summary {
+  padding: 0.7rem 0.85rem;
+  color: #9cd2ff;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.session-planner-target-reasoning > summary:hover {
+  background: rgba(156, 210, 255, 0.08);
+}
+
+.session-planner-target-reasoning > summary:focus-visible {
+  outline: 3px solid #7bdff2;
+  outline-offset: -3px;
+}
+
+.session-planner-target-reasoning-content {
+  padding: 0 0.85rem 0.85rem;
+  border-top: 1px solid rgba(156, 210, 255, 0.14);
+}
+
+.session-planner-target-reasoning-label {
+  margin: 0.8rem 0 0;
+  color: #d8efff;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.session-planner-target-reasons,
+.session-planner-target-warnings {
+  margin-top: 0.45rem;
+}
+
+.session-planner-alternative-identity {
+  margin: 0.25rem 0 0;
+  color: #d9e8f7;
+  font-size: 0.86rem;
+}
+
+.session-planner-planning-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: #d9d9d9;
+}
+
+.session-planner-planning-list li + li {
+  margin-top: 0.45rem;
+}
+
+.session-planner-planning-warning {
+  color: #ffe7a3;
 }
 
 .detailed-forecasts {
@@ -1234,34 +1438,35 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  .session-planner-card-header {
+  .session-planner-night-summary-header {
     flex-direction: column;
+    gap: 0.65rem;
   }
 
   .session-planner-recommendation {
     max-width: 100%;
-    width: 100%;
-  }
-
-  .session-planner-detail-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .session-planner-detail-grid dd {
-    margin-bottom: 0.35rem;
-  }
-
-  .session-planner-target-title {
-    grid-template-columns: 1fr;
-  }
-
-  .session-planner-target-title strong {
-    grid-column: 1;
-    grid-row: auto;
+    width: auto;
   }
 
   .session-planner-target-metrics {
     grid-template-columns: 1fr;
+  }
+
+  .session-planner-night-summary {
+    min-height: 0;
+    padding: 1rem 1rem 0.9rem 1.25rem;
+  }
+
+  .session-planner-night-expanded {
+    padding: 0 1rem 1rem 1.25rem;
+  }
+
+  .session-planner-condition-groups {
+    grid-template-columns: 1fr;
+  }
+
+  .session-planner-condition-list {
+    grid-template-columns: minmax(105px, 0.8fr) minmax(0, 1.2fr);
   }
 
   .detailed-forecasts {
