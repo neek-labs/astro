@@ -6,84 +6,13 @@
     "longitude": -114.11,
     "timezone": "America/Edmonton"
   },
-  "generatedAt": "2026-08-11T09:16:58.734474-06:00",
+  "generatedAt": "2026-08-12T09:14:52.038690-06:00",
   "dataSource": "Open-Meteo Forecast API with deterministic local solar, lunar, and scoring calculations.",
   "nights": [
     {
-      "date": "2026-08-11",
-      "weekday": "Tuesday",
-      "forecastLeadHours": 2.7,
-      "recommendation": {
-        "label": "Visual only",
-        "level": "visual",
-        "confidence": "High",
-        "score": 45
-      },
-      "conditions": {
-        "bestWindow": "05:00-06:00 MDT",
-        "bestWindowStart": "2026-08-12T05:00:00-06:00",
-        "bestWindowEnd": "2026-08-12T06:00:00-06:00",
-        "usableHours": 1.0,
-        "visualUsableHours": 1.0,
-        "imagingUsableHours": 0,
-        "astronomicalNightOccurs": true,
-        "averageCloudCoverPercent": 52,
-        "averageLowCloudCoverPercent": 52,
-        "precipitationProbabilityPercent": 17,
-        "averageHumidityPercent": 92,
-        "visibilityKm": 13.6,
-        "wind": {
-          "sustainedKph": 9,
-          "gustKph": 19
-        },
-        "temperature": {
-          "expectedC": 11.1,
-          "dewPointSpreadC": 1.2
-        },
-        "moon": {
-          "illuminationPercent": 0.1,
-          "aboveHorizon": false,
-          "altitudeDegrees": -5.0,
-          "context": "bestWindowMidpoint"
-        }
-      },
-      "suggestedTarget": "No observing target recommended",
-      "suggestedEquipment": "Equipment matching is not yet implemented.",
-      "warnings": [
-        "Cloud cover is above strong-imaging thresholds.",
-        "Dew-point spread is tight; watch for dew formation.",
-        "Conditions are not strong enough for a planned imaging session."
-      ],
-      "explanation": "Visual only: Best contiguous window is 1.0 hours. Average cloud cover is 52%. Average precipitation probability is 17%. Only visual-usable conditions met the configured limits.",
-      "scoreBreakdown": {
-        "clouds": 35.0,
-        "precipitation": 57.5,
-        "duration": 33.3,
-        "wind": 71.0,
-        "dewHumidity": 22.3,
-        "visibility": 57.3,
-        "darkness": 40,
-        "convenience": 100
-      },
-      "reasons": [
-        "Best contiguous window is 1.0 hours.",
-        "Average cloud cover is 52%.",
-        "Average precipitation probability is 17%.",
-        "Only visual-usable conditions met the configured limits."
-      ],
-      "targetRecommendations": {
-        "status": "noCandidates",
-        "message": "No target has enough observable overlap with the best weather window.",
-        "candidatesEvaluated": 42,
-        "eligibleCandidates": 0,
-        "reviewFlags": [],
-        "topTargets": []
-      }
-    },
-    {
       "date": "2026-08-12",
       "weekday": "Wednesday",
-      "forecastLeadHours": 26.7,
+      "forecastLeadHours": 2.8,
       "recommendation": {
         "label": "Don't bother",
         "level": "poor",
@@ -140,7 +69,7 @@
     {
       "date": "2026-08-13",
       "weekday": "Thursday",
-      "forecastLeadHours": 50.7,
+      "forecastLeadHours": 26.8,
       "recommendation": {
         "label": "Don't bother",
         "level": "poor",
@@ -197,12 +126,12 @@
     {
       "date": "2026-08-14",
       "weekday": "Friday",
-      "forecastLeadHours": 74.7,
+      "forecastLeadHours": 50.8,
       "recommendation": {
         "label": "Visual only",
         "level": "visual",
-        "confidence": "Medium",
-        "score": 85
+        "confidence": "High",
+        "score": 84
       },
       "conditions": {
         "bestWindow": "22:00-06:00 MDT",
@@ -212,18 +141,18 @@
         "visualUsableHours": 8.0,
         "imagingUsableHours": 0,
         "astronomicalNightOccurs": true,
-        "averageCloudCoverPercent": 6,
-        "averageLowCloudCoverPercent": 4,
-        "precipitationProbabilityPercent": 8,
-        "averageHumidityPercent": 93,
+        "averageCloudCoverPercent": 18,
+        "averageLowCloudCoverPercent": 0,
+        "precipitationProbabilityPercent": 5,
+        "averageHumidityPercent": 90,
         "visibilityKm": 24.1,
         "wind": {
-          "sustainedKph": 4,
-          "gustKph": 10
+          "sustainedKph": 6,
+          "gustKph": 7
         },
         "temperature": {
-          "expectedC": 7.0,
-          "dewPointSpreadC": 1.1
+          "expectedC": 8.0,
+          "dewPointSpreadC": 1.6
         },
         "moon": {
           "illuminationPercent": 8.5,
@@ -238,21 +167,21 @@
         "Dew-point spread is tight; watch for dew formation.",
         "Conditions are not strong enough for a planned imaging session."
       ],
-      "explanation": "Visual only: Best contiguous window is 8.0 hours. Average cloud cover is 6%. Average precipitation probability is 8%. Only visual-usable conditions met the configured limits.",
+      "explanation": "Visual only: Best contiguous window is 8.0 hours. Average cloud cover is 18%. Average precipitation probability is 5%. Only visual-usable conditions met the configured limits.",
       "scoreBreakdown": {
-        "clouds": 93.1,
-        "precipitation": 79.4,
+        "clouds": 84.2,
+        "precipitation": 86.9,
         "duration": 100,
-        "wind": 84.7,
-        "dewHumidity": 20.0,
+        "wind": 85.8,
+        "dewHumidity": 28.8,
         "visibility": 100,
         "darkness": 100,
         "convenience": 100
       },
       "reasons": [
         "Best contiguous window is 8.0 hours.",
-        "Average cloud cover is 6%.",
-        "Average precipitation probability is 8%.",
+        "Average cloud cover is 18%.",
+        "Average precipitation probability is 5%.",
         "Only visual-usable conditions met the configured limits."
       ],
       "targetRecommendations": {
@@ -379,7 +308,7 @@
     {
       "date": "2026-08-15",
       "weekday": "Saturday",
-      "forecastLeadHours": 98.7,
+      "forecastLeadHours": 74.8,
       "recommendation": {
         "label": "Visual only",
         "level": "visual",
@@ -396,16 +325,16 @@
         "astronomicalNightOccurs": true,
         "averageCloudCoverPercent": 38,
         "averageLowCloudCoverPercent": 0,
-        "precipitationProbabilityPercent": 11,
-        "averageHumidityPercent": 94,
+        "precipitationProbabilityPercent": 6,
+        "averageHumidityPercent": 93,
         "visibilityKm": 24.1,
         "wind": {
-          "sustainedKph": 4,
-          "gustKph": 10
+          "sustainedKph": 13,
+          "gustKph": 17
         },
         "temperature": {
-          "expectedC": 8.7,
-          "dewPointSpreadC": 1.0
+          "expectedC": 9.7,
+          "dewPointSpreadC": 1.1
         },
         "moon": {
           "illuminationPercent": 16.5,
@@ -421,13 +350,13 @@
         "Dew-point spread is tight; watch for dew formation.",
         "Conditions are not strong enough for a planned imaging session."
       ],
-      "explanation": "Visual only: Best contiguous window is 2.0 hours. Average cloud cover is 38%. Average precipitation probability is 11%. Only visual-usable conditions met the configured limits.",
+      "explanation": "Visual only: Best contiguous window is 2.0 hours. Average cloud cover is 38%. Average precipitation probability is 6%. Only visual-usable conditions met the configured limits.",
       "scoreBreakdown": {
-        "clouds": 67.2,
-        "precipitation": 72.5,
+        "clouds": 66.3,
+        "precipitation": 85.0,
         "duration": 66.7,
-        "wind": 85.4,
-        "dewHumidity": 18.5,
+        "wind": 67.4,
+        "dewHumidity": 19.5,
         "visibility": 100,
         "darkness": 100,
         "convenience": 100
@@ -435,7 +364,7 @@
       "reasons": [
         "Best contiguous window is 2.0 hours.",
         "Average cloud cover is 38%.",
-        "Average precipitation probability is 11%.",
+        "Average precipitation probability is 6%.",
         "Only visual-usable conditions met the configured limits."
       ],
       "targetRecommendations": {
@@ -450,69 +379,55 @@
     {
       "date": "2026-08-16",
       "weekday": "Sunday",
-      "forecastLeadHours": 122.7,
+      "forecastLeadHours": 98.8,
       "recommendation": {
-        "label": "Visual only",
-        "level": "visual",
+        "label": "Don't bother",
+        "level": "poor",
         "confidence": "Medium",
-        "score": 58
+        "score": 0
       },
       "conditions": {
-        "bestWindow": "04:00-06:00 MDT",
-        "bestWindowStart": "2026-08-17T04:00:00-06:00",
-        "bestWindowEnd": "2026-08-17T06:00:00-06:00",
-        "usableHours": 2.0,
-        "visualUsableHours": 2.0,
+        "bestWindow": "No reliable window",
+        "bestWindowStart": null,
+        "bestWindowEnd": null,
+        "usableHours": 0,
+        "visualUsableHours": 0,
         "imagingUsableHours": 0,
         "astronomicalNightOccurs": true,
-        "averageCloudCoverPercent": 57,
+        "averageCloudCoverPercent": 0,
         "averageLowCloudCoverPercent": 0,
-        "precipitationProbabilityPercent": 22,
-        "averageHumidityPercent": 94,
-        "visibilityKm": 14.8,
+        "precipitationProbabilityPercent": 0,
+        "averageHumidityPercent": 0,
+        "visibilityKm": 0.0,
         "wind": {
-          "sustainedKph": 12,
-          "gustKph": 3
+          "sustainedKph": 0,
+          "gustKph": 0
         },
         "temperature": {
-          "expectedC": 9.5,
-          "dewPointSpreadC": 1.0
+          "expectedC": 0,
+          "dewPointSpreadC": 0
         },
         "moon": {
-          "illuminationPercent": 24.9,
+          "illuminationPercent": 23.1,
           "aboveHorizon": false,
-          "altitudeDegrees": -52.7,
-          "context": "bestWindowMidpoint"
+          "altitudeDegrees": -18.6,
+          "context": "localMidnight"
         }
       },
       "suggestedTarget": "No observing target recommended",
       "suggestedEquipment": "Equipment matching is not yet implemented.",
       "warnings": [
-        "Cloud cover is above strong-imaging thresholds.",
-        "Dew-point spread is tight; watch for dew formation.",
-        "Conditions are not strong enough for a planned imaging session."
+        "No contiguous window met the configured darkness and weather limits."
       ],
-      "explanation": "Visual only: Best contiguous window is 2.0 hours. Average cloud cover is 57%. Average precipitation probability is 22%. Only visual-usable conditions met the configured limits.",
-      "scoreBreakdown": {
-        "clouds": 50.1,
-        "precipitation": 45.0,
-        "duration": 66.7,
-        "wind": 81.0,
-        "dewHumidity": 18.5,
-        "visibility": 65.6,
-        "darkness": 100,
-        "convenience": 100
-      },
+      "explanation": "No usable observing interval met the configured weather and darkness limits.",
+      "scoreBreakdown": {},
       "reasons": [
-        "Best contiguous window is 2.0 hours.",
-        "Average cloud cover is 57%.",
-        "Average precipitation probability is 22%.",
-        "Only visual-usable conditions met the configured limits."
+        "No qualifying contiguous visual or imaging window was found."
       ],
       "targetRecommendations": {
-        "status": "noCandidates",
-        "message": "No target has enough observable overlap with the best weather window.",
-        "candidatesEvaluated": 42,
+        "status": "weatherBlocked",
+        "message": "Weather prevents a meaningful target recommendation for this night.",
+        "candidatesEvaluated": 0,
         "eligibleCandidates": 0,
         "reviewFlags": [],
         "topTargets": []
@@ -521,7 +436,64 @@
     {
       "date": "2026-08-17",
       "weekday": "Monday",
-      "forecastLeadHours": 146.7,
+      "forecastLeadHours": 122.8,
+      "recommendation": {
+        "label": "Don't bother",
+        "level": "poor",
+        "confidence": "Medium",
+        "score": 0
+      },
+      "conditions": {
+        "bestWindow": "No reliable window",
+        "bestWindowStart": null,
+        "bestWindowEnd": null,
+        "usableHours": 0,
+        "visualUsableHours": 0,
+        "imagingUsableHours": 0,
+        "astronomicalNightOccurs": true,
+        "averageCloudCoverPercent": 0,
+        "averageLowCloudCoverPercent": 0,
+        "precipitationProbabilityPercent": 0,
+        "averageHumidityPercent": 0,
+        "visibilityKm": 0.0,
+        "wind": {
+          "sustainedKph": 0,
+          "gustKph": 0
+        },
+        "temperature": {
+          "expectedC": 0,
+          "dewPointSpreadC": 0
+        },
+        "moon": {
+          "illuminationPercent": 32.1,
+          "aboveHorizon": false,
+          "altitudeDegrees": -15.7,
+          "context": "localMidnight"
+        }
+      },
+      "suggestedTarget": "No observing target recommended",
+      "suggestedEquipment": "Equipment matching is not yet implemented.",
+      "warnings": [
+        "No contiguous window met the configured darkness and weather limits."
+      ],
+      "explanation": "No usable observing interval met the configured weather and darkness limits.",
+      "scoreBreakdown": {},
+      "reasons": [
+        "No qualifying contiguous visual or imaging window was found."
+      ],
+      "targetRecommendations": {
+        "status": "weatherBlocked",
+        "message": "Weather prevents a meaningful target recommendation for this night.",
+        "candidatesEvaluated": 0,
+        "eligibleCandidates": 0,
+        "reviewFlags": [],
+        "topTargets": []
+      }
+    },
+    {
+      "date": "2026-08-18",
+      "weekday": "Tuesday",
+      "forecastLeadHours": 146.8,
       "recommendation": {
         "label": "Don't bother",
         "level": "poor",
@@ -550,9 +522,9 @@
           "dewPointSpreadC": 0
         },
         "moon": {
-          "illuminationPercent": 32.1,
+          "illuminationPercent": 41.6,
           "aboveHorizon": false,
-          "altitudeDegrees": -15.7,
+          "altitudeDegrees": -12.2,
           "context": "localMidnight"
         }
       },
