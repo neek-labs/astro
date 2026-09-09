@@ -2,9 +2,9 @@
 
 Static astronomy content for `astro.nickhall.tech`.
 
-## Calgary Astronomy Session Planner
+## Astronomy Session Planner
 
-The Session Planner helps evaluate upcoming Calgary nights for visual astronomy and astrophotography. Stage 2 adds a deterministic Python forecast generator that combines Open-Meteo hourly weather, local solar twilight calculations, Moon context, configurable scoring, and atomic JSON publishing for the static frontend.
+The Session Planner helps evaluate upcoming nights for visual astronomy and astrophotography at the location selected in `config/session-planner.json`. Stage 2 adds a deterministic Python forecast generator that combines Open-Meteo hourly weather, local solar twilight calculations, Moon context, configurable scoring, and atomic JSON publishing for the static frontend.
 
 The Stage 2 generator writes `data/session-planner.json` for the static `session-planner.html` page. It does not run on a schedule, create pull requests, deploy, or use AI. Stage 4A/4B target geometry and lunar impact are generated separately as described below.
 
@@ -40,11 +40,11 @@ changed by Stage 5A.1.
 
 ### Stage 2 Capabilities
 
-- Fetches live hourly forecast data from the Open-Meteo Forecast API for Calgary, Alberta.
+- Fetches live hourly forecast data from the Open-Meteo Forecast API for the configured location.
 - Evaluates seven observing nights using the local evening date in `America/Edmonton`.
 - Calculates visual-usable darkness when the Sun is below -6 degrees and imaging-usable darkness when the Sun is below -12 degrees.
 - Indicates whether true astronomical night occurs when the Sun drops below -18 degrees.
-- Handles Calgary summer nights normally, including periods where astronomical darkness never occurs.
+- Handles summer nights normally, including periods where astronomical darkness never occurs.
 - Finds the strongest contiguous observing window instead of relying on whole-night averages.
 - Scores nights from 0 to 100 and classifies them as `poor`, `visual`, `possible`, `strong`, or `exceptional`.
 - Preserves the last valid JSON forecast if generation fails.
@@ -107,11 +107,11 @@ Stage 4A calculates geometry-only visibility for every target in
 observing nights to `data/astronomy-target-visibility.json`. The master catalogue
 remains unchanged; generated records join back to it with `target_id`.
 
-The calculation uses the shared Calgary location, timezone-aware local timestamps,
+The calculation uses the shared configured location, timezone-aware local timestamps,
 ICRS/J2000 coordinates, and Astropy AltAz transformations sampled every ten minutes.
 It prefers astronomical darkness (Sun below -18 degrees), then falls back to the
 planner's existing imaging (-12 degrees) or visual (-6 degrees) useful-darkness
-definitions when Calgary summer nights require it. A target is observable when it
+definitions when summer nights require it. A target is observable when it
 reaches the configured 25-degree minimum altitude; that threshold avoids the most
 obstructed and atmosphere-heavy part of the horizon.
 
@@ -463,7 +463,7 @@ To verify normal loading:
 7. Check poor-weather and missing-target nights, `No reliable window`, cross-midnight windows, and 12-hour target peak times.
 8. Use the keyboard to open and close both nightly cards and nested target reasoning.
 9. In the browser network panel, confirm neither Astropheric nor the Clear Dark Sky chart is requested on initial load.
-10. Open Astropheric, confirm the Calgary forecast loads, try all three location buttons, then close and reopen it without a second script request.
+10. Open Astropheric, confirm the Alberta Star Party forecast loads by default, try all three location buttons, then close and reopen it without a second script request.
 11. Open Clear Dark Sky, confirm its chart loads once and its link opens the Calgary forecast in a new tab.
 12. Simulate or block each third-party request and confirm its panel shows an error while the main planner remains usable.
 13. Check the page at a narrow mobile width and confirm cards, nested disclosures, panels, buttons, embeds, and charts do not overflow.

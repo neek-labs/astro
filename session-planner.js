@@ -13,7 +13,7 @@
       lon: -112.9081
     },
     stones: {
-      label: "Stones Throw Camp",
+      label: "Alberta Star Party — A Stones Throw Campground",
       lat: 50.5974,
       lon: -112.8299
     }
@@ -27,7 +27,7 @@
   };
   let astrosphericScriptPromise = null;
   let astrosphericInitialized = false;
-  let selectedAstrosphericLocationKey = "calgary";
+  let selectedAstrosphericLocationKey = "stones";
   let clearDarkSkyLoaded = false;
 
   document.addEventListener("DOMContentLoaded", () => {

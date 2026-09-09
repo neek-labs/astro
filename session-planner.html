@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="session-planner.js" defer></script>
-  <title>Calgary Astronomy Session Planner | Nick Hall</title>
+  <title>Astronomy Session Planner | Nick Hall</title>
 </head>
 <body>
 <div class="page-wrapper">
@@ -28,10 +28,10 @@
   <main class="content session-planner-page">
     <section class="session-planner-hero">
       <p class="session-planner-kicker">Weekly forecast</p>
-      <h1 class="site-title">Calgary Astronomy Session Planner</h1>
+      <h1 class="site-title">Astronomy Session Planner</h1>
       <p class="session-planner-intro">
         Use this astronomy planning hub to compare weekly observing conditions, Moon conditions,
-        target recommendations, and optional detailed third-party forecasts for upcoming Calgary nights.
+        target recommendations, and optional detailed third-party forecasts for upcoming nights.
         The planner combines Open-Meteo forecasts with calculated twilight, lunar impact, target visibility,
         and practical observing constraints.
       </p>
@@ -64,9 +64,9 @@
         <div class="detailed-forecast-content">
           <p>View cloud, transparency, and seeing forecasts for one of three observing locations.</p>
           <div class="forecast-location-buttons" role="group" aria-label="Astropheric forecast location">
-            <button type="button" data-astrospheric-location="calgary" aria-pressed="true" disabled>Calgary</button>
+            <button type="button" data-astrospheric-location="stones" aria-pressed="true" disabled>Alberta Star Party</button>
+            <button type="button" data-astrospheric-location="calgary" aria-pressed="false" disabled>Calgary</button>
             <button type="button" data-astrospheric-location="darksky" aria-pressed="false" disabled>Starland Recreation Area</button>
-            <button type="button" data-astrospheric-location="stones" aria-pressed="false" disabled>Stones Throw Camp</button>
           </div>
           <p id="astrospheric-status" class="detailed-forecast-status" role="status" aria-live="polite">Open this panel to load the Astropheric forecast.</p>
           <div class="detailed-forecast-embed" role="region" aria-label="Astropheric forecast embed">

@@ -34,7 +34,7 @@ def parse_date(value: str) -> date:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Calculate target visibility and lunar impact for the Calgary catalogue."
+        description="Calculate target visibility and lunar impact for the configured location."
     )
     parser.add_argument("--config", type=Path, default=ROOT / "config" / "session-planner.json")
     parser.add_argument(

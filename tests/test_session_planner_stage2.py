@@ -205,9 +205,28 @@ def test_clear_conditions_after_midnight_are_discovered() -> None:
     assert night["conditions"]["bestWindow"].startswith("00:00")
 
 
-def test_calgary_summer_no_astronomical_night_is_reported() -> None:
+def test_summer_no_astronomical_night_is_reported() -> None:
     points = astro_points(datetime(2026, 6, 20, 22, tzinfo=TZ), 8, -16)
     assert darkness_summary(points)["astronomicalNightOccurs"] is False
+
+
+def test_star_party_location_is_configured() -> None:
+    location = config()["location"]
+    assert location["name"] == "Alberta Star Party — A Stones Throw Campground"
+    assert location["latitude"] == 50.5974
+    assert location["longitude"] == -112.8299
+    assert location["elevationMeters"] == 916
+
+
+def test_darkness_warning_uses_the_configured_location_name() -> None:
+    cfg = config()
+    night = evaluate_with_weather(
+        start=datetime(2026, 6, 20, 22, tzinfo=TZ),
+        count=8,
+        sun_altitude=-16,
+        cfg=cfg,
+    )
+    assert any(cfg["location"]["name"] in warning for warning in night["warnings"])
 
 
 def test_moon_illumination_remains_between_zero_and_one_hundred() -> None:

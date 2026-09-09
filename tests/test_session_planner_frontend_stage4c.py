@@ -46,3 +46,11 @@ def test_frontend_uses_semantic_safe_dom_rendering() -> None:
     assert ".textContent" in source
     assert "innerHTML" not in source
     assert "insertAdjacentHTML" not in source
+
+
+def test_alberta_star_party_is_the_default_detailed_forecast() -> None:
+    html = frontend_html()
+    source = frontend_source()
+    assert 'data-astrospheric-location="stones" aria-pressed="true"' in html
+    assert 'let selectedAstrosphericLocationKey = "stones";' in source
+    assert 'label: "Alberta Star Party — A Stones Throw Campground"' in source

@@ -204,6 +204,7 @@ def calculate_useful_darkness_window(
         raise VisibilityError("Astropy is required for darkness calculations.") from exc
 
     iers.conf.auto_download = False
+    iers.conf.auto_max_age = None
     timezone_name = config["location"]["timezone"]
     start, end = observing_bounds(evening_date, timezone_name)
     step_minutes = config["targetVisibility"]["timeStepMinutes"]

@@ -57,6 +57,7 @@ def calculate_astronomy_grid(config: dict[str, Any], start: datetime, end: datet
         raise AstronomyError("Astropy is required for astronomy calculations.") from exc
 
     iers.conf.auto_download = False
+    iers.conf.auto_max_age = None
     location_config = config["location"]
     forecast_config = config["forecast"]
     moments = time_grid(start, end, forecast_config["gridMinutes"])

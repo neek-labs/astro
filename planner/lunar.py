@@ -91,6 +91,7 @@ def build_moon_sample_grid(moments: Sequence[datetime], location: Any) -> MoonSa
         raise LunarCalculationError("Astropy is required for lunar calculations.") from exc
 
     iers.conf.auto_download = False
+    iers.conf.auto_max_age = None
     moments_utc = tuple(moment.astimezone(UTC) for moment in moments)
     astropy_times = Time(list(moments_utc))
     local_moon = get_body("moon", astropy_times, location)

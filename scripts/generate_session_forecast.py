@@ -18,7 +18,7 @@ from planner.weather import WeatherError, fetch_open_meteo
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Generate Calgary astronomy session forecast JSON.")
+    parser = argparse.ArgumentParser(description="Generate astronomy session forecast JSON.")
     parser.add_argument("--config", default=ROOT / "config" / "session-planner.json", type=Path)
     parser.add_argument("--output", default=ROOT / "data" / "session-planner.json", type=Path)
     parser.add_argument("--now", help="Timezone-aware ISO timestamp for deterministic local testing.")
@@ -50,7 +50,7 @@ def main() -> int:
         print(f"Session forecast generation failed: {exc}", file=sys.stderr)
         return 1
 
-    print("Generated Calgary session forecast:")
+    print(f"Generated session forecast for {payload['location']['name']}:")
     for night in payload["nights"]:
         recommendation = night["recommendation"]
         print(

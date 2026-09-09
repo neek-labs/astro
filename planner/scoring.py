@@ -86,7 +86,10 @@ def evaluate_night(
     imaging_hours = round(imaging_window.minutes / 60, 2) if imaging_window else 0
 
     if not darkness["astronomicalNightOccurs"]:
-        warnings.append("Calgary does not reach true astronomical darkness for this observing night.")
+        location_name = config["location"]["name"]
+        warnings.append(
+            f"{location_name} does not reach true astronomical darkness for this observing night."
+        )
 
     return {
         "date": evening_date.isoformat(),

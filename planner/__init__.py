@@ -1,4 +1,4 @@
-"""Calgary astronomy session forecast generator."""
+"""Location-configurable astronomy session forecast generator."""
 
 __all__ = [
     "astronomy",
