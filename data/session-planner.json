@@ -6,12 +6,12 @@
     "longitude": -112.8299,
     "timezone": "America/Edmonton"
   },
-  "generatedAt": "2026-10-27T13:26:28.907702-06:00",
+  "generatedAt": "2026-10-28T13:34:55.118249-06:00",
   "dataSource": "Open-Meteo Forecast API with deterministic local solar, lunar, and scoring calculations.",
   "nights": [
     {
-      "date": "2026-10-27",
-      "weekday": "Tuesday",
+      "date": "2026-10-28",
+      "weekday": "Wednesday",
       "forecastLeadHours": 0,
       "recommendation": {
         "label": "Don't bother",
@@ -41,9 +41,9 @@
           "dewPointSpreadC": 0
         },
         "moon": {
-          "illuminationPercent": 93.9,
+          "illuminationPercent": 87.1,
           "aboveHorizon": true,
-          "altitudeDegrees": 46.3,
+          "altitudeDegrees": 38.0,
           "context": "localMidnight"
         }
       },
@@ -67,388 +67,97 @@
       }
     },
     {
-      "date": "2026-10-28",
-      "weekday": "Wednesday",
-      "forecastLeadHours": 22.6,
-      "recommendation": {
-        "label": "Visual only",
-        "level": "visual",
-        "confidence": "High",
-        "score": 79
-      },
-      "conditions": {
-        "bestWindow": "05:00-08:00 MDT",
-        "bestWindowStart": "2026-10-29T05:00:00-06:00",
-        "bestWindowEnd": "2026-10-29T08:00:00-06:00",
-        "usableHours": 3.0,
-        "visualUsableHours": 3.0,
-        "imagingUsableHours": 0,
-        "astronomicalNightOccurs": true,
-        "averageCloudCoverPercent": 34,
-        "averageLowCloudCoverPercent": 8,
-        "precipitationProbabilityPercent": 0,
-        "averageHumidityPercent": 88,
-        "visibilityKm": 22.2,
-        "wind": {
-          "sustainedKph": 9,
-          "gustKph": 18
-        },
-        "temperature": {
-          "expectedC": -4.9,
-          "dewPointSpreadC": 1.7
-        },
-        "moon": {
-          "illuminationPercent": 84.9,
-          "aboveHorizon": true,
-          "altitudeDegrees": 56.3,
-          "context": "bestWindowMidpoint"
-        }
-      },
-      "suggestedTarget": "Heart Nebula",
-      "suggestedEquipment": "Equipment matching is not yet implemented.",
-      "warnings": [
-        "Cloud cover is above strong-imaging thresholds.",
-        "Dew-point spread is tight; watch for dew formation.",
-        "Conditions are not strong enough for a planned imaging session."
-      ],
-      "explanation": "Visual only: Best contiguous window is 3.0 hours. Average cloud cover is 34%. Average precipitation probability is 0%. Only visual-usable conditions met the configured limits.",
-      "scoreBreakdown": {
-        "clouds": 67.0,
-        "precipitation": 100,
-        "duration": 100,
-        "wind": 71.2,
-        "dewHumidity": 31.8,
-        "visibility": 100,
-        "darkness": 100,
-        "convenience": 100
-      },
-      "reasons": [
-        "Best contiguous window is 3.0 hours.",
-        "Average cloud cover is 34%.",
-        "Average precipitation probability is 0%.",
-        "Only visual-usable conditions met the configured limits."
-      ],
-      "targetRecommendations": {
-        "status": "available",
-        "message": "3 opportunistic visual target candidates are well placed during the usable window.",
-        "candidatesEvaluated": 42,
-        "eligibleCandidates": 22,
-        "reviewFlags": [],
-        "topTargets": [
-          {
-            "rank": 1,
-            "targetId": "ic-1805",
-            "displayName": "Heart Nebula",
-            "primaryCatalogId": "IC 1805",
-            "targetType": "Emission Nebula",
-            "recommendationScore": 63.8,
-            "baseRecommendationScore": 58.8,
-            "recommendationRating": "moderate",
-            "usableWindowOverlapStart": "2026-10-29T05:00:00-06:00",
-            "usableWindowOverlapEnd": "2026-10-29T06:20:00-06:00",
-            "usableWindowOverlapMinutes": 80,
-            "maximumAltitudeDeg": 79.0,
-            "representativeAltitudeDeg": 55.6,
-            "maximumAltitudeTime": "2026-10-29T01:40:00-06:00",
-            "lunarImpactScore": 27.0,
-            "lunarImpactRating": "poor",
-            "scoreBreakdown": {
-              "usableWindowOverlap": 60.0,
-              "altitudeQuality": 93.1,
-              "lunarImpact": 27.0,
-              "timingConvenience": 57.8,
-              "cataloguePriority": 50.0,
-              "targetClassAdjustment": 5.0
-            },
-            "targetClassAdjustmentReason": "Emission target with validated narrowband metadata; comparatively tolerant of lunar brightness.",
-            "reasons": [
-              "Observable for 80 minutes during the best weather window.",
-              "Reaches 79.0 degrees altitude near 01:40 MDT.",
-              "Lunar interference is rated poor for this target.",
-              "Weather supports an opportunistic visual session rather than planned imaging."
-            ],
-            "warnings": []
-          },
-          {
-            "rank": 2,
-            "targetId": "ic-1848",
-            "displayName": "Soul Nebula",
-            "primaryCatalogId": "IC 1848",
-            "targetType": "Emission Nebula",
-            "recommendationScore": 63.8,
-            "baseRecommendationScore": 58.8,
-            "recommendationRating": "moderate",
-            "usableWindowOverlapStart": "2026-10-29T05:00:00-06:00",
-            "usableWindowOverlapEnd": "2026-10-29T06:20:00-06:00",
-            "usableWindowOverlapMinutes": 80,
-            "maximumAltitudeDeg": 80.0,
-            "representativeAltitudeDeg": 57.6,
-            "maximumAltitudeTime": "2026-10-29T01:50:00-06:00",
-            "lunarImpactScore": 25.8,
-            "lunarImpactRating": "poor",
-            "scoreBreakdown": {
-              "usableWindowOverlap": 60.0,
-              "altitudeQuality": 94.4,
-              "lunarImpact": 25.8,
-              "timingConvenience": 57.8,
-              "cataloguePriority": 50.0,
-              "targetClassAdjustment": 5.0
-            },
-            "targetClassAdjustmentReason": "Emission target with validated narrowband metadata; comparatively tolerant of lunar brightness.",
-            "reasons": [
-              "Observable for 80 minutes during the best weather window.",
-              "Reaches 80.0 degrees altitude near 01:50 MDT.",
-              "Lunar interference is rated poor for this target.",
-              "Weather supports an opportunistic visual session rather than planned imaging."
-            ],
-            "warnings": [
-              "Moon separation drops to 39.9 degrees."
-            ]
-          },
-          {
-            "rank": 3,
-            "targetId": "ngc-281",
-            "displayName": "Pacman Nebula",
-            "primaryCatalogId": "NGC 281",
-            "targetType": "Emission Nebula",
-            "recommendationScore": 62.3,
-            "baseRecommendationScore": 57.3,
-            "recommendationRating": "moderate",
-            "usableWindowOverlapStart": "2026-10-29T05:00:00-06:00",
-            "usableWindowOverlapEnd": "2026-10-29T06:20:00-06:00",
-            "usableWindowOverlapMinutes": 80,
-            "maximumAltitudeDeg": 83.8,
-            "representativeAltitudeDeg": 41.9,
-            "maximumAltitudeTime": "2026-10-29T00:00:00-06:00",
-            "lunarImpactScore": 31.9,
-            "lunarImpactRating": "poor",
-            "scoreBreakdown": {
-              "usableWindowOverlap": 60.0,
-              "altitudeQuality": 82.3,
-              "lunarImpact": 31.9,
-              "timingConvenience": 57.8,
-              "cataloguePriority": 50.0,
-              "targetClassAdjustment": 5.0
-            },
-            "targetClassAdjustmentReason": "Emission target with validated narrowband metadata; comparatively tolerant of lunar brightness.",
-            "reasons": [
-              "Observable for 80 minutes during the best weather window.",
-              "Reaches 83.8 degrees altitude near 00:00 MDT.",
-              "Lunar interference is rated poor for this target.",
-              "Weather supports an opportunistic visual session rather than planned imaging."
-            ],
-            "warnings": []
-          }
-        ]
-      }
-    },
-    {
       "date": "2026-10-29",
       "weekday": "Thursday",
-      "forecastLeadHours": 46.6,
+      "forecastLeadHours": 22.4,
       "recommendation": {
-        "label": "Imaging night",
-        "level": "strong",
+        "label": "Don't bother",
+        "level": "poor",
         "confidence": "High",
-        "score": 91
+        "score": 0
       },
       "conditions": {
-        "bestWindow": "19:30-01:00 MDT",
-        "bestWindowStart": "2026-10-29T19:30:00-06:00",
-        "bestWindowEnd": "2026-10-30T01:00:00-06:00",
-        "usableHours": 5.5,
-        "visualUsableHours": 6.0,
-        "imagingUsableHours": 5.5,
+        "bestWindow": "No reliable window",
+        "bestWindowStart": null,
+        "bestWindowEnd": null,
+        "usableHours": 0,
+        "visualUsableHours": 0,
+        "imagingUsableHours": 0,
         "astronomicalNightOccurs": true,
-        "averageCloudCoverPercent": 13,
-        "averageLowCloudCoverPercent": 5,
+        "averageCloudCoverPercent": 0,
+        "averageLowCloudCoverPercent": 0,
         "precipitationProbabilityPercent": 0,
-        "averageHumidityPercent": 72,
-        "visibilityKm": 24.1,
+        "averageHumidityPercent": 0,
+        "visibilityKm": 0.0,
         "wind": {
-          "sustainedKph": 7,
-          "gustKph": 8
+          "sustainedKph": 0,
+          "gustKph": 0
         },
         "temperature": {
-          "expectedC": -3.1,
-          "dewPointSpreadC": 4.3
+          "expectedC": 0,
+          "dewPointSpreadC": 0
         },
         "moon": {
-          "illuminationPercent": 79.0,
+          "illuminationPercent": 78.2,
           "aboveHorizon": true,
-          "altitudeDegrees": 10.9,
-          "context": "bestWindowMidpoint"
+          "altitudeDegrees": 28.1,
+          "context": "localMidnight"
         }
       },
-      "suggestedTarget": "Pelican Nebula",
+      "suggestedTarget": "No observing target recommended",
       "suggestedEquipment": "Equipment matching is not yet implemented.",
       "warnings": [
-        "Weekday window runs substantially after midnight; schedule fatigue penalty applied."
+        "No contiguous window met the configured darkness and weather limits."
       ],
-      "explanation": "Imaging night: Best contiguous window is 5.5 hours. Average cloud cover is 13%. Average precipitation probability is 0%. The selected window meets imaging darkness and weather limits.",
-      "scoreBreakdown": {
-        "clouds": 87.1,
-        "precipitation": 100,
-        "duration": 100,
-        "wind": 82.9,
-        "dewHumidity": 74.8,
-        "visibility": 100,
-        "darkness": 100,
-        "convenience": 100
-      },
+      "explanation": "No usable observing interval met the configured weather and darkness limits.",
+      "scoreBreakdown": {},
       "reasons": [
-        "Best contiguous window is 5.5 hours.",
-        "Average cloud cover is 13%.",
-        "Average precipitation probability is 0%.",
-        "The selected window meets imaging darkness and weather limits."
+        "No qualifying contiguous visual or imaging window was found."
       ],
       "targetRecommendations": {
-        "status": "available",
-        "message": "3 target recommendations are well placed during the best observing window.",
-        "candidatesEvaluated": 42,
-        "eligibleCandidates": 35,
+        "status": "weatherBlocked",
+        "message": "Weather prevents a meaningful target recommendation for this night.",
+        "candidatesEvaluated": 0,
+        "eligibleCandidates": 0,
         "reviewFlags": [],
-        "topTargets": [
-          {
-            "rank": 1,
-            "targetId": "ic-5070",
-            "displayName": "Pelican Nebula",
-            "primaryCatalogId": "IC 5070",
-            "targetType": "Emission Nebula",
-            "recommendationScore": 88.6,
-            "baseRecommendationScore": 83.6,
-            "recommendationRating": "excellent",
-            "usableWindowOverlapStart": "2026-10-29T20:10:00-06:00",
-            "usableWindowOverlapEnd": "2026-10-30T01:00:00-06:00",
-            "usableWindowOverlapMinutes": 290,
-            "maximumAltitudeDeg": 83.0,
-            "representativeAltitudeDeg": 62.5,
-            "maximumAltitudeTime": "2026-10-29T20:10:00-06:00",
-            "lunarImpactScore": 62.3,
-            "lunarImpactRating": "moderate",
-            "scoreBreakdown": {
-              "usableWindowOverlap": 100.0,
-              "altitudeQuality": 96.7,
-              "lunarImpact": 62.3,
-              "timingConvenience": 88.5,
-              "cataloguePriority": 50.0,
-              "targetClassAdjustment": 5.0
-            },
-            "targetClassAdjustmentReason": "Emission target with validated narrowband metadata; comparatively tolerant of lunar brightness.",
-            "reasons": [
-              "Observable for 290 minutes during the best weather window.",
-              "Reaches 83.0 degrees altitude near 20:10 MDT.",
-              "Lunar interference is rated moderate for this target.",
-              "Peaks inside the best weather window."
-            ],
-            "warnings": []
-          },
-          {
-            "rank": 2,
-            "targetId": "ngc-7000",
-            "displayName": "North America Nebula",
-            "primaryCatalogId": "NGC 7000",
-            "targetType": "Emission Nebula",
-            "recommendationScore": 88.5,
-            "baseRecommendationScore": 83.5,
-            "recommendationRating": "excellent",
-            "usableWindowOverlapStart": "2026-10-29T20:10:00-06:00",
-            "usableWindowOverlapEnd": "2026-10-30T01:00:00-06:00",
-            "usableWindowOverlapMinutes": 290,
-            "maximumAltitudeDeg": 83.5,
-            "representativeAltitudeDeg": 63.8,
-            "maximumAltitudeTime": "2026-10-29T20:10:00-06:00",
-            "lunarImpactScore": 61.5,
-            "lunarImpactRating": "moderate",
-            "scoreBreakdown": {
-              "usableWindowOverlap": 100.0,
-              "altitudeQuality": 97.0,
-              "lunarImpact": 61.5,
-              "timingConvenience": 88.5,
-              "cataloguePriority": 50.0,
-              "targetClassAdjustment": 5.0
-            },
-            "targetClassAdjustmentReason": "Emission target with validated narrowband metadata; comparatively tolerant of lunar brightness.",
-            "reasons": [
-              "Observable for 290 minutes during the best weather window.",
-              "Reaches 83.5 degrees altitude near 20:10 MDT.",
-              "Lunar interference is rated moderate for this target.",
-              "Peaks inside the best weather window."
-            ],
-            "warnings": []
-          },
-          {
-            "rank": 3,
-            "targetId": "ngc-6888",
-            "displayName": "Crescent Nebula",
-            "primaryCatalogId": "NGC 6888",
-            "targetType": "Emission Nebula",
-            "recommendationScore": 88.3,
-            "baseRecommendationScore": 83.3,
-            "recommendationRating": "excellent",
-            "usableWindowOverlapStart": "2026-10-29T20:10:00-06:00",
-            "usableWindowOverlapEnd": "2026-10-30T01:00:00-06:00",
-            "usableWindowOverlapMinutes": 290,
-            "maximumAltitudeDeg": 74.0,
-            "representativeAltitudeDeg": 53.2,
-            "maximumAltitudeTime": "2026-10-29T20:10:00-06:00",
-            "lunarImpactScore": 66.7,
-            "lunarImpactRating": "moderate",
-            "scoreBreakdown": {
-              "usableWindowOverlap": 100.0,
-              "altitudeQuality": 91.1,
-              "lunarImpact": 66.7,
-              "timingConvenience": 88.5,
-              "cataloguePriority": 50.0,
-              "targetClassAdjustment": 5.0
-            },
-            "targetClassAdjustmentReason": "Emission target with validated narrowband metadata; comparatively tolerant of lunar brightness.",
-            "reasons": [
-              "Observable for 290 minutes during the best weather window.",
-              "Reaches 74.0 degrees altitude near 20:10 MDT.",
-              "Lunar interference is rated moderate for this target.",
-              "Peaks inside the best weather window."
-            ],
-            "warnings": []
-          }
-        ]
+        "topTargets": []
       }
     },
     {
       "date": "2026-10-30",
       "weekday": "Friday",
-      "forecastLeadHours": 70.6,
+      "forecastLeadHours": 46.4,
       "recommendation": {
         "label": "Imaging possible",
         "level": "possible",
-        "confidence": "Medium",
-        "score": 86
+        "confidence": "High",
+        "score": 82
       },
       "conditions": {
-        "bestWindow": "05:00-07:30 MDT",
-        "bestWindowStart": "2026-10-31T05:00:00-06:00",
-        "bestWindowEnd": "2026-10-31T07:30:00-06:00",
-        "usableHours": 2.5,
-        "visualUsableHours": 6.0,
-        "imagingUsableHours": 2.5,
+        "bestWindow": "01:00-03:00 MDT",
+        "bestWindowStart": "2026-10-31T01:00:00-06:00",
+        "bestWindowEnd": "2026-10-31T03:00:00-06:00",
+        "usableHours": 2.0,
+        "visualUsableHours": 5.0,
+        "imagingUsableHours": 2.0,
         "astronomicalNightOccurs": true,
-        "averageCloudCoverPercent": 13,
-        "averageLowCloudCoverPercent": 2,
+        "averageCloudCoverPercent": 17,
+        "averageLowCloudCoverPercent": 0,
         "precipitationProbabilityPercent": 0,
-        "averageHumidityPercent": 81,
+        "averageHumidityPercent": 85,
         "visibilityKm": 24.1,
         "wind": {
-          "sustainedKph": 11,
-          "gustKph": 12
+          "sustainedKph": 9,
+          "gustKph": 9
         },
         "temperature": {
-          "expectedC": -0.1,
-          "dewPointSpreadC": 2.9
+          "expectedC": 0.5,
+          "dewPointSpreadC": 2.2
         },
         "moon": {
-          "illuminationPercent": 65.2,
+          "illuminationPercent": 67.0,
           "aboveHorizon": true,
-          "altitudeDegrees": 63.5,
+          "altitudeDegrees": 35.4,
           "context": "bestWindowMidpoint"
         }
       },
@@ -457,20 +166,20 @@
       "warnings": [
         "Dew-point spread is tight; watch for dew formation."
       ],
-      "explanation": "Imaging possible: Best contiguous window is 2.5 hours. Average cloud cover is 13%. Average precipitation probability is 0%. The selected window meets imaging darkness and weather limits.",
+      "explanation": "Imaging possible: Best contiguous window is 2.0 hours. Average cloud cover is 17%. Average precipitation probability is 0%. The selected window meets imaging darkness and weather limits.",
       "scoreBreakdown": {
-        "clouds": 88.0,
+        "clouds": 85.1,
         "precipitation": 100,
-        "duration": 83.3,
-        "wind": 74.1,
-        "dewHumidity": 53.2,
+        "duration": 66.7,
+        "wind": 79.5,
+        "dewHumidity": 41.0,
         "visibility": 100,
         "darkness": 100,
         "convenience": 100
       },
       "reasons": [
-        "Best contiguous window is 2.5 hours.",
-        "Average cloud cover is 13%.",
+        "Best contiguous window is 2.0 hours.",
+        "Average cloud cover is 17%.",
         "Average precipitation probability is 0%.",
         "The selected window meets imaging darkness and weather limits."
       ],
@@ -478,7 +187,7 @@
         "status": "available",
         "message": "3 target recommendations are well placed during the best observing window.",
         "candidatesEvaluated": 42,
-        "eligibleCandidates": 21,
+        "eligibleCandidates": 29,
         "reviewFlags": [],
         "topTargets": [
           {
@@ -487,30 +196,31 @@
             "displayName": "Heart Nebula",
             "primaryCatalogId": "IC 1805",
             "targetType": "Emission Nebula",
-            "recommendationScore": 70.0,
-            "baseRecommendationScore": 65.0,
+            "recommendationScore": 80.0,
+            "baseRecommendationScore": 75.0,
             "recommendationRating": "good",
-            "usableWindowOverlapStart": "2026-10-31T05:00:00-06:00",
-            "usableWindowOverlapEnd": "2026-10-31T06:30:00-06:00",
-            "usableWindowOverlapMinutes": 90,
+            "usableWindowOverlapStart": "2026-10-31T01:00:00-06:00",
+            "usableWindowOverlapEnd": "2026-10-31T03:00:00-06:00",
+            "usableWindowOverlapMinutes": 120,
             "maximumAltitudeDeg": 79.0,
-            "representativeAltitudeDeg": 54.7,
+            "representativeAltitudeDeg": 78.1,
             "maximumAltitudeTime": "2026-10-31T01:30:00-06:00",
             "lunarImpactScore": 43.8,
             "lunarImpactRating": "poor",
             "scoreBreakdown": {
-              "usableWindowOverlap": 65.0,
-              "altitudeQuality": 92.5,
+              "usableWindowOverlap": 80.0,
+              "altitudeQuality": 100.0,
               "lunarImpact": 43.8,
-              "timingConvenience": 64.0,
+              "timingConvenience": 100.0,
               "cataloguePriority": 50.0,
               "targetClassAdjustment": 5.0
             },
             "targetClassAdjustmentReason": "Emission target with validated narrowband metadata; comparatively tolerant of lunar brightness.",
             "reasons": [
-              "Observable for 90 minutes during the best weather window.",
+              "Observable for 120 minutes during the best weather window.",
               "Reaches 79.0 degrees altitude near 01:30 MDT.",
-              "Lunar interference is rated poor for this target."
+              "Lunar interference is rated poor for this target.",
+              "Peaks inside the best weather window."
             ],
             "warnings": []
           },
@@ -520,62 +230,63 @@
             "displayName": "Soul Nebula",
             "primaryCatalogId": "IC 1848",
             "targetType": "Emission Nebula",
-            "recommendationScore": 70.0,
-            "baseRecommendationScore": 65.0,
+            "recommendationScore": 79.7,
+            "baseRecommendationScore": 74.7,
             "recommendationRating": "good",
-            "usableWindowOverlapStart": "2026-10-31T05:00:00-06:00",
-            "usableWindowOverlapEnd": "2026-10-31T06:30:00-06:00",
-            "usableWindowOverlapMinutes": 90,
+            "usableWindowOverlapStart": "2026-10-31T01:00:00-06:00",
+            "usableWindowOverlapEnd": "2026-10-31T03:00:00-06:00",
+            "usableWindowOverlapMinutes": 120,
             "maximumAltitudeDeg": 80.1,
-            "representativeAltitudeDeg": 56.7,
+            "representativeAltitudeDeg": 79.9,
             "maximumAltitudeTime": "2026-10-31T01:50:00-06:00",
             "lunarImpactScore": 42.6,
             "lunarImpactRating": "poor",
             "scoreBreakdown": {
-              "usableWindowOverlap": 65.0,
-              "altitudeQuality": 93.8,
+              "usableWindowOverlap": 80.0,
+              "altitudeQuality": 100.0,
               "lunarImpact": 42.6,
-              "timingConvenience": 64.0,
+              "timingConvenience": 100.0,
               "cataloguePriority": 50.0,
               "targetClassAdjustment": 5.0
             },
             "targetClassAdjustmentReason": "Emission target with validated narrowband metadata; comparatively tolerant of lunar brightness.",
             "reasons": [
-              "Observable for 90 minutes during the best weather window.",
+              "Observable for 120 minutes during the best weather window.",
               "Reaches 80.1 degrees altitude near 01:50 MDT.",
-              "Lunar interference is rated poor for this target."
+              "Lunar interference is rated poor for this target.",
+              "Peaks inside the best weather window."
             ],
             "warnings": []
           },
           {
             "rank": 3,
-            "targetId": "ngc-281",
-            "displayName": "Pacman Nebula",
-            "primaryCatalogId": "NGC 281",
+            "targetId": "ngc-7635",
+            "displayName": "Bubble Nebula",
+            "primaryCatalogId": "NGC 7635",
             "targetType": "Emission Nebula",
-            "recommendationScore": 68.8,
-            "baseRecommendationScore": 63.8,
-            "recommendationRating": "moderate",
-            "usableWindowOverlapStart": "2026-10-31T05:00:00-06:00",
-            "usableWindowOverlapEnd": "2026-10-31T06:30:00-06:00",
-            "usableWindowOverlapMinutes": 90,
-            "maximumAltitudeDeg": 83.9,
-            "representativeAltitudeDeg": 40.9,
-            "maximumAltitudeTime": "2026-10-30T23:50:00-06:00",
-            "lunarImpactScore": 50.5,
+            "recommendationScore": 79.3,
+            "baseRecommendationScore": 74.3,
+            "recommendationRating": "good",
+            "usableWindowOverlapStart": "2026-10-31T01:00:00-06:00",
+            "usableWindowOverlapEnd": "2026-10-31T03:00:00-06:00",
+            "usableWindowOverlapMinutes": 120,
+            "maximumAltitudeDeg": 79.2,
+            "representativeAltitudeDeg": 57.9,
+            "maximumAltitudeTime": "2026-10-30T22:20:00-06:00",
+            "lunarImpactScore": 54.8,
             "lunarImpactRating": "moderate",
             "scoreBreakdown": {
-              "usableWindowOverlap": 65.0,
-              "altitudeQuality": 81.1,
-              "lunarImpact": 50.5,
-              "timingConvenience": 64.0,
+              "usableWindowOverlap": 80.0,
+              "altitudeQuality": 94.6,
+              "lunarImpact": 54.8,
+              "timingConvenience": 80.0,
               "cataloguePriority": 50.0,
               "targetClassAdjustment": 5.0
             },
             "targetClassAdjustmentReason": "Emission target with validated narrowband metadata; comparatively tolerant of lunar brightness.",
             "reasons": [
-              "Observable for 90 minutes during the best weather window.",
-              "Reaches 83.9 degrees altitude near 23:50 MDT.",
+              "Observable for 120 minutes during the best weather window.",
+              "Reaches 79.2 degrees altitude near 22:20 MDT.",
               "Lunar interference is rated moderate for this target."
             ],
             "warnings": []
@@ -586,136 +297,134 @@
     {
       "date": "2026-10-31",
       "weekday": "Saturday",
-      "forecastLeadHours": 94.6,
+      "forecastLeadHours": 70.4,
       "recommendation": {
         "label": "Visual only",
         "level": "visual",
         "confidence": "Medium",
-        "score": 72
+        "score": 81
       },
       "conditions": {
-        "bestWindow": "19:00-21:00 MDT",
-        "bestWindowStart": "2026-10-31T19:00:00-06:00",
-        "bestWindowEnd": "2026-10-31T21:00:00-06:00",
+        "bestWindow": "02:00-04:00 CST",
+        "bestWindowStart": "2026-11-01T02:00:00-06:00",
+        "bestWindowEnd": "2026-11-01T04:00:00-06:00",
         "usableHours": 2.0,
         "visualUsableHours": 2.0,
         "imagingUsableHours": 0,
         "astronomicalNightOccurs": true,
-        "averageCloudCoverPercent": 57,
+        "averageCloudCoverPercent": 24,
         "averageLowCloudCoverPercent": 0,
-        "precipitationProbabilityPercent": 0,
-        "averageHumidityPercent": 58,
+        "precipitationProbabilityPercent": 4,
+        "averageHumidityPercent": 78,
         "visibilityKm": 24.1,
         "wind": {
-          "sustainedKph": 14,
-          "gustKph": 16
+          "sustainedKph": 6,
+          "gustKph": 7
         },
         "temperature": {
-          "expectedC": 3.9,
-          "dewPointSpreadC": 7.5
+          "expectedC": 2.9,
+          "dewPointSpreadC": 3.5
         },
         "moon": {
-          "illuminationPercent": 58.7,
-          "aboveHorizon": false,
-          "altitudeDegrees": -16.2,
+          "illuminationPercent": 55.4,
+          "aboveHorizon": true,
+          "altitudeDegrees": 32.9,
           "context": "bestWindowMidpoint"
         }
       },
-      "suggestedTarget": "Crescent Nebula",
+      "suggestedTarget": "Pacman Nebula",
       "suggestedEquipment": "Equipment matching is not yet implemented.",
       "warnings": [
-        "Cloud cover is above strong-imaging thresholds.",
         "Conditions are not strong enough for a planned imaging session."
       ],
-      "explanation": "Visual only: Best contiguous window is 2.0 hours. Average cloud cover is 57%. Average precipitation probability is 0%. Only visual-usable conditions met the configured limits.",
+      "explanation": "Visual only: Best contiguous window is 2.0 hours. Average cloud cover is 24%. Average precipitation probability is 4%. Only visual-usable conditions met the configured limits.",
       "scoreBreakdown": {
-        "clouds": 50.1,
-        "precipitation": 100,
+        "clouds": 78.6,
+        "precipitation": 90.0,
         "duration": 66.7,
-        "wind": 65.5,
-        "dewHumidity": 79.7,
+        "wind": 84.7,
+        "dewHumidity": 65.6,
         "visibility": 100,
         "darkness": 100,
         "convenience": 100
       },
       "reasons": [
         "Best contiguous window is 2.0 hours.",
-        "Average cloud cover is 57%.",
-        "Average precipitation probability is 0%.",
+        "Average cloud cover is 24%.",
+        "Average precipitation probability is 4%.",
         "Only visual-usable conditions met the configured limits."
       ],
       "targetRecommendations": {
         "status": "available",
         "message": "3 opportunistic visual target candidates are well placed during the usable window.",
         "candidatesEvaluated": 42,
-        "eligibleCandidates": 33,
+        "eligibleCandidates": 26,
         "reviewFlags": [],
         "topTargets": [
           {
             "rank": 1,
-            "targetId": "ngc-6888",
-            "displayName": "Crescent Nebula",
-            "primaryCatalogId": "NGC 6888",
+            "targetId": "ngc-281",
+            "displayName": "Pacman Nebula",
+            "primaryCatalogId": "NGC 281",
             "targetType": "Emission Nebula",
-            "recommendationScore": 77.4,
-            "baseRecommendationScore": 72.4,
+            "recommendationScore": 81.9,
+            "baseRecommendationScore": 76.9,
             "recommendationRating": "good",
-            "usableWindowOverlapStart": "2026-10-31T20:00:00-06:00",
-            "usableWindowOverlapEnd": "2026-10-31T21:00:00-06:00",
-            "usableWindowOverlapMinutes": 60,
-            "maximumAltitudeDeg": 74.2,
-            "representativeAltitudeDeg": 70.4,
-            "maximumAltitudeTime": "2026-10-31T20:00:00-06:00",
-            "lunarImpactScore": 83.0,
-            "lunarImpactRating": "good",
+            "usableWindowOverlapStart": "2026-11-01T02:00:00-06:00",
+            "usableWindowOverlapEnd": "2026-11-01T04:00:00-06:00",
+            "usableWindowOverlapMinutes": 120,
+            "maximumAltitudeDeg": 83.9,
+            "representativeAltitudeDeg": 60.8,
+            "maximumAltitudeTime": "2026-10-31T23:40:00-06:00",
+            "lunarImpactScore": 63.3,
+            "lunarImpactRating": "moderate",
             "scoreBreakdown": {
-              "usableWindowOverlap": 50.0,
-              "altitudeQuality": 98.5,
-              "lunarImpact": 83.0,
-              "timingConvenience": 70.0,
+              "usableWindowOverlap": 80.0,
+              "altitudeQuality": 96.2,
+              "lunarImpact": 63.3,
+              "timingConvenience": 80.0,
               "cataloguePriority": 50.0,
               "targetClassAdjustment": 5.0
             },
             "targetClassAdjustmentReason": "Emission target with validated narrowband metadata; comparatively tolerant of lunar brightness.",
             "reasons": [
-              "Observable for 60 minutes during the best weather window.",
-              "Reaches 74.2 degrees altitude near 20:00 MDT.",
-              "Lunar interference is rated good for this target.",
-              "Peaks inside the best weather window.",
+              "Observable for 120 minutes during the best weather window.",
+              "Reaches 83.9 degrees altitude near 23:40 MDT.",
+              "Lunar interference is rated moderate for this target.",
               "Weather supports an opportunistic visual session rather than planned imaging."
             ],
             "warnings": []
           },
           {
             "rank": 2,
-            "targetId": "ngc-7000",
-            "displayName": "North America Nebula",
-            "primaryCatalogId": "NGC 7000",
+            "targetId": "ngc-1499",
+            "displayName": "California Nebula",
+            "primaryCatalogId": "NGC 1499",
             "targetType": "Emission Nebula",
-            "recommendationScore": 77.1,
-            "baseRecommendationScore": 72.1,
+            "recommendationScore": 81.2,
+            "baseRecommendationScore": 76.2,
             "recommendationRating": "good",
-            "usableWindowOverlapStart": "2026-10-31T20:00:00-06:00",
-            "usableWindowOverlapEnd": "2026-10-31T21:00:00-06:00",
-            "usableWindowOverlapMinutes": 60,
-            "maximumAltitudeDeg": 83.6,
-            "representativeAltitudeDeg": 80.8,
-            "maximumAltitudeTime": "2026-10-31T20:00:00-06:00",
-            "lunarImpactScore": 80.3,
-            "lunarImpactRating": "good",
+            "usableWindowOverlapStart": "2026-11-01T02:00:00-06:00",
+            "usableWindowOverlapEnd": "2026-11-01T04:00:00-06:00",
+            "usableWindowOverlapMinutes": 120,
+            "maximumAltitudeDeg": 75.9,
+            "representativeAltitudeDeg": 75.9,
+            "maximumAltitudeTime": "2026-11-01T02:50:00-06:00",
+            "lunarImpactScore": 48.8,
+            "lunarImpactRating": "poor",
             "scoreBreakdown": {
-              "usableWindowOverlap": 50.0,
+              "usableWindowOverlap": 80.0,
               "altitudeQuality": 100.0,
-              "lunarImpact": 80.3,
-              "timingConvenience": 70.0,
+              "lunarImpact": 48.8,
+              "timingConvenience": 100.0,
               "cataloguePriority": 50.0,
               "targetClassAdjustment": 5.0
             },
             "targetClassAdjustmentReason": "Emission target with validated narrowband metadata; comparatively tolerant of lunar brightness.",
             "reasons": [
-              "Observable for 60 minutes during the best weather window.",
-              "Reaches 83.6 degrees altitude near 20:00 MDT.",
-              "Lunar interference is rated good for this target.",
+              "Observable for 120 minutes during the best weather window.",
+              "Reaches 75.9 degrees altitude near 02:50 CST.",
+              "Lunar interference is rated poor for this target.",
               "Peaks inside the best weather window.",
               "Weather supports an opportunistic visual session rather than planned imaging."
             ],
@@ -723,35 +432,34 @@
           },
           {
             "rank": 3,
-            "targetId": "ic-5070",
-            "displayName": "Pelican Nebula",
-            "primaryCatalogId": "IC 5070",
+            "targetId": "ngc-7635",
+            "displayName": "Bubble Nebula",
+            "primaryCatalogId": "NGC 7635",
             "targetType": "Emission Nebula",
-            "recommendationScore": 77.1,
-            "baseRecommendationScore": 72.1,
+            "recommendationScore": 81.1,
+            "baseRecommendationScore": 76.1,
             "recommendationRating": "good",
-            "usableWindowOverlapStart": "2026-10-31T20:00:00-06:00",
-            "usableWindowOverlapEnd": "2026-10-31T21:00:00-06:00",
-            "usableWindowOverlapMinutes": 60,
-            "maximumAltitudeDeg": 83.1,
-            "representativeAltitudeDeg": 79.8,
-            "maximumAltitudeTime": "2026-10-31T20:00:00-06:00",
-            "lunarImpactScore": 80.3,
-            "lunarImpactRating": "good",
+            "usableWindowOverlapStart": "2026-11-01T02:00:00-06:00",
+            "usableWindowOverlapEnd": "2026-11-01T04:00:00-06:00",
+            "usableWindowOverlapMinutes": 120,
+            "maximumAltitudeDeg": 79.2,
+            "representativeAltitudeDeg": 50.4,
+            "maximumAltitudeTime": "2026-10-31T22:10:00-06:00",
+            "lunarImpactScore": 66.7,
+            "lunarImpactRating": "moderate",
             "scoreBreakdown": {
-              "usableWindowOverlap": 50.0,
-              "altitudeQuality": 100.0,
-              "lunarImpact": 80.3,
-              "timingConvenience": 70.0,
+              "usableWindowOverlap": 80.0,
+              "altitudeQuality": 89.6,
+              "lunarImpact": 66.7,
+              "timingConvenience": 80.0,
               "cataloguePriority": 50.0,
               "targetClassAdjustment": 5.0
             },
             "targetClassAdjustmentReason": "Emission target with validated narrowband metadata; comparatively tolerant of lunar brightness.",
             "reasons": [
-              "Observable for 60 minutes during the best weather window.",
-              "Reaches 83.1 degrees altitude near 20:00 MDT.",
-              "Lunar interference is rated good for this target.",
-              "Peaks inside the best weather window.",
+              "Observable for 120 minutes during the best weather window.",
+              "Reaches 79.2 degrees altitude near 22:10 MDT.",
+              "Lunar interference is rated moderate for this target.",
               "Weather supports an opportunistic visual session rather than planned imaging."
             ],
             "warnings": []
@@ -762,58 +470,60 @@
     {
       "date": "2026-11-01",
       "weekday": "Sunday",
-      "forecastLeadHours": 118.6,
+      "forecastLeadHours": 94.4,
       "recommendation": {
         "label": "Imaging night",
         "level": "strong",
         "confidence": "Medium",
-        "score": 88
+        "score": 89
       },
       "conditions": {
-        "bestWindow": "01:00-07:30 CST",
-        "bestWindowStart": "2026-11-02T01:00:00-06:00",
-        "bestWindowEnd": "2026-11-02T07:30:00-06:00",
-        "usableHours": 6.5,
-        "visualUsableHours": 12.0,
-        "imagingUsableHours": 6.5,
+        "bestWindow": "23:00-06:00 CST",
+        "bestWindowStart": "2026-11-01T23:00:00-06:00",
+        "bestWindowEnd": "2026-11-02T06:00:00-06:00",
+        "usableHours": 7.0,
+        "visualUsableHours": 7.0,
+        "imagingUsableHours": 7.0,
         "astronomicalNightOccurs": true,
-        "averageCloudCoverPercent": 0,
+        "averageCloudCoverPercent": 2,
         "averageLowCloudCoverPercent": 0,
         "precipitationProbabilityPercent": 12,
-        "averageHumidityPercent": 66,
+        "averageHumidityPercent": 72,
         "visibilityKm": 24.1,
         "wind": {
-          "sustainedKph": 15,
-          "gustKph": 29
+          "sustainedKph": 10,
+          "gustKph": 16
         },
         "temperature": {
-          "expectedC": -0.5,
-          "dewPointSpreadC": 5.6
+          "expectedC": 1.2,
+          "dewPointSpreadC": 4.4
         },
         "moon": {
-          "illuminationPercent": 43.7,
+          "illuminationPercent": 44.4,
           "aboveHorizon": true,
-          "altitudeDegrees": 30.1,
+          "altitudeDegrees": 16.5,
           "context": "bestWindowMidpoint"
         }
       },
-      "suggestedTarget": "Heart Nebula",
+      "suggestedTarget": "Pacman Nebula",
       "suggestedEquipment": "Equipment matching is not yet implemented.",
-      "warnings": [],
-      "explanation": "Imaging night: Best contiguous window is 6.5 hours. Average cloud cover is 0%. Average precipitation probability is 12%. The selected window meets imaging darkness and weather limits.",
+      "warnings": [
+        "Weekday window runs substantially after midnight; schedule fatigue penalty applied."
+      ],
+      "explanation": "Imaging night: Best contiguous window is 7.0 hours. Average cloud cover is 2%. Average precipitation probability is 12%. The selected window meets imaging darkness and weather limits.",
       "scoreBreakdown": {
-        "clouds": 100.0,
-        "precipitation": 70.8,
+        "clouds": 97.9,
+        "precipitation": 68.9,
         "duration": 100,
-        "wind": 52.3,
-        "dewHumidity": 76.9,
+        "wind": 71.2,
+        "dewHumidity": 74.7,
         "visibility": 100,
         "darkness": 100,
-        "convenience": 100
+        "convenience": 92
       },
       "reasons": [
-        "Best contiguous window is 6.5 hours.",
-        "Average cloud cover is 0%.",
+        "Best contiguous window is 7.0 hours.",
+        "Average cloud cover is 2%.",
         "Average precipitation probability is 12%.",
         "The selected window meets imaging darkness and weather limits."
       ],
@@ -821,37 +531,71 @@
         "status": "available",
         "message": "3 target recommendations are well placed during the best observing window.",
         "candidatesEvaluated": 42,
-        "eligibleCandidates": 31,
+        "eligibleCandidates": 36,
         "reviewFlags": [],
         "topTargets": [
           {
             "rank": 1,
-            "targetId": "ic-1805",
-            "displayName": "Heart Nebula",
-            "primaryCatalogId": "IC 1805",
+            "targetId": "ngc-281",
+            "displayName": "Pacman Nebula",
+            "primaryCatalogId": "NGC 281",
             "targetType": "Emission Nebula",
-            "recommendationScore": 91.1,
-            "baseRecommendationScore": 86.1,
+            "recommendationScore": 93.2,
+            "baseRecommendationScore": 88.2,
             "recommendationRating": "excellent",
-            "usableWindowOverlapStart": "2026-11-02T01:00:00-06:00",
-            "usableWindowOverlapEnd": "2026-11-02T06:30:00-06:00",
-            "usableWindowOverlapMinutes": 330,
-            "maximumAltitudeDeg": 79.0,
-            "representativeAltitudeDeg": 67.9,
-            "maximumAltitudeTime": "2026-11-02T01:20:00-06:00",
-            "lunarImpactScore": 68.9,
-            "lunarImpactRating": "moderate",
+            "usableWindowOverlapStart": "2026-11-01T23:00:00-06:00",
+            "usableWindowOverlapEnd": "2026-11-02T06:00:00-06:00",
+            "usableWindowOverlapMinutes": 420,
+            "maximumAltitudeDeg": 83.9,
+            "representativeAltitudeDeg": 64.4,
+            "maximumAltitudeTime": "2026-11-01T23:40:00-06:00",
+            "lunarImpactScore": 75.5,
+            "lunarImpactRating": "good",
             "scoreBreakdown": {
               "usableWindowOverlap": 100.0,
-              "altitudeQuality": 98.1,
-              "lunarImpact": 68.9,
-              "timingConvenience": 93.8,
+              "altitudeQuality": 97.2,
+              "lunarImpact": 75.5,
+              "timingConvenience": 100.0,
               "cataloguePriority": 50.0,
               "targetClassAdjustment": 5.0
             },
             "targetClassAdjustmentReason": "Emission target with validated narrowband metadata; comparatively tolerant of lunar brightness.",
             "reasons": [
-              "Observable for 330 minutes during the best weather window.",
+              "Observable for 420 minutes during the best weather window.",
+              "Reaches 83.9 degrees altitude near 23:40 CST.",
+              "Lunar interference is rated good for this target.",
+              "Peaks inside the best weather window."
+            ],
+            "warnings": []
+          },
+          {
+            "rank": 2,
+            "targetId": "ic-1805",
+            "displayName": "Heart Nebula",
+            "primaryCatalogId": "IC 1805",
+            "targetType": "Emission Nebula",
+            "recommendationScore": 92.2,
+            "baseRecommendationScore": 87.2,
+            "recommendationRating": "excellent",
+            "usableWindowOverlapStart": "2026-11-01T23:00:00-06:00",
+            "usableWindowOverlapEnd": "2026-11-02T06:00:00-06:00",
+            "usableWindowOverlapMinutes": 420,
+            "maximumAltitudeDeg": 79.0,
+            "representativeAltitudeDeg": 75.4,
+            "maximumAltitudeTime": "2026-11-02T01:20:00-06:00",
+            "lunarImpactScore": 68.9,
+            "lunarImpactRating": "moderate",
+            "scoreBreakdown": {
+              "usableWindowOverlap": 100.0,
+              "altitudeQuality": 100.0,
+              "lunarImpact": 68.9,
+              "timingConvenience": 100.0,
+              "cataloguePriority": 50.0,
+              "targetClassAdjustment": 5.0
+            },
+            "targetClassAdjustmentReason": "Emission target with validated narrowband metadata; comparatively tolerant of lunar brightness.",
+            "reasons": [
+              "Observable for 420 minutes during the best weather window.",
               "Reaches 79.0 degrees altitude near 01:20 CST.",
               "Lunar interference is rated moderate for this target.",
               "Peaks inside the best weather window."
@@ -859,68 +603,34 @@
             "warnings": []
           },
           {
-            "rank": 2,
+            "rank": 3,
             "targetId": "ic-1848",
             "displayName": "Soul Nebula",
             "primaryCatalogId": "IC 1848",
             "targetType": "Emission Nebula",
-            "recommendationScore": 91.1,
-            "baseRecommendationScore": 86.1,
+            "recommendationScore": 92.0,
+            "baseRecommendationScore": 87.0,
             "recommendationRating": "excellent",
-            "usableWindowOverlapStart": "2026-11-02T01:00:00-06:00",
-            "usableWindowOverlapEnd": "2026-11-02T06:30:00-06:00",
-            "usableWindowOverlapMinutes": 330,
+            "usableWindowOverlapStart": "2026-11-01T23:00:00-06:00",
+            "usableWindowOverlapEnd": "2026-11-02T06:00:00-06:00",
+            "usableWindowOverlapMinutes": 420,
             "maximumAltitudeDeg": 80.1,
-            "representativeAltitudeDeg": 70.4,
+            "representativeAltitudeDeg": 77.7,
             "maximumAltitudeTime": "2026-11-02T01:40:00-06:00",
             "lunarImpactScore": 67.9,
             "lunarImpactRating": "moderate",
             "scoreBreakdown": {
               "usableWindowOverlap": 100.0,
-              "altitudeQuality": 98.8,
+              "altitudeQuality": 100.0,
               "lunarImpact": 67.9,
-              "timingConvenience": 93.8,
+              "timingConvenience": 100.0,
               "cataloguePriority": 50.0,
               "targetClassAdjustment": 5.0
             },
             "targetClassAdjustmentReason": "Emission target with validated narrowband metadata; comparatively tolerant of lunar brightness.",
             "reasons": [
-              "Observable for 330 minutes during the best weather window.",
+              "Observable for 420 minutes during the best weather window.",
               "Reaches 80.1 degrees altitude near 01:40 CST.",
-              "Lunar interference is rated moderate for this target.",
-              "Peaks inside the best weather window."
-            ],
-            "warnings": []
-          },
-          {
-            "rank": 3,
-            "targetId": "ngc-1499",
-            "displayName": "California Nebula",
-            "primaryCatalogId": "NGC 1499",
-            "targetType": "Emission Nebula",
-            "recommendationScore": 90.0,
-            "baseRecommendationScore": 85.0,
-            "recommendationRating": "excellent",
-            "usableWindowOverlapStart": "2026-11-02T01:00:00-06:00",
-            "usableWindowOverlapEnd": "2026-11-02T06:30:00-06:00",
-            "usableWindowOverlapMinutes": 330,
-            "maximumAltitudeDeg": 75.9,
-            "representativeAltitudeDeg": 73.3,
-            "maximumAltitudeTime": "2026-11-02T02:50:00-06:00",
-            "lunarImpactScore": 62.8,
-            "lunarImpactRating": "moderate",
-            "scoreBreakdown": {
-              "usableWindowOverlap": 100.0,
-              "altitudeQuality": 99.5,
-              "lunarImpact": 62.8,
-              "timingConvenience": 93.8,
-              "cataloguePriority": 50.0,
-              "targetClassAdjustment": 5.0
-            },
-            "targetClassAdjustmentReason": "Emission target with validated narrowband metadata; comparatively tolerant of lunar brightness.",
-            "reasons": [
-              "Observable for 330 minutes during the best weather window.",
-              "Reaches 75.9 degrees altitude near 02:50 CST.",
               "Lunar interference is rated moderate for this target.",
               "Peaks inside the best weather window."
             ],
@@ -932,72 +642,109 @@
     {
       "date": "2026-11-02",
       "weekday": "Monday",
-      "forecastLeadHours": 142.6,
+      "forecastLeadHours": 118.4,
       "recommendation": {
-        "label": "Imaging night",
-        "level": "strong",
-        "confidence": "Low",
-        "score": 88
+        "label": "Visual only",
+        "level": "visual",
+        "confidence": "Medium",
+        "score": 80
       },
       "conditions": {
-        "bestWindow": "19:30-04:00 CST",
-        "bestWindowStart": "2026-11-02T19:30:00-06:00",
-        "bestWindowEnd": "2026-11-03T04:00:00-06:00",
-        "usableHours": 8.5,
-        "visualUsableHours": 10.0,
-        "imagingUsableHours": 8.5,
+        "bestWindow": "19:00-23:00 CST",
+        "bestWindowStart": "2026-11-02T19:00:00-06:00",
+        "bestWindowEnd": "2026-11-02T23:00:00-06:00",
+        "usableHours": 4.0,
+        "visualUsableHours": 4.0,
+        "imagingUsableHours": 0,
         "astronomicalNightOccurs": true,
-        "averageCloudCoverPercent": 11,
+        "averageCloudCoverPercent": 30,
         "averageLowCloudCoverPercent": 0,
-        "precipitationProbabilityPercent": 7,
-        "averageHumidityPercent": 60,
+        "precipitationProbabilityPercent": 5,
+        "averageHumidityPercent": 64,
         "visibilityKm": 24.1,
         "wind": {
-          "sustainedKph": 11,
-          "gustKph": 19
+          "sustainedKph": 19,
+          "gustKph": 44
         },
         "temperature": {
-          "expectedC": 2.5,
-          "dewPointSpreadC": 7.1
+          "expectedC": 4.3,
+          "dewPointSpreadC": 6.2
         },
         "moon": {
-          "illuminationPercent": 34.9,
+          "illuminationPercent": 36.0,
           "aboveHorizon": false,
-          "altitudeDegrees": -18.6,
+          "altitudeDegrees": -27.5,
           "context": "bestWindowMidpoint"
         }
       },
-      "suggestedTarget": "Cocoon Nebula",
+      "suggestedTarget": "Crescent Nebula",
       "suggestedEquipment": "Equipment matching is not yet implemented.",
       "warnings": [
-        "Weekday window runs substantially after midnight; schedule fatigue penalty applied."
+        "Cloud cover is above strong-imaging thresholds.",
+        "Wind gusts may reduce imaging quality.",
+        "Conditions are not strong enough for a planned imaging session."
       ],
-      "explanation": "Imaging night: Best contiguous window is 8.5 hours. Average cloud cover is 11%. Average precipitation probability is 7%. The selected window meets imaging darkness and weather limits.",
+      "explanation": "Visual only: Best contiguous window is 4.0 hours. Average cloud cover is 30%. Average precipitation probability is 5%. Only visual-usable conditions met the configured limits.",
       "scoreBreakdown": {
-        "clouds": 90.4,
-        "precipitation": 81.6,
+        "clouds": 73.8,
+        "precipitation": 87.5,
         "duration": 100,
-        "wind": 67.8,
-        "dewHumidity": 79.1,
+        "wind": 34.9,
+        "dewHumidity": 77.6,
         "visibility": 100,
         "darkness": 100,
-        "convenience": 92
+        "convenience": 100
       },
       "reasons": [
-        "Best contiguous window is 8.5 hours.",
-        "Average cloud cover is 11%.",
-        "Average precipitation probability is 7%.",
-        "The selected window meets imaging darkness and weather limits."
+        "Best contiguous window is 4.0 hours.",
+        "Average cloud cover is 30%.",
+        "Average precipitation probability is 5%.",
+        "Only visual-usable conditions met the configured limits."
       ],
       "targetRecommendations": {
         "status": "available",
-        "message": "3 target recommendations are well placed during the best observing window.",
+        "message": "3 opportunistic visual target candidates are well placed during the usable window.",
         "candidatesEvaluated": 42,
         "eligibleCandidates": 35,
         "reviewFlags": [],
         "topTargets": [
           {
             "rank": 1,
+            "targetId": "ngc-6888",
+            "displayName": "Crescent Nebula",
+            "primaryCatalogId": "NGC 6888",
+            "targetType": "Emission Nebula",
+            "recommendationScore": 96.8,
+            "baseRecommendationScore": 91.8,
+            "recommendationRating": "excellent",
+            "usableWindowOverlapStart": "2026-11-02T20:00:00-06:00",
+            "usableWindowOverlapEnd": "2026-11-02T23:00:00-06:00",
+            "usableWindowOverlapMinutes": 180,
+            "maximumAltitudeDeg": 73.3,
+            "representativeAltitudeDeg": 60.2,
+            "maximumAltitudeTime": "2026-11-02T20:00:00-06:00",
+            "lunarImpactScore": 100.0,
+            "lunarImpactRating": "excellent",
+            "scoreBreakdown": {
+              "usableWindowOverlap": 100.0,
+              "altitudeQuality": 95.4,
+              "lunarImpact": 100.0,
+              "timingConvenience": 80.0,
+              "cataloguePriority": 50.0,
+              "targetClassAdjustment": 5.0
+            },
+            "targetClassAdjustmentReason": "Emission target with validated narrowband metadata; comparatively tolerant of lunar brightness.",
+            "reasons": [
+              "Observable for 180 minutes during the best weather window.",
+              "Reaches 73.3 degrees altitude near 20:00 CST.",
+              "The Moon remains below the horizon during the target's observable period.",
+              "Peaks inside the best weather window.",
+              "Weather supports an opportunistic visual session rather than planned imaging."
+            ],
+            "warnings": []
+          },
+          {
+            "rank": 2,
             "targetId": "ic-5146",
             "displayName": "Cocoon Nebula",
             "primaryCatalogId": "IC 5146",
@@ -1006,25 +753,165 @@
             "baseRecommendationScore": 90.4,
             "recommendationRating": "excellent",
             "usableWindowOverlapStart": "2026-11-02T20:00:00-06:00",
-            "usableWindowOverlapEnd": "2026-11-03T03:50:00-06:00",
-            "usableWindowOverlapMinutes": 470,
+            "usableWindowOverlapEnd": "2026-11-02T23:00:00-06:00",
+            "usableWindowOverlapMinutes": 180,
             "maximumAltitudeDeg": 86.7,
-            "representativeAltitudeDeg": 58.6,
+            "representativeAltitudeDeg": 80.6,
             "maximumAltitudeTime": "2026-11-02T20:40:00-06:00",
             "lunarImpactScore": 89.7,
             "lunarImpactRating": "excellent",
             "scoreBreakdown": {
               "usableWindowOverlap": 100.0,
-              "altitudeQuality": 95.1,
+              "altitudeQuality": 100.0,
               "lunarImpact": 89.7,
-              "timingConvenience": 91.9,
+              "timingConvenience": 80.0,
               "cataloguePriority": 50.0,
               "targetClassAdjustment": 5.0
             },
             "targetClassAdjustmentReason": "Emission target with validated narrowband metadata; comparatively tolerant of lunar brightness.",
             "reasons": [
-              "Observable for 470 minutes during the best weather window.",
+              "Observable for 180 minutes during the best weather window.",
               "Reaches 86.7 degrees altitude near 20:40 CST.",
+              "Lunar interference is rated excellent for this target.",
+              "Peaks inside the best weather window.",
+              "Weather supports an opportunistic visual session rather than planned imaging."
+            ],
+            "warnings": []
+          },
+          {
+            "rank": 3,
+            "targetId": "ngc-7000",
+            "displayName": "North America Nebula",
+            "primaryCatalogId": "NGC 7000",
+            "targetType": "Emission Nebula",
+            "recommendationScore": 95.1,
+            "baseRecommendationScore": 90.1,
+            "recommendationRating": "excellent",
+            "usableWindowOverlapStart": "2026-11-02T20:00:00-06:00",
+            "usableWindowOverlapEnd": "2026-11-02T23:00:00-06:00",
+            "usableWindowOverlapMinutes": 180,
+            "maximumAltitudeDeg": 83.1,
+            "representativeAltitudeDeg": 70.8,
+            "maximumAltitudeTime": "2026-11-02T20:00:00-06:00",
+            "lunarImpactScore": 89.7,
+            "lunarImpactRating": "excellent",
+            "scoreBreakdown": {
+              "usableWindowOverlap": 100.0,
+              "altitudeQuality": 98.9,
+              "lunarImpact": 89.7,
+              "timingConvenience": 80.0,
+              "cataloguePriority": 50.0,
+              "targetClassAdjustment": 5.0
+            },
+            "targetClassAdjustmentReason": "Emission target with validated narrowband metadata; comparatively tolerant of lunar brightness.",
+            "reasons": [
+              "Observable for 180 minutes during the best weather window.",
+              "Reaches 83.1 degrees altitude near 20:00 CST.",
+              "Lunar interference is rated excellent for this target.",
+              "Peaks inside the best weather window.",
+              "Weather supports an opportunistic visual session rather than planned imaging."
+            ],
+            "warnings": []
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-11-03",
+      "weekday": "Tuesday",
+      "forecastLeadHours": 142.4,
+      "recommendation": {
+        "label": "Imaging night",
+        "level": "strong",
+        "confidence": "Low",
+        "score": 85
+      },
+      "conditions": {
+        "bestWindow": "19:30-05:00 CST",
+        "bestWindowStart": "2026-11-03T19:30:00-06:00",
+        "bestWindowEnd": "2026-11-04T05:00:00-06:00",
+        "usableHours": 9.5,
+        "visualUsableHours": 11.0,
+        "imagingUsableHours": 9.5,
+        "astronomicalNightOccurs": true,
+        "averageCloudCoverPercent": 23,
+        "averageLowCloudCoverPercent": 0,
+        "precipitationProbabilityPercent": 3,
+        "averageHumidityPercent": 70,
+        "visibilityKm": 24.1,
+        "wind": {
+          "sustainedKph": 12,
+          "gustKph": 23
+        },
+        "temperature": {
+          "expectedC": 3.8,
+          "dewPointSpreadC": 5.1
+        },
+        "moon": {
+          "illuminationPercent": 24.8,
+          "aboveHorizon": false,
+          "altitudeDegrees": -25.8,
+          "context": "bestWindowMidpoint"
+        }
+      },
+      "suggestedTarget": "Pacman Nebula",
+      "suggestedEquipment": "Equipment matching is not yet implemented.",
+      "warnings": [
+        "Weekday window runs substantially after midnight; schedule fatigue penalty applied."
+      ],
+      "explanation": "Imaging night: Best contiguous window is 9.5 hours. Average cloud cover is 23%. Average precipitation probability is 3%. The selected window meets imaging darkness and weather limits.",
+      "scoreBreakdown": {
+        "clouds": 79.5,
+        "precipitation": 92.5,
+        "duration": 100,
+        "wind": 63.7,
+        "dewHumidity": 75.5,
+        "visibility": 100,
+        "darkness": 100,
+        "convenience": 92
+      },
+      "reasons": [
+        "Best contiguous window is 9.5 hours.",
+        "Average cloud cover is 23%.",
+        "Average precipitation probability is 3%.",
+        "The selected window meets imaging darkness and weather limits."
+      ],
+      "targetRecommendations": {
+        "status": "available",
+        "message": "3 target recommendations are well placed during the best observing window.",
+        "candidatesEvaluated": 42,
+        "eligibleCandidates": 36,
+        "reviewFlags": [],
+        "topTargets": [
+          {
+            "rank": 1,
+            "targetId": "ngc-281",
+            "displayName": "Pacman Nebula",
+            "primaryCatalogId": "NGC 281",
+            "targetType": "Emission Nebula",
+            "recommendationScore": 96.8,
+            "baseRecommendationScore": 91.8,
+            "recommendationRating": "excellent",
+            "usableWindowOverlapStart": "2026-11-03T20:00:00-06:00",
+            "usableWindowOverlapEnd": "2026-11-04T05:00:00-06:00",
+            "usableWindowOverlapMinutes": 540,
+            "maximumAltitudeDeg": 83.9,
+            "representativeAltitudeDeg": 79.4,
+            "maximumAltitudeTime": "2026-11-03T23:30:00-06:00",
+            "lunarImpactScore": 89.9,
+            "lunarImpactRating": "excellent",
+            "scoreBreakdown": {
+              "usableWindowOverlap": 100.0,
+              "altitudeQuality": 100.0,
+              "lunarImpact": 89.9,
+              "timingConvenience": 92.9,
+              "cataloguePriority": 50.0,
+              "targetClassAdjustment": 5.0
+            },
+            "targetClassAdjustmentReason": "Emission target with validated narrowband metadata; comparatively tolerant of lunar brightness.",
+            "reasons": [
+              "Observable for 540 minutes during the best weather window.",
+              "Reaches 83.9 degrees altitude near 23:30 CST.",
               "Lunar interference is rated excellent for this target.",
               "Peaks inside the best weather window."
             ],
@@ -1038,28 +925,28 @@
             "displayName": "Wizard Nebula",
             "primaryCatalogId": "Sh2-142",
             "targetType": "Emission Nebula And Open Cluster",
-            "recommendationScore": 95.3,
-            "baseRecommendationScore": 90.3,
+            "recommendationScore": 96.3,
+            "baseRecommendationScore": 91.3,
             "recommendationRating": "excellent",
-            "usableWindowOverlapStart": "2026-11-02T20:00:00-06:00",
-            "usableWindowOverlapEnd": "2026-11-03T04:00:00-06:00",
-            "usableWindowOverlapMinutes": 480,
+            "usableWindowOverlapStart": "2026-11-03T20:00:00-06:00",
+            "usableWindowOverlapEnd": "2026-11-04T05:00:00-06:00",
+            "usableWindowOverlapMinutes": 540,
             "maximumAltitudeDeg": 82.4,
-            "representativeAltitudeDeg": 67.2,
-            "maximumAltitudeTime": "2026-11-02T21:30:00-06:00",
-            "lunarImpactScore": 86.1,
+            "representativeAltitudeDeg": 62.7,
+            "maximumAltitudeTime": "2026-11-03T21:30:00-06:00",
+            "lunarImpactScore": 91.3,
             "lunarImpactRating": "excellent",
             "scoreBreakdown": {
               "usableWindowOverlap": 100.0,
-              "altitudeQuality": 97.9,
-              "lunarImpact": 86.1,
-              "timingConvenience": 92.6,
+              "altitudeQuality": 96.7,
+              "lunarImpact": 91.3,
+              "timingConvenience": 92.9,
               "cataloguePriority": 50.0,
               "targetClassAdjustment": 5.0
             },
             "targetClassAdjustmentReason": "Emission target with validated narrowband metadata; comparatively tolerant of lunar brightness.",
             "reasons": [
-              "Observable for 480 minutes during the best weather window.",
+              "Observable for 540 minutes during the best weather window.",
               "Reaches 82.4 degrees altitude near 21:30 CST.",
               "Lunar interference is rated excellent for this target.",
               "Peaks inside the best weather window."
@@ -1070,34 +957,34 @@
           },
           {
             "rank": 3,
-            "targetId": "ngc-281",
-            "displayName": "Pacman Nebula",
-            "primaryCatalogId": "NGC 281",
+            "targetId": "ngc-7635",
+            "displayName": "Bubble Nebula",
+            "primaryCatalogId": "NGC 7635",
             "targetType": "Emission Nebula",
-            "recommendationScore": 95.2,
-            "baseRecommendationScore": 90.2,
+            "recommendationScore": 96.3,
+            "baseRecommendationScore": 91.3,
             "recommendationRating": "excellent",
-            "usableWindowOverlapStart": "2026-11-02T20:00:00-06:00",
-            "usableWindowOverlapEnd": "2026-11-03T04:00:00-06:00",
-            "usableWindowOverlapMinutes": 480,
-            "maximumAltitudeDeg": 83.8,
-            "representativeAltitudeDeg": 82.9,
-            "maximumAltitudeTime": "2026-11-02T23:40:00-06:00",
-            "lunarImpactScore": 83.7,
-            "lunarImpactRating": "good",
+            "usableWindowOverlapStart": "2026-11-03T20:00:00-06:00",
+            "usableWindowOverlapEnd": "2026-11-04T05:00:00-06:00",
+            "usableWindowOverlapMinutes": 540,
+            "maximumAltitudeDeg": 79.2,
+            "representativeAltitudeDeg": 66.8,
+            "maximumAltitudeTime": "2026-11-03T22:00:00-06:00",
+            "lunarImpactScore": 90.1,
+            "lunarImpactRating": "excellent",
             "scoreBreakdown": {
               "usableWindowOverlap": 100.0,
-              "altitudeQuality": 100.0,
-              "lunarImpact": 83.7,
-              "timingConvenience": 92.6,
+              "altitudeQuality": 97.8,
+              "lunarImpact": 90.1,
+              "timingConvenience": 92.9,
               "cataloguePriority": 50.0,
               "targetClassAdjustment": 5.0
             },
             "targetClassAdjustmentReason": "Emission target with validated narrowband metadata; comparatively tolerant of lunar brightness.",
             "reasons": [
-              "Observable for 480 minutes during the best weather window.",
-              "Reaches 83.8 degrees altitude near 23:40 CST.",
-              "Lunar interference is rated good for this target.",
+              "Observable for 540 minutes during the best weather window.",
+              "Reaches 79.2 degrees altitude near 22:00 CST.",
+              "Lunar interference is rated excellent for this target.",
               "Peaks inside the best weather window."
             ],
             "warnings": [
