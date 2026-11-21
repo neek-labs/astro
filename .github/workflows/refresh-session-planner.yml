@@ -1,9 +1,7 @@
 name: Refresh Session Planner Forecast
 
 on:
-  # GitHub cron is UTC. This runs around 08:15 MDT or 07:15 MST in Calgary.
-  schedule:
-    - cron: "15 14 * * *"
+  # Daily updates are paused. Restore the schedule with cron "15 14 * * *" (UTC).
   workflow_dispatch:
 
 concurrency:
